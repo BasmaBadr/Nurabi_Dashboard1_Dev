@@ -29,7 +29,7 @@ public class Initiative_Page extends PageBase {
     By longDescriptionARTxt = By.id("long_description_ar");
 
     By trackingSystemList = By.id("tracking_id");
-    By selectTracking = By.cssSelector("#trackingSelectOptions ul li .track.en");
+    By selectTracking = By.cssSelector("#trackingSelectOptions ul li .Automation.Tracking");
 
     By startDate = By.cssSelector("[for='start_date_picker']");
     By currentActiveDate = By.cssSelector(".dropdown-menu.show span.btn-outline-primary");

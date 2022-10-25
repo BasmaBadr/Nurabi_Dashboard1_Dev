@@ -29,7 +29,7 @@ public class TrackingSystem_Page extends PageBase {
     By longDescriptionENTxt = By.id("long_description");
     By longDescriptionARTxt = By.id("long_description_ar");
     By field = By.cssSelector("[for = 'field']");
-    By selectField = By.cssSelector("#fieldsSelectOptions ul li .Parent658");
+    By selectField = By.cssSelector("#fieldsSelectOptions ul li .AutomationField");
     By durationTxt = By.id("duration");
     By status = By.cssSelector("[for='status']");
 
@@ -44,7 +44,6 @@ public class TrackingSystem_Page extends PageBase {
 
     By searchTxt = By.cssSelector("input.d-inline-block.mr-1.form-control");
 
-    By optionList = By.cssSelector("[class= 'align-middle text-body feather feather-more-vertical']");
 
 
     public void createTrackingSystemWithValidData(boolean image, boolean published, String filePath, String requiredNameEN, String requiredNameAR,

@@ -59,15 +59,15 @@ public class TrackingSystem_Test extends TestBase {
 
     }
 
-    /*
+
+    // Search by name English
     @Test(priority = 2)
     public void verifySearchByNameEN() throws InterruptedException, AWTException {
-        defineObjects();
-        createTrackingSystemWithValidData_Image();
-        commonMethods_page.search(requiredNameEN);
-        commonMethods_page.assertValidationMessage(requiredNameEN);
+        createFreeTrackingSystemWithValidData_Image();
+        commonMethods_page.search(nameEN);
+        Assert.assertTrue(commonMethods_page.table().contains(nameEN));
     }
-
+/*
     @Test(priority = 3)
     public void verifyDataOfTrackingDetails() throws InterruptedException, AWTException {
         defineObjects();
@@ -83,14 +83,17 @@ public class TrackingSystem_Test extends TestBase {
         commonMethods_page.assertValidationMessage("Updated Successfully");
 
     }
+*/
 
+    // Verify ability to delete tracking not have enrolled users
     @Test(priority = 5)
     public void verifyAbilityToDeleteTrackingSystem() throws InterruptedException, AWTException {
-        defineObjects();
-        createTrackingSystemWithValidData_Image();
+        createFreeTrackingSystemWithValidData_Image();
         commonMethods_page.delete();
-        commonMethods_page.assertValidationMessage("Deleted Successfully");
+        Assert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
+        Thread.sleep(3000);
+        Assert.assertFalse(commonMethods_page.table().contains(nameEN));
     }
 
-     */
+
 }

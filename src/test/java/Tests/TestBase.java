@@ -9,6 +9,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
+import org.apache.xmlbeans.impl.store.Cur;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -36,12 +37,54 @@ public class TestBase {
     CommonMethods_Page commonMethods_page ;
 
     Initiative_Page initiativePage ;
+    Courses_Page coursesPage ;
+    Sections_Page sectionsPage;
+    Quiz_Page quizPage ;
+    Lesson_Page lessonPage ;
+
+    PracticalTask_Page practicalTaskPage ;
+
+    JobTitle_Page jobTitlePage ;
+
+    Fields_Consultations_Page fieldsConsultationsPage ;
+
+    Categories_Page categoriesPage ;
+
+    Survey_Page surveyPage ;
+
+    BankQuestion_Page bankQuestionPage ;
+    Certificate_Page certificatePage ;
+
+    Currencies_Page currenciesPage ;
 
 
 
     Faker fakeData = new Faker();
-    String nameEN = fakeData.name().title();
-    String nameAR = fakeData.name().title();
+    String nameEN = fakeData.name().name();
+    String nameAR = fakeData.name().name();
+    String slugName = fakeData.name().name();
+
+    String seoNameEN = fakeData.name().name();
+    String seoNameAR = fakeData.name().name();
+
+    ////
+    String Email = "momen@nurabi.net";
+    String Password = "19821120Mm";
+
+    String requiredNameEN = "Tracking NameEN Automation";
+    String requiredNameAR = "Tracking NameAR Automation";
+    String requiredShortDesEN = "Tracking ShortDesEN Automation";
+    String requiredShortDesAR = "Tracking ShortDesAR Automation";
+    String requiredLongDesEN = "Tracking LongDesEN Automation";
+    String requiredLongDesAR = "Tracking LongDesAR Automation";
+    String requiredDuration = "5";
+    String requiredSEONameEN = "Tracking SEOEN Automation";
+    String requiredSEONameAR = "Tracking SEOAR Automation";
+    String requiredSEONDescEN = "Tracking SEODescEN Automation";
+    String requiredSEONDescAR = "Tracking SEODescAR Automation";
+    String imagePath = "D:\\Photos\\ISTQB.png";
+    String videoPath = "D:\\Courses\\Appium\\Find Elements by Accessibility ID.mp4";
+    String price = "requiredPrice";
 
 
     @BeforeMethod
@@ -51,7 +94,7 @@ public class TestBase {
         driver=new ChromeDriver();
         driver.manage().window().maximize();
 //        driver.manage().timeouts().implicitlyWait(10 , TimeUnit.SECONDS);
-        driver.navigate().to("https://dashboard.test.nurabi.net/login");
+        driver.navigate().to("https://dashboard.dev.nurabi.net/");
 
 
     }
@@ -82,7 +125,6 @@ public class TestBase {
             logger.log(LogStatus.SKIP , " Test Skipped");
         }
 
-
     }
     //    @AfterSuite
 //    public void stopDriver(){
@@ -97,8 +139,18 @@ public class TestBase {
         activity_page = new Activity_Page(driver);
         commonMethods_page = new CommonMethods_Page(driver);
         initiativePage = new Initiative_Page(driver);
-
-
+        coursesPage = new Courses_Page(driver);
+        sectionsPage = new Sections_Page(driver);
+        quizPage = new Quiz_Page(driver);
+        lessonPage = new Lesson_Page(driver);
+        practicalTaskPage = new PracticalTask_Page(driver);
+        jobTitlePage = new JobTitle_Page(driver);
+        fieldsConsultationsPage = new Fields_Consultations_Page(driver);
+        categoriesPage = new Categories_Page(driver);
+        surveyPage = new Survey_Page(driver);
+        bankQuestionPage = new BankQuestion_Page(driver);
+        certificatePage = new Certificate_Page(driver);
+        currenciesPage = new Currencies_Page(driver);
     }
 
     @BeforeSuite

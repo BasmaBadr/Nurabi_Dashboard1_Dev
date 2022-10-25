@@ -23,6 +23,7 @@ public class Initiative_Test extends TestBase{
     String requiredSEONDescAR = "Tracking SEODescAR Automation";
 
 
+    // Create initiative / Image / Daily / Published
     @Test
     public void createInitiative() throws InterruptedException, AWTException {
         defineObjects();
@@ -34,4 +35,24 @@ public class Initiative_Test extends TestBase{
         Assert.assertTrue(commonMethods_page.table().contains(nameEN));
         Assert.assertTrue(commonMethods_page.table().contains(nameAR));
     }
+
+    // Delete initiative not have enrolled users
+    @Test()
+    public void verifyDeleteInitiativeNotHaveEnrolledUsers() throws InterruptedException, AWTException {
+        createInitiative();
+       // sidePanel_page.openInitiativeList();
+        commonMethods_page.delete();
+        Assert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
+        Thread.sleep(3000);
+        Assert.assertFalse(commonMethods_page.table().contains(nameEN));
+    }
+
+    @Test
+    public void verifyDetailsOfInitiative() throws InterruptedException, AWTException {
+        createInitiative();
+        commonMethods_page.openDetailsScreen();
+
+    }
+
+
 }

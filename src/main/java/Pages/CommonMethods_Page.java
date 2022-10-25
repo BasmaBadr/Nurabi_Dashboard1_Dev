@@ -1,9 +1,6 @@
 package Pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
@@ -45,10 +42,11 @@ public class CommonMethods_Page extends PageBase {
         Click(edit);
     }
 
-    public void delete() {
+    public void delete() throws InterruptedException {
         clickOptions();
         waitElementToBeVisible(delete);
         Click(delete);
+        Thread.sleep(3000);
         waitElementToBeVisible(confirmDelete);
         Click(confirmDelete);
     }
@@ -68,11 +66,11 @@ public class CommonMethods_Page extends PageBase {
         waitElementToBeVisible(optionList);
         waitElementToBeVisible(searchTxt);
         writeOnText(searchTxt, requiredValue);
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(2000);
-
+        currentDriver.findElement(searchTxt).sendKeys(Keys.ENTER);
+//        Robot robot = new Robot();
+//        robot.keyPress(KeyEvent.VK_ENTER);
+//        robot.keyRelease(KeyEvent.VK_ENTER);
+//        robot.delay(2000);
     }
 
     public void waitTillPageIsLoaded() {
