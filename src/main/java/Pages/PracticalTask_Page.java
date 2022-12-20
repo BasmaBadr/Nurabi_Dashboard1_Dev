@@ -14,31 +14,40 @@ public class PracticalTask_Page extends PageBase{
 
 
 
+    public void clickAddBtn()
+    {
+        Click(addPracticalTaskBTN);
+
+    }
     public void addPracticalTask(boolean live , String QuestEN , String QuestAR)
     {
-        waitElementToBeVisible(addPracticalTaskBTN);
-        Click(addPracticalTaskBTN);
-        waitElementToBeVisible(questionEN);
         writeOnText(questionEN , QuestEN);
-        waitElementToBeVisible(questionAR);
         writeOnText(questionAR , QuestAR);
-        waitElementToBeVisible(course);
+        waitElementToBeUnVisible(loader);
         Click(course);
         if (live) {
-            waitElementToBeVisible(selectLiveCourse);
             Click(selectLiveCourse);
             Click(section);
-            waitElementToBeVisible(selectLiveSection);
             Click(selectLiveSection);
         } else {
-            waitElementToBeVisible(selectOnlineCourse);
             Click(selectOnlineCourse);
-            waitElementToBeVisible(section);
             Click(section);
-            waitElementToBeVisible(selectOnlineSection);
             Click(selectOnlineSection);
         }
-        waitElementToBeVisible(submitBtn);
+        Click(submitBtn);
+    }
+
+    public void editPracticalTask(boolean live , String QuestEN , String QuestAR, String QuestENEdit,
+                                  String QuestAREdit)
+    {
+        addPracticalTask(live , QuestEN , QuestAR);
+        openEditScreen();
+        writeOnText(questionEN , QuestENEdit);
+        writeOnText(questionAR , QuestAREdit);
+        waitElementToBeUnVisible(loader);
+
+        writeOnText(questionEN , QuestENEdit);
+        writeOnText(questionAR , QuestAREdit);
         Click(submitBtn);
     }
 }

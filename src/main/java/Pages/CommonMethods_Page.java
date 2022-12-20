@@ -44,7 +44,6 @@ public class CommonMethods_Page extends PageBase {
 
     public void delete() throws InterruptedException {
         clickOptions();
-        waitElementToBeVisible(delete);
         Click(delete);
         Thread.sleep(3000);
         waitElementToBeVisible(confirmDelete);

@@ -24,49 +24,55 @@ public class Survey_Page extends PageBase {
     By addNewQuestionBTN = By.xpath("//span[contains(text() , 'Add New Question')]");
 
 
+    public void clickAddBtn()
+    {
+        Click(addSurveyBTN);
+
+    }
     public void addSurvey(String NameEN, String NameAR, String requiredSEONameEN, String requiredSEONameAR
             , String requiredSEONDescEN, String requiredSEONDescAR, String QNEN1, String QNAR1,
     String QENN2 , String QEARR2) throws InterruptedException, AWTException {
-        waitElementToBeVisible(addSurveyBTN);
-        Click(addSurveyBTN);
-        waitElementToBeVisible(titleEN);
         writeOnText(titleEN, NameEN);
-        waitElementToBeVisible(titleAR);
         writeOnText(titleAR, NameAR);
-
-        waitElementToBeVisible(seoNameENTxt);
         writeOnText(seoNameENTxt, requiredSEONameEN);
-
-        waitElementToBeVisible(seoNameARTxt);
         writeOnText(seoNameARTxt, requiredSEONameAR);
-
-        waitElementToBeVisible(seoDesEN);
         writeOnText(seoDesEN, requiredSEONDescEN);
-
-        waitElementToBeVisible(seoDesAR);
         writeOnText(seoDesAR, requiredSEONDescAR);
-
-        waitElementToBeVisible(seoImage);
         Click(seoImage);
         Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
-
-        waitElementToBeVisible(QEN1);
+        uploadFile("ISTQB.png");
         writeOnText(QEN1, QNEN1);
-
-        waitElementToBeVisible(QAR1);
         writeOnText(QAR1, QNAR1);
-
-        waitElementToBeVisible(addNewQuestionBTN);
         Click(addNewQuestionBTN);
-
-        waitElementToBeVisible(QEN2);
         writeOnText(QEN2, QENN2);
-
-        waitElementToBeVisible(QAR2);
         writeOnText(QAR2, QEARR2);
+        Click(submitBtn);
+    }
 
-        waitElementToBeVisible(submitBtn);
+    public void editSurvey(String NameEN, String NameAR, String requiredSEONameEN, String requiredSEONameAR
+            , String requiredSEONDescEN, String requiredSEONDescAR, String QNEN1, String QNAR1,
+                          String QENN2 , String QEARR2,String NameENEdit,String NameAREdit,String QNEN1Edit
+    ,String QNAR1Edit , String QENN2Edit ,String QEARR2Edit) throws InterruptedException, AWTException {
+
+        addSurvey( NameEN,  NameAR,  requiredSEONameEN,  requiredSEONameAR
+                ,  requiredSEONDescEN,  requiredSEONDescAR,  QNEN1,  QNAR1,
+                 QENN2 ,  QEARR2);
+        openEditScreen();
+        waitElementToBeUnVisible(loader);
+        writeOnText(titleEN, NameENEdit);
+        writeOnText(titleAR, NameAREdit);
+        writeOnText(seoNameENTxt, requiredSEONameEN);
+        writeOnText(seoNameARTxt, requiredSEONameAR);
+        writeOnText(seoDesEN, requiredSEONDescEN);
+        writeOnText(seoDesAR, requiredSEONDescAR);
+        Click(seoImage);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
+        writeOnText(QEN1, QNEN1Edit);
+        writeOnText(QAR1, QNAR1Edit);
+        Click(addNewQuestionBTN);
+        writeOnText(QEN2, QENN2Edit);
+        writeOnText(QAR2, QEARR2Edit);
         Click(submitBtn);
     }
 

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
 
-public class BankQuestion_Page extends PageBase{
+public class BankQuestion_Page extends PageBase {
     public BankQuestion_Page(WebDriver driver) {
         super(driver);
     }
@@ -18,43 +18,73 @@ public class BankQuestion_Page extends PageBase{
     By ANAR = By.id("answer_ar");
 
 
+    By status = By.id("Status");
 
-
-
-    public void addQuestionFromAdmin(String QNENN , String QNARR , String ANENN , String ANARR
-    ,String requiredSEONameEN , String requiredSEONameAR , String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
-        waitElementToBeVisible(addQuestionBTN);
+    public void clickAddBrn()
+    {
         Click(addQuestionBTN);
-
-        waitElementToBeVisible(QNEN);
-        writeOnText(QNEN, QNENN);
-        waitElementToBeVisible(QNAR);
-        writeOnText(QNAR, QNARR);
-        waitElementToBeVisible(ANEN);
-        writeOnText(ANEN, ANENN);
-        waitElementToBeVisible(ANAR);
-        writeOnText(ANAR, ANARR);
-
-
-        waitElementToBeVisible(seoNameENTxt);
-        writeOnText(seoNameENTxt, requiredSEONameEN);
-
-        waitElementToBeVisible(seoNameARTxt);
-        writeOnText(seoNameARTxt, requiredSEONameAR);
-
-        waitElementToBeVisible(seoDesEN);
-        writeOnText(seoDesEN, requiredSEONDescEN);
-
-        waitElementToBeVisible(seoDesAR);
-        writeOnText(seoDesAR, requiredSEONDescAR);
-
-        waitElementToBeVisible(seoImage);
-        Click(seoImage);
-        Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
-        waitElementToBeVisible(submitBtn);
-        Click(submitBtn);
 
     }
 
+    public void addQuestionFromAdmin(String QNENN, String QNARR, String ANENN, String ANARR,boolean published
+            , String requiredSEONameEN, String requiredSEONameAR, String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
+
+        writeOnText(QNEN, QNENN);
+        writeOnText(QNAR, QNARR);
+        writeOnText(ANEN, ANENN);
+        writeOnText(ANAR, ANARR);
+        if (published){
+            Click(status);
+            Click(selectPublished);
+
+        }
+        else {
+            Click(status);
+            Click(selectUnPublished);
+
+        }
+
+        writeOnText(seoNameENTxt, requiredSEONameEN);
+        writeOnText(seoNameARTxt, requiredSEONameAR);
+        writeOnText(seoDesEN, requiredSEONDescEN);
+        writeOnText(seoDesAR, requiredSEONDescAR);
+        Click(seoImage);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
+        Click(submitBtn);
+    }
+
+    public void editQuestionFromAdmin(String QNENN, String QNARR, String ANENN, String ANARR,boolean published
+            , String requiredSEONameEN, String requiredSEONameAR, String requiredSEONDescEN, String requiredSEONDescAR
+            , String QNENNEdit, String QNARREdit, String ANENNEdit, String ANARREdit,boolean Unpublished) throws InterruptedException, AWTException {
+        addQuestionFromAdmin( QNENN,  QNARR,  ANENN,  ANARR,true
+                ,  requiredSEONameEN,  requiredSEONameAR,  requiredSEONDescEN,  requiredSEONDescAR);
+        openEditScreen();
+        waitElementToBeUnVisible(loader);
+        writeOnText(seoNameENTxt, requiredSEONameEN);
+        waitElementToBeUnVisible(loader);
+        writeOnText(seoNameARTxt, requiredSEONameAR);
+        writeOnText(seoDesEN, requiredSEONDescEN);
+        writeOnText(seoDesAR, requiredSEONDescAR);
+
+
+        writeOnText(QNEN, QNENNEdit);
+        writeOnText(QNAR, QNARREdit);
+        writeOnText(ANEN, ANENNEdit);
+        writeOnText(ANAR, ANARREdit);
+        if (Unpublished){
+            Click(status);
+            Click(selectUnPublished);
+        }
+        writeOnText(seoNameENTxt, requiredSEONameEN);
+        writeOnText(seoNameARTxt, requiredSEONameAR);
+        writeOnText(seoDesEN, requiredSEONDescEN);
+        writeOnText(seoDesAR, requiredSEONDescAR);
+
+        Click(seoImage);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
+        Click(submitBtn);
+
+    }
 }

@@ -8,69 +8,135 @@ import java.awt.*;
 public class Courses_Test extends TestBase {
 
 
-    String Email = "momen@nurabi.net";
-    String Password = "19821120Mm";
-
-
     // Create online , free , published  course with all valid data
     // Passed
-    @Test
+    @Test(priority = 1)
     public void createCourseOnlineFreePublished() throws InterruptedException, AWTException {
         defineObjects();
-        loginPage.loginWithValidData(Email , Password);
+        login();
         sidePanel_page.openCoursesList();
-        coursesPage.createCourse(false,true,true, nameEN, nameAR, slugName, price,
-                                      requiredLongDesEN, requiredLongDesAR, requiredSEONameEN, requiredSEONameAR,
-                                      requiredSEONDescEN, requiredSEONDescAR);
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
-        Assert.assertTrue(commonMethods_page.table().contains(nameEN));
-        Assert.assertTrue(commonMethods_page.table().contains(nameAR));
-        Assert.assertTrue(commonMethods_page.table().contains("Free"));
-        Assert.assertTrue(commonMethods_page.table().contains("Active"));
-        Assert.assertTrue(commonMethods_page.table().contains("Online"));
+        coursesPage.clickAddBtn();
+        coursesPage.createCourse(false, true, true, nameEN, nameAR, slugName, price,
+                requiredLongDesEN, requiredLongDesAR, requiredSEONameEN, requiredSEONameAR,
+                requiredSEONDescEN, requiredSEONDescAR);
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.table().contains("Free"));
+        softAssert.assertTrue(commonMethods_page.table().contains("Active"));
+        softAssert.assertTrue(commonMethods_page.table().contains("Online"));
+    }
+
+    // Create online , free , published  course with all valid data from side panel
+    // Passed
+    @Test(priority = 2)
+    public void createCourseOnlineFreePublishedFromSidePanel() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openAddCourseSidePanel();
+        coursesPage.createCourse(false, true, true, nameEN, nameAR, slugName, price,
+                requiredLongDesEN, requiredLongDesAR, requiredSEONameEN, requiredSEONameAR,
+                requiredSEONDescEN, requiredSEONDescAR);
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.table().contains("Free"));
+        softAssert.assertTrue(commonMethods_page.table().contains("Active"));
+        softAssert.assertTrue(commonMethods_page.table().contains("Online"));
     }
 
 
     // Create live , free , published  course with all valid data
     // Passed
 
-    @Test
+    @Test(priority = 3)
     public void createCourseLiveFreePublished() throws InterruptedException, AWTException {
         defineObjects();
-        loginPage.loginWithValidData(Email , Password);
+        loginPage.loginWithValidData(Email, Password);
         sidePanel_page.openCoursesList();
-        coursesPage.createCourse(true,true,true, nameEN, nameAR, slugName, price,
+        coursesPage.clickAddBtn();
+        coursesPage.createCourse(true, true, true, nameEN, nameAR, slugName, price,
                 requiredLongDesEN, requiredLongDesAR, requiredSEONameEN, requiredSEONameAR,
                 requiredSEONDescEN, requiredSEONDescAR);
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
-        Assert.assertTrue(commonMethods_page.table().contains(nameEN));
-        Assert.assertTrue(commonMethods_page.table().contains(nameAR));
-        Assert.assertTrue(commonMethods_page.table().contains("Free"));
-        Assert.assertTrue(commonMethods_page.table().contains("Active"));
-        Assert.assertTrue(commonMethods_page.table().contains("Live"));
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.table().contains("Free"));
+        softAssert.assertTrue(commonMethods_page.table().contains("Active"));
+        softAssert.assertTrue(commonMethods_page.table().contains("Live"));
     }
 
 
     // Verify ability to delete online course not have enrolled users
-    @Test
+    @Test(priority = 4)
     public void verifyDeleteOnlineCourseNotHaveEnrolledUsers() throws InterruptedException, AWTException {
         defineObjects();
         createCourseOnlineFreePublished();
         commonMethods_page.delete();
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
         Thread.sleep(3000);
-        Assert.assertFalse(commonMethods_page.table().contains(nameEN));
+        softAssert.assertFalse(commonMethods_page.table().contains(nameEN));
     }
 
     // Verify ability to delete live course not have enrolled users
-    @Test
+    @Test(priority = 5)
     public void verifyDeleteLiveCourseNotHaveEnrolledUsers() throws InterruptedException, AWTException {
         defineObjects();
         createCourseLiveFreePublished();
         commonMethods_page.delete();
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
         Thread.sleep(3000);
-        Assert.assertFalse(commonMethods_page.table().contains(nameEN));
+        softAssert.assertFalse(commonMethods_page.table().contains(nameEN));
+    }
+
+    // Edit online course to paid , draft
+    // Passed
+    @Test(priority = 6)
+    public void editOnlineCourseToPaidAndDraft() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openCoursesList();
+        coursesPage.clickAddBtn();
+
+        coursesPage.editCourse(false, true, true, nameEN, nameAR, slugName, price,
+                requiredLongDesEN, requiredLongDesAR, requiredSEONameEN, requiredSEONameAR,
+                requiredSEONDescEN, requiredSEONDescAR,EditNameEN,EditNameAR,slugNameEdit,true,false
+                ,PriceEdit);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(EditNameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(EditNameAR));
+    }
+
+    // Edit live course to paid , draft
+    // Passed
+    @Test(priority = 7)
+    public void editLiveCoursePaidAndDraft() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openCoursesList();
+        coursesPage.clickAddBtn();
+        coursesPage.editCourse(true, true, true, nameEN, nameAR, slugName, price,
+                requiredLongDesEN, requiredLongDesAR, requiredSEONameEN, requiredSEONameAR,
+                requiredSEONDescEN, requiredSEONDescAR,EditNameEN,EditNameAR,slugNameEdit,true,false
+                ,PriceEdit);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(EditNameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(EditNameAR));
+    }
+
+    // Search course
+    // Passed
+    @Test(priority = 8)
+    public void verifySearchByNameEN() throws InterruptedException, AWTException {
+        createCourseOnlineFreePublished();
+        commonMethods_page.search(nameEN);
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+
     }
 
 }

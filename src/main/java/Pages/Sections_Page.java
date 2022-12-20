@@ -17,48 +17,86 @@ public class Sections_Page extends PageBase {
 
     By selectLiveCourse = By.cssSelector("#courseSelectOptions ul li .AutoLiveCourse");
 
+    By status = By.id("statusSelectOptions");
 
 
-
-    public void addSection(boolean live ,String requiredTitleEN, String requiredTitleAR,String requiredSEONameEN, String requiredSEONameAR
-    ,String requiredSEONDescEN , String requiredSEONDescAR) throws InterruptedException, AWTException {
-        waitElementToBeVisible(addSectionBTN);
+    public void clickAddBtn()
+    {
         Click(addSectionBTN);
+
+    }
+    public void addSection(boolean live,boolean active , String requiredTitleEN, String requiredTitleAR, String requiredSEONameEN, String requiredSEONameAR
+            , String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
         waitElementToBeUnVisible(loader);
-        waitElementToBeVisible(titleEN);
         writeOnText(titleEN, requiredTitleEN);
-        waitElementToBeVisible(titleAR);
         writeOnText(titleAR, requiredTitleAR);
         waitElementToBeUnVisible(loader);
-        waitElementToBeVisible(course);
         Click(course);
 
         if (live) {
-            waitElementToBeVisible(selectLiveCourse);
             Click(selectLiveCourse);
-        }
-        else {
-            waitElementToBeVisible(selectOnlineCourse);
+        } else {
             Click(selectOnlineCourse);
         }
 
-        waitElementToBeVisible(seoNameENTxt);
+        Click(status);
+        if (active) {
+            Click(selectActive);
+        } else {
+            Click(selectInactive);
+        }
+
         writeOnText(seoNameENTxt, requiredSEONameEN);
 
-        waitElementToBeVisible(seoNameARTxt);
         writeOnText(seoNameARTxt, requiredSEONameAR);
 
-        waitElementToBeVisible(seoDesEN);
         writeOnText(seoDesEN, requiredSEONDescEN);
 
-        waitElementToBeVisible(seoDesAR);
         writeOnText(seoDesAR, requiredSEONDescAR);
 
-        waitElementToBeVisible(seoImage);
         Click(seoImage);
         Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
-        waitElementToBeVisible(submitBtn);
+        uploadFile("ISTQB.png");
+        Click(submitBtn);
+    }
+
+    public void editSection(boolean live,boolean active, String requiredTitleEN, String requiredTitleAR, String requiredSEONameEN, String requiredSEONameAR
+            , String requiredSEONDescEN, String requiredSEONDescAR, String TitleENEdit, String TitleAREdit
+            , boolean activeEdit) throws InterruptedException, AWTException {
+        addSection(live,active, requiredTitleEN, requiredTitleAR, requiredSEONameEN, requiredSEONameAR
+                , requiredSEONDescEN, requiredSEONDescAR);
+        openEditScreen();
+        waitElementToBeUnVisible(loader);
+        clear(titleEN);
+        writeOnText(titleEN, TitleENEdit);
+        clear(titleAR);
+        writeOnText(titleAR, TitleAREdit);
+        waitElementToBeUnVisible(loader);
+//        Click(courseEdit);
+//
+//        if (live) {
+//            Click(selectLiveCourse);
+//        }
+//        else {
+//            Click(selectOnlineCourse);
+//        }
+        Click(status);
+        if (activeEdit) {
+            Click(selectActive);
+        } else {
+            Click(selectInactive);
+        }
+        clear(titleEN);
+        writeOnText(titleEN, TitleENEdit);
+        clear(titleAR);
+        writeOnText(titleAR, TitleAREdit);
+        writeOnText(seoNameENTxt, requiredSEONameEN);
+        writeOnText(seoNameARTxt, requiredSEONameAR);
+        writeOnText(seoDesEN, requiredSEONDescEN);
+        writeOnText(seoDesAR, requiredSEONDescAR);
+        Click(seoImage);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
         Click(submitBtn);
     }
 }

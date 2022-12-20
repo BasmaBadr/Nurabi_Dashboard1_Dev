@@ -7,10 +7,7 @@ import org.testng.annotations.Test;
 
 import java.awt.*;
 
-public class Initiative_Test extends TestBase{
-
-    String Email = "momen@nurabi.net";
-    String Password = "19821120Mm";
+public class Initiative_Test extends TestBase {
 
     String requiredShortDesEN = "Tracking ShortDesEN Automation";
     String requiredShortDesAR = "Tracking ShortDesAR Automation";
@@ -24,34 +21,84 @@ public class Initiative_Test extends TestBase{
 
 
     // Create initiative / Image / Daily / Published
-    @Test
-    public void createInitiative() throws InterruptedException, AWTException {
+
+    @Test(priority = 1)
+    public void createInitiative_Image_Daily_Published() throws InterruptedException, AWTException {
+        String startHourPast = String.valueOf(Integer.parseInt(getTimeAMPM()[0]) - 1);
+        String endHourPast = getTimeAMPM()[0];
+        String AMorPM = getTimeAMPM()[2];
+
+        defineObjects();
+        login();
+        sidePanel_page.openInitiativeList();
+        initiativePage.clickAddBtn();
+
+        initiativePage.addInitiative(true, nameEN, nameAR,
+                requiredShortDesEN, requiredShortDesAR, requiredLongDesEN, requiredLongDesAR, requiredSEONameEN, requiredSEONameAR, requiredSEONDescEN, requiredSEONDescAR);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+    }
+
+    // Create initiative / Image / Daily / Published side panel
+
+    @Test(priority = 2)
+    public void createInitiative_Image_Daily_PublishedSidePanel() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openAddInitiativeSidePanel();
+        initiativePage.addInitiative(true, nameEN, nameAR,
+                requiredShortDesEN, requiredShortDesAR, requiredLongDesEN, requiredLongDesAR, requiredSEONameEN, requiredSEONameAR, requiredSEONDescEN, requiredSEONDescAR);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+    }
+
+    // Create initiative / Image / Daily / Drafted
+    @Test(priority = 3)
+    public void createInitiative_Image_Daily_Drafted() throws InterruptedException, AWTException {
+        String startHourPast = String.valueOf(Integer.parseInt(getTimeAMPM()[0]) - 1);
+        String endHourPast = getTimeAMPM()[0];
+        String AMorPM = getTimeAMPM()[2];
+
         defineObjects();
         loginPage.loginWithValidData(Email, Password);
         sidePanel_page.openInitiativeList();
-        initiativePage.addInitiative(nameEN , nameAR,
+        initiativePage.clickAddBtn();
+
+        initiativePage.addInitiative(false, nameEN, nameAR,
                 requiredShortDesEN, requiredShortDesAR, requiredLongDesEN, requiredLongDesAR, requiredSEONameEN, requiredSEONameAR, requiredSEONDescEN, requiredSEONDescAR);
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
-        Assert.assertTrue(commonMethods_page.table().contains(nameEN));
-        Assert.assertTrue(commonMethods_page.table().contains(nameAR));
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
     }
 
     // Delete initiative not have enrolled users
-    @Test()
+    @Test(priority = 4)
     public void verifyDeleteInitiativeNotHaveEnrolledUsers() throws InterruptedException, AWTException {
-        createInitiative();
-       // sidePanel_page.openInitiativeList();
+        createInitiative_Image_Daily_Published();
+        // sidePanel_page.openInitiativeList();
         commonMethods_page.delete();
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
         Thread.sleep(3000);
-        Assert.assertFalse(commonMethods_page.table().contains(nameEN));
+        softAssert.assertFalse(commonMethods_page.table().contains(nameEN));
     }
 
-    @Test
+    @Test(priority = 5)
     public void verifyDetailsOfInitiative() throws InterruptedException, AWTException {
-        createInitiative();
+        createInitiative_Image_Daily_Published();
         commonMethods_page.openDetailsScreen();
 
+    }
+
+    // Search initiative
+    @Test(priority = 6)
+    public void verifySearchByNameEN() throws InterruptedException, AWTException {
+        createInitiative_Image_Daily_Published();
+        commonMethods_page.search(nameEN);
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
     }
 
 

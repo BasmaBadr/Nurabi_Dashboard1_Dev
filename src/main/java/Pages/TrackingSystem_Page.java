@@ -18,12 +18,17 @@ public class TrackingSystem_Page extends PageBase {
     By introPathParent = By.cssSelector("#introPathSelectOptions ul li");
 
     By selectImage = By.cssSelector("#introPathSelectOptions ul li .Image");
+    By selectVideo = By.cssSelector("#introPathSelectOptions ul li .Video");
 
 
-    By intro = By.id("introPathId");
+
+
+
     By nameENTxt = By.id("name");
     By nameARTxt = By.id("name_ar");
-    By imageTracking = By.id("imageId");
+    By imageEN = By.id("imageIdEn");
+    By imageAR = By.id("imageIdAr");
+
     By shortDescriptionENTxt = By.id("short_description");
     By shortDescriptionARTxt = By.id("short_description_ar");
     By longDescriptionENTxt = By.id("long_description");
@@ -34,6 +39,8 @@ public class TrackingSystem_Page extends PageBase {
     By status = By.cssSelector("[for='status']");
 
     By selectPublish = By.cssSelector("#statusSelectOptions ul li .Published");
+    By selectDrafted = By.cssSelector("#statusSelectOptions ul li .Drafted");
+
     By freePaid = By.id("free");
     By seoNameENTxt = By.id("seo_name_en");
     By seoNameARTxt = By.id("seo_name_ar");
@@ -43,103 +50,138 @@ public class TrackingSystem_Page extends PageBase {
     By submitBtn = By.xpath("//span[contains(text() , 'Submit')]");
 
     By searchTxt = By.cssSelector("input.d-inline-block.mr-1.form-control");
+    By paid = By.id("paidSelectOptions");
+    By selectPaid = By.cssSelector("#paidSelectOptions ul li .Paid");
+    By price = By.id("price");
 
 
 
-    public void createTrackingSystemWithValidData(boolean image, boolean published, String filePath, String requiredNameEN, String requiredNameAR,
+    public void clickAddBtn()
+    {
+        Click(addTrackingSystemBtn);
+
+    }
+    public void createTrackingSystemWithValidData(boolean image, boolean published, String requiredNameEN, String requiredNameAR,
                                                   String requiredShortDesEN, String requiredShortDesAR,
                                                   String requiredLongDesEN, String requiredLongDesAR,
                                                   String requiredDuration, String requiredSEONameEN, String requiredSEONameAR,
                                                   String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
 
-        waitElementToBeVisible(addTrackingSystemBtn);
-        Click(addTrackingSystemBtn);
         waitElementToBeUnVisible(loader);
-        waitElementToBeVisible(introPath);
         Click(introPath);
         waitElementToBeUnVisible(loader);
         //   selectByVisibleTXT(introPathParent , "Image");
         if (image) {
-            waitElementToBeVisible(selectImage);
             Click(selectImage);
         }
-        //    Thread.sleep(30000);
-
-        //    System.out.println(currentDriver.findElement(By.cssSelector("#introPathSelectOptions ul li ")).getAttribute("innerHTML"));
-        //   currentDriver.findElement(By.cssSelector("#introPathSelectOptions ul li .Image")).click();
-
-        waitElementToBeVisible(intro);
-        Click(intro);
+        Click(introEN);
         Thread.sleep(2000);
-        uploadFile(filePath);
+        uploadFile("Video.mp4");
+        Click(introAR);
+        Thread.sleep(2000);
+        uploadFile("Video.mp4");
 
-        waitElementToBeVisible(nameENTxt);
         writeOnText(nameENTxt, requiredNameEN);
-
-        waitElementToBeVisible(nameARTxt);
         writeOnText(nameARTxt, requiredNameAR);
-
-        waitElementToBeVisible(imageTracking);
-        Click(imageTracking);
+        Click(imageEN);
         Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
+        uploadFile("ISTQB.png");
+        Click(imageAR);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
 
-        waitElementToBeVisible(shortDescriptionENTxt);
         writeOnText(shortDescriptionENTxt, requiredShortDesEN);
 
-        waitElementToBeVisible(shortDescriptionARTxt);
         writeOnText(shortDescriptionARTxt, requiredShortDesAR);
 
-        waitElementToBeVisible(longDescriptionENTxt);
         writeOnText(longDescriptionENTxt, requiredLongDesEN);
 
-        waitElementToBeVisible(longDescriptionARTxt);
         writeOnText(longDescriptionARTxt, requiredLongDesAR);
 
-        waitElementToBeVisible(field);
         Click(field);
         //   System.out.println(currentDriver.findElement(By.cssSelector("#introPathSelectOptions ul")).getAttribute("innerHTML"));
-
-        waitElementToBeVisible(selectField);
         Click(selectField);
-
-        waitElementToBeVisible(durationTxt);
         writeOnText(durationTxt, requiredDuration);
-
-        waitElementToBeVisible(status);
         Click(status);
-
         if (published) {
-            waitElementToBeVisible(selectPublish);
             Click(selectPublish);
-
         }
-
-        waitElementToBeVisible(seoNameENTxt);
         writeOnText(seoNameENTxt, requiredSEONameEN);
-
-        waitElementToBeVisible(seoNameARTxt);
         writeOnText(seoNameARTxt, requiredSEONameAR);
-
-        waitElementToBeVisible(seoDesEN);
         writeOnText(seoDesEN, requiredSEONDescEN);
-
-        waitElementToBeVisible(seoDesAR);
         writeOnText(seoDesAR, requiredSEONDescAR);
 
         scrollToElement(seoImage);
-        waitElementToBeVisible(seoImage);
         Click(seoImage);
         Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
+        uploadFile("ISTQB.png");
         Thread.sleep(2000);
-        waitElementToBeVisible(submitBtn);
         Click(submitBtn);
-      //  waitElementToBeUnVisible(loader);
     }
 
-    public void searchByNameEN(String nameEN) {
-        waitElementToBeVisible(searchTxt);
-        writeOnText(searchTxt, nameEN);
+    public void editTracking(boolean image, boolean published, String requiredNameEN, String requiredNameAR,
+                             String requiredShortDesEN, String requiredShortDesAR,
+                             String requiredLongDesEN, String requiredLongDesAR,
+                             String requiredDuration, String requiredSEONameEN, String requiredSEONameAR,
+                             String requiredSEONDescEN, String requiredSEONDescAR, String EditNameEN,
+                             String EditNameAR,boolean Video   ,boolean Drafted,boolean Paid,String requiredDurationEdit) throws InterruptedException, AWTException {
+        createTrackingSystemWithValidData(image, published, requiredNameEN, requiredNameAR, requiredShortDesEN, requiredShortDesAR, requiredLongDesEN, requiredLongDesAR, requiredDuration, requiredSEONameEN, requiredSEONameAR, requiredSEONDescEN, requiredSEONDescAR);
+        openEditScreen();
+        waitElementToBeUnVisible(loader);
+        Click(introPath);
+        waitElementToBeUnVisible(loader);
+        if (Video) {
+            Click(selectVideo);
+        }
+        Click(introEN);
+        Thread.sleep(2000);
+        uploadFile("Video.mp4");
+        Click(introAR);
+        Thread.sleep(2000);
+        uploadFile("Video.mp4");
+        clear(nameENTxt);
+        writeOnText(nameENTxt, EditNameEN);
+        clear(nameARTxt);
+        writeOnText(nameARTxt, EditNameAR);
+        Click(imageEN);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
+        Click(imageAR);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
+
+        writeOnText(shortDescriptionENTxt, requiredShortDesEN);
+
+        writeOnText(shortDescriptionARTxt, requiredShortDesAR);
+
+        writeOnText(longDescriptionENTxt, requiredLongDesEN);
+
+        writeOnText(longDescriptionARTxt, requiredLongDesAR);
+
+        Click(field);
+        Click(selectField);
+        writeOnText(durationTxt, requiredDurationEdit);
+        Click(status);
+        if (Drafted) {
+            Click(selectDrafted);
+        }
+        if (Paid) {
+            Click(paid);
+            Click(selectPaid);
+            writeOnText(price , "1");
+        }
+        writeOnText(seoNameENTxt, requiredSEONameEN);
+        writeOnText(seoNameARTxt, requiredSEONameAR);
+        writeOnText(seoDesEN, requiredSEONDescEN);
+        writeOnText(seoDesAR, requiredSEONDescAR);
+
+        scrollToElement(seoImage);
+        Click(seoImage);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
+        Thread.sleep(2000);
+        Click(submitBtn);
+
     }
+
 }

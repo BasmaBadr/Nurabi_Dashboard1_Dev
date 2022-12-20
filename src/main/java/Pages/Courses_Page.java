@@ -3,112 +3,152 @@ package Pages;
 import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Courses_Page extends PageBase {
     public Courses_Page(WebDriver driver) {
         super(driver);
     }
 
-    public void createCourse(boolean Live ,boolean Published ,boolean Free ,String requiredTitleEN, String requiredTitleAR, String requiredSlug, String requiredPrice,
+
+    public void clickAddBtn() {
+        Click(addCourse);
+
+    }
+
+    public void createCourse(boolean Live, boolean Published, boolean Free, String requiredTitleEN, String requiredTitleAR, String requiredSlug, String requiredPrice,
                              String requiredDesEN, String requiredDesAR, String requiredSEONameEN, String requiredSEONameAR,
                              String requiredSEONDescEN, String requiredSEONDescAR
     ) throws InterruptedException, AWTException {
-        waitElementToBeVisible(addCourse);
-        Click(addCourse);
-        waitElementToBeVisible(titleEN);
-        writeOnText(titleEN, requiredTitleEN);
-        waitElementToBeVisible(titleAR);
-        writeOnText(titleAR, requiredTitleAR);
 
-        waitElementToBeVisible(category);
+        writeOnText(titleEN, requiredTitleEN + new Random().nextInt(9999));
+        writeOnText(titleAR, requiredTitleAR+ new Random().nextInt(9999));
+
         Click(category);
-        waitElementToBeVisible(selectCategory);
         Click(selectCategory);
 
         if (Live) {
-            waitElementToBeVisible(type);
             Click(type);
-            waitElementToBeVisible(selectLiveType);
             Click(selectLiveType);
         }
 
-        waitElementToBeVisible(image);
         Click(image);
         Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
-        waitElementToBeVisible(thumbnailImage);
+        uploadFile("ISTQB.png");
         Click(thumbnailImage);
         Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
+        uploadFile("ISTQB.png");
 /*
         waitElementToBeVisible(previewImage);
         Click(previewImage);
         Thread.sleep(2000);
         uploadFile("D:\\Photos\\Robin - 21723.mp4");
 */
-        waitElementToBeVisible(slug);
-        writeOnText(slug, requiredSlug);
+        writeOnText(slug, requiredSlug+ new Random().nextInt(9999));
 
-        waitElementToBeVisible(level);
         Click(level);
-        waitElementToBeVisible(selectLevel);
         Click(selectLevel);
-        if(!Published) {
-            waitElementToBeVisible(status);
+        if (!Published) {
             Click(status);
-            waitElementToBeVisible(selectDrafted);
             Click(selectDrafted);
         }
-        waitElementToBeVisible(language);
         Click(language);
-        waitElementToBeVisible(selectLanguage);
         Click(selectLanguage);
-        waitElementToBeVisible(survey);
         Click(survey);
-        waitElementToBeVisible(selectSurvey);
         Click(selectSurvey);
         if (Free) {
-            waitElementToBeVisible(paid);
             Click(paid);
-            waitElementToBeVisible(selectFree);
             Click(selectFree);
-        }
-        else{
-            waitElementToBeVisible(paid);
+        } else {
             Click(paid);
-            waitElementToBeVisible(price);
             writeOnText(price, requiredPrice);
-            waitElementToBeVisible(currency);
             Click(currency);
-            waitElementToBeVisible(selectCurrency);
             Click(selectCurrency);
         }
-
-        waitElementToBeVisible(certificate);
-        Click(certificate);
-        waitElementToBeVisible(selectCertificate);
-        Click(selectCertificate);
-        waitElementToBeVisible(descEN);
+//        Click(certificate);
+//        Click(selectCertificate);
         writeOnText(descEN, requiredDesEN);
-        waitElementToBeVisible(descAR);
         writeOnText(descAR, requiredDesAR);
-        waitElementToBeVisible(seoNameENTxt);
         writeOnText(seoNameENTxt, requiredSEONameEN);
-
-        waitElementToBeVisible(seoNameARTxt);
         writeOnText(seoNameARTxt, requiredSEONameAR);
-
-        waitElementToBeVisible(seoDesEN);
         writeOnText(seoDesEN, requiredSEONDescEN);
-
-        waitElementToBeVisible(seoDesAR);
         writeOnText(seoDesAR, requiredSEONDescAR);
-
-        waitElementToBeVisible(seoImage);
         Click(seoImage);
         Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
-        waitElementToBeVisible(submitBtn);
+        uploadFile("ISTQB.png");
+        Click(submitBtn);
+    }
+
+
+    public void editCourse(boolean Live, boolean Published, boolean Free, String requiredTitleEN, String requiredTitleAR, String requiredSlug, String requiredPrice,
+                           String requiredDesEN, String requiredDesAR, String requiredSEONameEN, String requiredSEONameAR,
+                           String requiredSEONDescEN, String requiredSEONDescAR, String editTitleEN,
+                           String editTitleAR, String editSlug, boolean Drafted, boolean FreeEdit, String PriceEdit
+    ) throws InterruptedException, AWTException {
+        createCourse(Live, Published, Free, requiredTitleEN, requiredTitleAR, requiredSlug, requiredPrice,
+                requiredDesEN, requiredDesAR, requiredSEONameEN, requiredSEONameAR,
+                requiredSEONDescEN, requiredSEONDescAR);
+
+        openEditScreen();
+
+        waitElementToBeUnVisible(loader);
+        Click(category);
+        Click(selectCategory);
+
+        writeOnText(titleEN, editTitleEN+ new Random().nextInt(9999));
+        writeOnText(titleAR, editTitleAR+ new Random().nextInt(9999));
+
+//        if (Live) {
+//            Click(type);
+//            Click(selectLiveType);
+//        }
+
+        Click(image);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
+        Click(thumbnailImage);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
+/*
+        waitElementToBeVisible(previewImage);
+        Click(previewImage);
+        Thread.sleep(2000);
+        uploadFile("D:\\Photos\\Robin - 21723.mp4");
+*/
+        writeOnText(slug, editSlug+ new Random().nextInt(9999));
+        Click(level);
+        Click(selectLevel);
+        if (Drafted) {
+            Click(status);
+            Click(selectDrafted);
+        }
+        Click(language);
+        Click(selectLanguage);
+        Click(survey);
+        Click(selectSurvey);
+
+        if (FreeEdit) {
+            Click(paid);
+            Click(selectFree);
+        } else {
+            Click(paid);
+            Click(selectPaid);
+            clear(price);
+            writeOnText(price, PriceEdit);
+            Click(currency);
+            Click(selectCurrency);
+        }
+//        Click(certificate);
+//        Click(selectCertificate);
+        writeOnText(descEN, requiredDesEN);
+        writeOnText(descAR, requiredDesAR);
+        writeOnText(seoNameENTxt, requiredSEONameEN);
+        writeOnText(seoNameARTxt, requiredSEONameAR);
+        writeOnText(seoDesEN, requiredSEONDescEN);
+        writeOnText(seoDesAR, requiredSEONDescAR);
+        Click(seoImage);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
         Click(submitBtn);
     }
 

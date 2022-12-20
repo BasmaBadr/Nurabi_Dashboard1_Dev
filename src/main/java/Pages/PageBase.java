@@ -32,6 +32,7 @@ public class PageBase {
     }
 
     public void Click(By locator) {
+        waitElementToBeVisible(locator);
         try {
             currentDriver.findElement(locator).click();
         } catch (Exception e) {
@@ -41,6 +42,7 @@ public class PageBase {
     }
 
     public void writeOnText(By element, String text) {
+        waitElementToBeVisible(element);
 
         try {
             currentDriver.findElement(element).sendKeys(text);
@@ -102,6 +104,7 @@ public class PageBase {
     }
 
     public void clear(By locator) {
+        waitElementToBeVisible(locator);
         try {
             currentDriver.findElement(locator).clear();
         } catch (Exception e) {
@@ -145,7 +148,11 @@ public class PageBase {
         }
         */
     public void waitElementToBeVisible(By locator) {
-        new WebDriverWait(currentDriver, 120).until(ExpectedConditions.visibilityOfElementLocated(locator));
+        new WebDriverWait(currentDriver, 20).until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void waitElementToBeClickable(By locator) {
+        new WebDriverWait(currentDriver, 50).until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public void waitElementToBeUnVisible(By locator) {
@@ -167,10 +174,13 @@ public class PageBase {
         currentDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
-    public void uploadFile(String path) throws AWTException, InterruptedException {
+    public void uploadFile(String fileName) throws AWTException, InterruptedException {
+
+
+        String filePath = System.getProperty("user.dir") + "\\Uploads\\" + fileName;
 
         Robot robot = new Robot();
-        StringSelection selection = new StringSelection(path);
+        StringSelection selection = new StringSelection(filePath);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(selection, null);
         robot.keyPress(KeyEvent.VK_ENTER);
@@ -197,21 +207,35 @@ public class PageBase {
     By selectCategory = By.cssSelector("#categorySelectOptions ul li .Mobile.Testing");
     By type = By.id("isLiveSelectOptions");
     By selectLiveType = By.cssSelector("#isLiveSelectOptions ul li .live");
+    By selectOnlineType = By.cssSelector("#isLiveSelectOptions ul li .online");
+
     By image = By.cssSelector("[for='image']");
+
     By thumbnailImage = By.cssSelector("[for='thumbnail']");
     By previewImage = By.cssSelector("[for='preview']");
     By slug = By.id("slug");
     By level = By.cssSelector("[for='level']");
     By selectLevel = By.cssSelector("#levelSelectOptions ul li .All");
 
-    By status = By.cssSelector("[for='status']");
+    By status = By.id("[for='status']");
     By selectDrafted = By.cssSelector("#statusSelectOptions ul li .Drafted");
+
+    By selectUnPublished = By.cssSelector("#statusSelectOptions ul li .Unpublished");
+    By selectPublished = By.cssSelector("#statusSelectOptions ul li .Published");
+
+
+
+    By selectInactive = By.cssSelector("#statusSelectOptions ul li .Inactive");
+    By selectActive = By.cssSelector("#statusSelectOptions ul li .Active");
+
     By language = By.cssSelector("[for='language']");
     By selectLanguage = By.cssSelector("#languageSelectOptions ul li .English");
     By survey = By.id("surveySelectOptions");
-    By selectSurvey = By.cssSelector("#surveySelectOptions ul li .medan");
+    By selectSurvey = By.cssSelector("#surveySelectOptions ul li:nth-child(1) span");
     By paid = By.cssSelector("[for='free']");
     By selectFree = By.cssSelector("#freeSelectOptions ul li .Free");
+    By selectPaid = By.cssSelector("#freeSelectOptions ul li .Paid");
+
     By price = By.id("price");
     By currency = By.cssSelector("[for='currency']");
     By selectCurrency = By.cssSelector("#currencySelectOptions ul li .Dollar");
@@ -239,7 +263,11 @@ public class PageBase {
 
 
 
+    By introEN = By.id("introPathIdEN");
+    By introAR = By.id("introPathIdAR");
 
+    By imageEN = By.id("imageIdEn");
+    By imageAR = By.id("imageIdAr");
 
 
 
@@ -249,7 +277,6 @@ public class PageBase {
     By selectImage = By.cssSelector("#introPathSelectOptions ul li .Image");
 
 
-    By intro = By.id("introPathId");
     By nameENTxt = By.id("name");
     By nameARTxt = By.id("name_ar");
     By imageTracking = By.id("imageId");
@@ -262,6 +289,17 @@ public class PageBase {
     By durationTxt = By.id("duration");
 
     By searchTxt = By.cssSelector("input.d-inline-block.mr-1.form-control");
+
+    By edit = By.cssSelector(".b-dropdown.show ul li:nth-child(2) span");
+    By optionList = By.xpath("(//button[@class = 'btn dropdown-toggle btn-link dropdown-toggle-no-caret'])[1]");
+    public void clickOptions() {
+        Click(optionList);
+    }
+    public void openEditScreen() {
+        Click(optionList);
+        waitElementToBeVisible(edit);
+        Click(edit);
+    }
 
 
 

@@ -3,6 +3,8 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Random;
+
 public class JobTitle_Page extends PageBase{
     public JobTitle_Page(WebDriver driver) {
         super(driver);
@@ -18,15 +20,17 @@ public class JobTitle_Page extends PageBase{
     By optionList = By.xpath("(//button[@class = 'btn dropdown-toggle btn-link dropdown-toggle-no-caret'])[1]");
 
 
+    public void clickAddBtn(){
+        Click(addJobBTN);
+
+    }
 
     public void addActiveJob( String TitleEN ,String TitleAR )
     {
-        waitElementToBeVisible(addJobBTN);
-        Click(addJobBTN);
         waitElementToBeVisible(titleEN);
-        writeOnText(titleEN , TitleEN);
+        writeOnText(titleEN , TitleEN + new Random().nextInt(99999));
         waitElementToBeVisible(titleAR);
-        writeOnText(titleAR , TitleAR);
+        writeOnText(titleAR , TitleAR + new Random().nextInt(99999));
         waitElementToBeVisible(submitBtn);
         Click(submitBtn);
     }

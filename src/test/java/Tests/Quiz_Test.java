@@ -7,56 +7,118 @@ import java.awt.*;
 
 public class Quiz_Test extends TestBase{
 
-    String Email = "momen@nurabi.net";
-    String Password = "19821120Mm";
-
 
 
     // Create quiz multi selection on online course
     // Passed
-    @Test
+    @Test(priority = 1)
     public void createQuizMultiSelectionOnOnlineCourse() throws InterruptedException, AWTException {
         defineObjects();
         loginPage.loginWithValidData(Email, Password);
         sidePanel_page.openQuizList();
+        quizPage.clickAddBtn();
         quizPage.addNewQuiz(false , nameEN ,nameAR,seoNameEN,seoNameAR,requiredSEONDescEN,requiredSEONDescAR
         ,nameEN,nameEN,nameEN,nameAR,nameEN,nameEN);
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
-        Assert.assertTrue(commonMethods_page.table().contains(nameEN));
-        Assert.assertTrue(commonMethods_page.table().contains(nameAR));
+     //   softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+    }
+
+    // Create quiz multi selection on online course side panel
+    // Passed
+    @Test(priority = 2)
+    public void createQuizMultiSelectionOnOnlineCourseSidePanel() throws InterruptedException, AWTException {
+        defineObjects();
+        loginPage.loginWithValidData(Email, Password);
+        sidePanel_page.openAddQuizSidePanel();
+        quizPage.addNewQuiz(false , nameEN ,nameAR,seoNameEN,seoNameAR,requiredSEONDescEN,requiredSEONDescAR
+                ,nameEN,nameEN,nameEN,nameAR,nameEN,nameEN);
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
     }
 
     // Create quiz multi selection on live course
     // Passed
-    @Test
+    @Test(priority = 3)
     public void createQuizMultiSelectionOnOnLiveCourse() throws InterruptedException, AWTException {
         defineObjects();
         loginPage.loginWithValidData(Email, Password);
         sidePanel_page.openQuizList();
+        quizPage.clickAddBtn();
+
         quizPage.addNewQuiz(true , nameEN ,nameAR,seoNameEN,seoNameAR,requiredSEONDescEN,requiredSEONDescAR
                 ,nameEN,nameEN,nameEN,nameAR,nameEN,nameEN);
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
-        Assert.assertTrue(commonMethods_page.table().contains(nameEN));
-        Assert.assertTrue(commonMethods_page.table().contains(nameAR));
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+    }
+
+    // Edit quiz multi selection to live course
+    // Fail
+    @Test(priority = 4)
+    public void editQuizMultiSelectionTOLiveCourse() throws InterruptedException, AWTException {
+        defineObjects();
+       login();
+        sidePanel_page.openQuizList();
+        quizPage.clickAddBtn();
+
+        quizPage.editNewQuiz(false , nameEN ,nameAR,seoNameEN,seoNameAR,requiredSEONDescEN,requiredSEONDescAR
+                ,nameEN,nameEN,nameEN,nameAR,nameEN,nameEN,EditNameEN,EditNameEN,true,EditNameEN,EditNameAR,EditNameEN,EditNameAR,EditNameEN,EditNameAR);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(EditNameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(EditNameAR));
+    }
+
+    // Edit quiz multi selection to online course
+    // Fail
+    @Test(priority = 5)
+    public void editQuizMultiSelectionTOOnlineCourse() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openQuizList();
+        quizPage.clickAddBtn();
+
+        quizPage.editNewQuiz(true , nameEN ,nameAR,seoNameEN,seoNameAR,requiredSEONDescEN,requiredSEONDescAR
+                ,nameEN,nameEN,nameEN,nameAR,nameEN,nameEN,EditNameEN,EditNameEN,false,EditNameEN,EditNameAR,EditNameEN,EditNameAR,EditNameEN,EditNameAR);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(EditNameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(EditNameAR));
     }
 
     // Delete quiz on online course
-    @Test
+    @Test(priority = 6)
     public void deleteQuizOnOnlineCourse() throws InterruptedException, AWTException {
         createQuizMultiSelectionOnOnlineCourse();
         commonMethods_page.delete();
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
         Thread.sleep(3000);
-        Assert.assertFalse(commonMethods_page.table().contains(nameEN));
+        softAssert.assertFalse(commonMethods_page.table().contains(nameEN));
     }
 
     // Delete quiz on live course
-    @Test
+    @Test(priority = 7)
     public void deleteQuizOnLiveCourse() throws InterruptedException, AWTException {
         createQuizMultiSelectionOnOnLiveCourse();
         commonMethods_page.delete();
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
         Thread.sleep(3000);
-        Assert.assertFalse(commonMethods_page.table().contains(nameEN));
+        softAssert.assertFalse(commonMethods_page.table().contains(nameEN));
+    }
+
+
+    // Search quiz
+    // Passed
+    @Test(priority = 8)
+    public void verifySearchByNameEN() throws InterruptedException, AWTException {
+        createQuizMultiSelectionOnOnlineCourse();
+        commonMethods_page.search(nameEN);
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
     }
 }

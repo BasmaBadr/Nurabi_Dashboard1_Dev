@@ -7,11 +7,6 @@ import java.awt.*;
 
 public class TrackingSystem_Test extends TestBase {
 
-    String Email = "momen@nurabi.net";
-    String Password = "19821120Mm";
-
-    String requiredNameEN = "Tracking NameEN Automation";
-    String requiredNameAR = "Tracking NameAR Automation";
     String requiredShortDesEN = "Tracking ShortDesEN Automation";
     String requiredShortDesAR = "Tracking ShortDesAR Automation";
     String requiredLongDesEN = "Tracking LongDesEN Automation";
@@ -22,50 +17,126 @@ public class TrackingSystem_Test extends TestBase {
     String requiredSEONDescEN = "Tracking SEODescEN Automation";
     String requiredSEONDescAR = "Tracking SEODescAR Automation";
     String imagePath = "D:\\Photos\\ISTQB.png";
-    String videoPath = "D:\\Courses\\Appium\\Find Elements by Accessibility ID.mp4";
+    String videoPath = "D:\\Photos\\Robin - 21723.mp4";
+    String requiredDurationEdit = "38" ;
 
     // Create Tracking system Image / Free / Published
-    @Test
+    // Passed
+
+    @Test(priority = 1)
     public void createFreeTrackingSystemWithValidData_Image() throws InterruptedException, AWTException {
         defineObjects();
-        loginPage.loginWithValidData(Email, Password);
+        login();
         sidePanel_page.openTrackingList();
-        trackingSystem_page.createTrackingSystemWithValidData(true, true, imagePath, nameEN, nameAR,
+        trackingSystem_page.clickAddBtn();
+        trackingSystem_page.createTrackingSystemWithValidData(true, true, nameEN, nameAR,
                 requiredShortDesEN, requiredShortDesAR,
                 requiredLongDesEN, requiredLongDesAR,
                 requiredDuration, requiredSEONameEN, requiredSEONameAR, requiredSEONDescEN, requiredSEONDescAR);
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
-        Assert.assertTrue(commonMethods_page.table().contains(nameEN));
-        Assert.assertTrue(commonMethods_page.table().contains(nameAR));
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Free"));
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Published"));
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Free"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Published"));
+    }
+
+    // Create Tracking system Image / Free / Published side panel
+    // Passed
+
+    @Test(priority = 2)
+    public void createFreeTrackingSystemWithValidData_ImageSidePanel() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openAddTrackingSidePanel();
+        trackingSystem_page.createTrackingSystemWithValidData(true, true, nameEN, nameAR,
+                requiredShortDesEN, requiredShortDesAR,
+                requiredLongDesEN, requiredLongDesAR,
+                requiredDuration, requiredSEONameEN, requiredSEONameAR, requiredSEONDescEN, requiredSEONDescAR);
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Free"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Published"));
     }
 
     // Create Tracking system Video / Free / Published
-    @Test
+    @Test(priority = 3)
     public void createFreeTrackingSystemWithValidData_Video() throws InterruptedException, AWTException {
         defineObjects();
-        loginPage.loginWithValidData(Email, Password);
+        login();
         sidePanel_page.openTrackingList();
-        trackingSystem_page.createTrackingSystemWithValidData(false, true, videoPath, nameEN, nameAR,
+        trackingSystem_page.clickAddBtn();
+
+        trackingSystem_page.createTrackingSystemWithValidData(false, true, nameEN, nameAR,
                 requiredShortDesEN, requiredShortDesAR,
                 requiredLongDesEN, requiredLongDesAR,
                 requiredDuration, requiredSEONameEN, requiredSEONameAR, requiredSEONDescEN, requiredSEONDescAR);
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
-        Assert.assertTrue(commonMethods_page.table().contains(nameEN));
-        Assert.assertTrue(commonMethods_page.table().contains(nameAR));
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Free"));
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Published"));
+   //     softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Free"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Published"));
 
     }
 
 
-    // Search by name English
-    @Test(priority = 2)
+    // Create Tracking system Image / Free / Drafted
+    // Passed
+    @Test(priority = 4)
+    public void createDraftedFreeTrackingSystemWithValidData_Image() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openTrackingList();
+        trackingSystem_page.clickAddBtn();
+
+        trackingSystem_page.createTrackingSystemWithValidData(true, false, nameEN, nameAR,
+                requiredShortDesEN, requiredShortDesAR,
+                requiredLongDesEN, requiredLongDesAR,
+                requiredDuration, requiredSEONameEN, requiredSEONameAR, requiredSEONDescEN, requiredSEONDescAR);
+   //     softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Free"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Drafted"));
+    }
+
+
+    // Search by name
+    // Passed
+    @Test(priority = 5)
     public void verifySearchByNameEN() throws InterruptedException, AWTException {
         createFreeTrackingSystemWithValidData_Image();
         commonMethods_page.search(nameEN);
-        Assert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+    }
+
+    // Edit Tracking Name | To video | Drafted | Paid | Tracking duration
+    // Passed
+    @Test(priority = 6)
+    public void editTrackingNameVideoDraftedPaid() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openTrackingList();
+        trackingSystem_page.clickAddBtn();
+
+        trackingSystem_page.editTracking(true,true,nameEN,nameAR,nameEN,nameAR,requiredLongDesEN
+        ,requiredLongDesAR,requiredDuration,nameEN,nameAR,requiredSEONDescEN,requiredSEONDescAR
+        ,EditNameEN , EditNameAR , true , true ,true,requiredDurationEdit);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(EditNameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(EditNameAR));
+        softAssert.assertTrue(commonMethods_page.table().contains("Drafted"));
+
+
+
     }
 /*
     @Test(priority = 3)
@@ -86,13 +157,13 @@ public class TrackingSystem_Test extends TestBase {
 */
 
     // Verify ability to delete tracking not have enrolled users
-    @Test(priority = 5)
+    @Test(priority = 7)
     public void verifyAbilityToDeleteTrackingSystem() throws InterruptedException, AWTException {
         createFreeTrackingSystemWithValidData_Image();
         commonMethods_page.delete();
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
         Thread.sleep(3000);
-        Assert.assertFalse(commonMethods_page.table().contains(nameEN));
+        softAssert.assertFalse(commonMethods_page.table().contains(nameEN));
     }
 
 

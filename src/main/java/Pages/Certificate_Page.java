@@ -15,36 +15,57 @@ public class Certificate_Page extends PageBase {
     By submitBtn = By.xpath("//button[contains(text() , ' Submit ')]");
 
 
-    public void addCertificate(String NameEN , String requiredSEONameEN , String requiredSEONameAR
-    ,String requiredSEONDescEN , String requiredSEONDescAR) throws InterruptedException, AWTException {
-        waitElementToBeVisible(addCertificateBTN);
+    public void clickAddBtn()
+    {
         Click(addCertificateBTN);
-        waitElementToBeVisible(image);
+
+    }
+    public void addCertificate(String NameEN, String requiredSEONameEN, String requiredSEONameAR
+            , String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
         Click(image);
         Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
-        waitElementToBeVisible(nameENTxt);
-        writeOnText(nameENTxt , NameEN);
+        uploadFile("ISTQB.png");
+        writeOnText(nameENTxt, NameEN);
 
 
-        waitElementToBeVisible(seoNameENTxt);
         writeOnText(seoNameENTxt, requiredSEONameEN);
 
-        waitElementToBeVisible(seoNameARTxt);
         writeOnText(seoNameARTxt, requiredSEONameAR);
 
-        waitElementToBeVisible(seoDesEN);
         writeOnText(seoDesEN, requiredSEONDescEN);
 
-        waitElementToBeVisible(seoDesAR);
         writeOnText(seoDesAR, requiredSEONDescAR);
 
-        waitElementToBeVisible(seoImage);
         Click(seoImage);
         Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
+        uploadFile("ISTQB.png");
 
-        waitElementToBeVisible(submitBtn);
+        Click(submitBtn);
+    }
+
+    public void editCertificate(String NameEN, String requiredSEONameEN, String requiredSEONameAR
+            , String requiredSEONDescEN, String requiredSEONDescAR,String NameENEdit) throws InterruptedException, AWTException {
+        addCertificate(NameEN, requiredSEONameEN, requiredSEONameAR
+                , requiredSEONDescEN, requiredSEONDescAR);
+        openEditScreen();
+        Click(image);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
+        writeOnText(nameENTxt, NameENEdit);
+
+
+        writeOnText(seoNameENTxt, requiredSEONameEN);
+
+        writeOnText(seoNameARTxt, requiredSEONameAR);
+
+        writeOnText(seoDesEN, requiredSEONDescEN);
+
+        writeOnText(seoDesAR, requiredSEONDescAR);
+
+        Click(seoImage);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
+
         Click(submitBtn);
     }
 }

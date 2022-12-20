@@ -18,11 +18,8 @@ public class Login_Page extends PageBase {
 
 
     public void loginWithValidData(String requiredMail, String requiredPassword) throws InterruptedException {
-        waitElementToBeVisible(mailTxt);
         writeOnText(mailTxt, requiredMail);
-        waitElementToBeVisible(passwordTxt);
         writeOnText(passwordTxt, requiredPassword);
-        waitElementToBeVisible(loginBtn);
         Click(loginBtn);
     }
 

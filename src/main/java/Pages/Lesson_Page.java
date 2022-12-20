@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
 
-public class Lesson_Page extends PageBase{
+public class Lesson_Page extends PageBase {
     public Lesson_Page(WebDriver driver) {
         super(driver);
     }
@@ -17,75 +17,89 @@ public class Lesson_Page extends PageBase{
 
     By chooseTimeTXT = By.id("example-input");
     By consultant = By.id("consultantSelectOptions");
-    By selectConsultant = By.cssSelector("#consultantSelectOptions ul li .Qqqq");
+    By selectConsultant = By.cssSelector("#consultantSelectOptions ul li .admin");
     By sessionDuration = By.id("session_duration");
 
 
     By file = By.cssSelector("[for='file']");
 
-    public void addLesson(boolean live , String requiredTitleEN, String requiredTitleAR, String requiredSEONameEN, String requiredSEONameAR
-            , String requiredSEONDescEN , String requiredSEONDescAR) throws InterruptedException, AWTException {
-        waitElementToBeVisible(addLessonBTN);
+    public void clickAddBtn()
+    {
         Click(addLessonBTN);
-        waitElementToBeVisible(titleEN);
+
+    }
+    public void addLesson(boolean live, String requiredTitleEN, String requiredTitleAR, String requiredSEONameEN, String requiredSEONameAR
+            , String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
         writeOnText(titleEN, requiredTitleEN);
-        waitElementToBeVisible(titleAR);
         writeOnText(titleAR, requiredTitleAR);
         waitElementToBeUnVisible(loader);
-        waitElementToBeVisible(course);
         Click(course);
-        if (live){
-            waitElementToBeVisible(selectLiveCourse);
+        if (live) {
             Click(selectLiveCourse);
-            waitElementToBeVisible(section);
             Click(section);
-            waitElementToBeVisible(selectLiveSection);
             Click(selectLiveSection);
-            waitElementToBeVisible(chooseTimeTXT);
-            writeOnText(chooseTimeTXT , "23:00:00");
-            waitElementToBeVisible(consultant);
+            writeOnText(chooseTimeTXT, "23:00:00");
             Click(consultant);
-            waitElementToBeVisible(selectConsultant);
             Click(selectConsultant);
-            waitElementToBeVisible(sessionDuration);
-            writeOnText(sessionDuration , "5");
-
-        }
-        else {
-            waitElementToBeVisible(selectOnlineCourse);
+            writeOnText(sessionDuration, "5");
+        } else {
             Click(selectOnlineCourse);
-            waitElementToBeVisible(section);
             Click(section);
-            waitElementToBeVisible(selectOnlineSection);
             Click(selectOnlineSection);
-           // waitElementToBeVisible();
-            waitElementToBeVisible(contentType);
+            // waitElementToBeVisible();
             Click(contentType);
-            waitElementToBeVisible(selectPDF);
             Click(selectPDF);
-            waitElementToBeVisible(file);
             Click(file);
             Thread.sleep(2000);
-            uploadFile("D:\\Photos\\Sample.pdf");
+            uploadFile("Sample.pdf");
         }
-
-        waitElementToBeVisible(seoNameENTxt);
         writeOnText(seoNameENTxt, requiredSEONameEN);
-
-        waitElementToBeVisible(seoNameARTxt);
         writeOnText(seoNameARTxt, requiredSEONameAR);
-
-        waitElementToBeVisible(seoDesEN);
         writeOnText(seoDesEN, requiredSEONDescEN);
-
-        waitElementToBeVisible(seoDesAR);
         writeOnText(seoDesAR, requiredSEONDescAR);
-
-        waitElementToBeVisible(seoImage);
         Click(seoImage);
         Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
-        waitElementToBeVisible(submitBtn);
+        uploadFile("ISTQB.png");
+        Click(submitBtn);
+    }
+
+    public void editLesson(boolean live, String requiredTitleEN, String requiredTitleAR, String requiredSEONameEN, String requiredSEONameAR
+            , String requiredSEONDescEN, String requiredSEONDescAR,String TitleENEdit , String TitleAREdit , boolean liveEdit) throws InterruptedException, AWTException {
+        addLesson( live,  requiredTitleEN,  requiredTitleAR,  requiredSEONameEN,  requiredSEONameAR
+                ,  requiredSEONDescEN,  requiredSEONDescAR);
+        openEditScreen();
+        writeOnText(titleEN, TitleENEdit);
+        writeOnText(titleAR, TitleAREdit);
+        waitElementToBeUnVisible(loader);
+        Click(course);
+        if (liveEdit) {
+            Click(selectLiveCourse);
+            Click(section);
+            Click(selectLiveSection);
+            writeOnText(chooseTimeTXT, "23:00:00");
+            Click(consultant);
+            Click(selectConsultant);
+            writeOnText(sessionDuration, "5");
+        } else {
+            Click(selectOnlineCourse);
+            Click(section);
+            Click(selectOnlineSection);
+            // waitElementToBeVisible();
+            Click(contentType);
+            Click(selectPDF);
+            Click(file);
+            Thread.sleep(2000);
+            uploadFile("Sample.pdf");
+        }
+        writeOnText(titleEN, TitleENEdit);
+        writeOnText(titleAR, TitleAREdit);
+        writeOnText(seoNameENTxt, requiredSEONameEN);
+        writeOnText(seoNameARTxt, requiredSEONameAR);
+        writeOnText(seoDesEN, requiredSEONDescEN);
+        writeOnText(seoDesAR, requiredSEONDescAR);
+        Click(seoImage);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
         Click(submitBtn);
     }
 }

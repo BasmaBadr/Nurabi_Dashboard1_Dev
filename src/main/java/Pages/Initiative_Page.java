@@ -4,6 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Initiative_Page extends PageBase {
     public Initiative_Page(WebDriver driver) {
@@ -19,9 +23,7 @@ public class Initiative_Page extends PageBase {
 
     By nameEN = By.id("name");
     By nameAR = By.id("name_ar");
-    By intro = By.id("introPathId");
 
-    By imagee = By.id("imageId");
 
     By shortDescriptionENTxt = By.id("short_description");
     By shortDescriptionARTxt = By.id("short_description_ar");
@@ -32,7 +34,7 @@ public class Initiative_Page extends PageBase {
     By selectTracking = By.cssSelector("#trackingSelectOptions ul li .Automation.Tracking");
 
     By startDate = By.cssSelector("[for='start_date_picker']");
-    By currentActiveDate = By.cssSelector(".dropdown-menu.show span.btn-outline-primary");
+    By currentActiveDate = By.cssSelector("span.btn.border-0.rounded-circle.text-nowrap.btn-light.font-weight-bold");
 
 
     By status = By.cssSelector("[for='status']");
@@ -54,75 +56,89 @@ public class Initiative_Page extends PageBase {
     By loader = By.cssSelector("[role='status']");
 
 
-    public void addInitiative( String requiredNameEN, String requiredNameAR,
+    By introEN = By.id("introPathIdEn");
+    By introAR = By.id("introPathIdAr");
+
+
+    public void clickAddBtn()
+    {
+        Click(addInitiativeBtn);
+
+    }
+    public void addInitiative(boolean Published ,String requiredNameEN, String requiredNameAR,
                               String requiredShortDesEN, String requiredShortDesAR,
                               String requiredLongDesEN, String requiredLongDesAR,
                               String requiredSEONameEN, String requiredSEONameAR,
                               String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
-        waitElementToBeVisible(addInitiativeBtn);
-        Click(addInitiativeBtn);
         waitElementToBeUnVisible(loader);
-        waitElementToBeVisible(introPath);
         Click(introPath);
-        waitElementToBeVisible(selectImage);
+        waitElementToBeUnVisible(loader);
         Click(selectImage);
-        waitElementToBeVisible(intro);
-        Click(intro);
-        Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
-        waitElementToBeVisible(nameEN);
-        writeOnText(nameEN, requiredNameEN);
 
-        waitElementToBeVisible(nameAR);
-        writeOnText(nameAR, requiredNameAR);
-        waitElementToBeVisible(imagee);
-        Click(imagee);
+        Click(introEN);
         Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
-        waitElementToBeVisible(shortDescriptionENTxt);
+        uploadFile("ISTQB.png");
+        Click(introAR);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
+
+        writeOnText(nameEN, requiredNameEN);
+        writeOnText(nameAR, requiredNameAR);
+        waitElementToBeUnVisible(loader);
+
+
+
+        Click(imageEN);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
+        Click(imageAR);
+        Thread.sleep(2000);
+        uploadFile("ISTQB.png");
         writeOnText(shortDescriptionENTxt, requiredShortDesEN);
 
-        waitElementToBeVisible(shortDescriptionARTxt);
         writeOnText(shortDescriptionARTxt, requiredShortDesAR);
 
-        waitElementToBeVisible(longDescriptionENTxt);
         writeOnText(longDescriptionENTxt, requiredLongDesEN);
 
-        waitElementToBeVisible(longDescriptionARTxt);
         writeOnText(longDescriptionARTxt, requiredLongDesAR);
 
-        waitElementToBeVisible(trackingSystemList);
         Click(trackingSystemList);
-        waitElementToBeVisible(selectTracking);
         Click(selectTracking);
 
-        waitElementToBeVisible(startDate);
         Click(startDate);
 
-        waitElementToBeVisible(currentActiveDate);
         Click(currentActiveDate);
-
-        waitElementToBeVisible(status);
-        Click(status);
-        waitElementToBeVisible(selectPublish);
+        if (Published) {
+            Click(status);
+        }
         Click(selectPublish);
-        waitElementToBeVisible(seoNameENTxt);
         writeOnText(seoNameENTxt, requiredSEONameEN);
 
-        waitElementToBeVisible(seoNameARTxt);
         writeOnText(seoNameARTxt, requiredSEONameAR);
 
-        waitElementToBeVisible(seoDesEN);
         writeOnText(seoDesEN, requiredSEONDescEN);
 
-        waitElementToBeVisible(seoDesAR);
         writeOnText(seoDesAR, requiredSEONDescAR);
 
-        waitElementToBeVisible(seoImage);
         Click(seoImage);
         Thread.sleep(2000);
-        uploadFile("D:\\Photos\\ISTQB.png");
-        waitElementToBeVisible(submitBtn);
+        uploadFile("ISTQB.png");
         Click(submitBtn);
+    }
+
+
+    public static String getNextDate(String curDate) {
+        String nextDate = "";
+        try {
+            Calendar today = Calendar.getInstance();
+            DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+            Date date = format.parse(curDate);
+            today.setTime(date);
+            today.add(Calendar.DAY_OF_YEAR, 1);
+            nextDate = format.format(today.getTime());
+        } catch (Exception e) {
+            return nextDate;
+        }
+        return nextDate;
     }
 }

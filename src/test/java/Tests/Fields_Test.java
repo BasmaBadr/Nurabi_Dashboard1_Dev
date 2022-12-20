@@ -5,14 +5,9 @@ import org.testng.annotations.Test;
 
 import java.awt.*;
 import java.lang.reflect.Method;
+import java.util.Random;
 
 public class Fields_Test extends TestBase {
-
-    String Email = "momen@nurabi.net";
-    String Password = "19821120Mm";
-
-    String requiredNameEN = "Fields NameEN Automation1";
-    String requiredNameAR = "Fields NameAR Automation1";
 
     String requiredSEONameEN = "Fields SEOEN Automation";
     String requiredSEONameAR = "Fields SEOAR Automation";
@@ -21,73 +16,127 @@ public class Fields_Test extends TestBase {
 
 
     // Create Field Parent / Published
-    @Test
-    public void createPublishedParentFieldsWithValidData(Method method) throws InterruptedException, AWTException {
+    @Test(priority = 1)
+    public void createPublishedParentFieldsWithValidData() throws InterruptedException, AWTException {
         defineObjects();
-        loginPage.loginWithValidData(Email, Password);
+        login();
         sidePanel_page.openFieldsList();
+        fields_page.clickAddBtn();
         fields_page.createParentFieldWithValidData(true, true, nameEN, nameAR, requiredSEONameEN,
                 requiredSEONameAR, requiredSEODescEN, requiredSEODescAR);
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
-        Assert.assertTrue(commonMethods_page.table().contains(nameEN));
-        Assert.assertTrue(commonMethods_page.table().contains(nameAR));
-        Assert.assertTrue(commonMethods_page.table().contains("Published"));
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.table().contains("Published"));
+
+    }
+
+    // Create Field Parent / Published side panel
+    @Test(priority = 2)
+    public void createPublishedParentFieldsWithValidDataSidePanel() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openAddFieldSidePanel();
+        fields_page.createParentFieldWithValidData(true, true, nameEN, nameAR, requiredSEONameEN,
+                requiredSEONameAR, requiredSEODescEN, requiredSEODescAR);
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.table().contains("Published"));
 
     }
 
     // Create Field Parent / Draft
 
-    @Test
-    public void createDraftParentFieldsWithValidData(Method method) throws InterruptedException, AWTException {
+    @Test(priority = 3)
+    public void createDraftParentFieldsWithValidData() throws InterruptedException, AWTException {
         defineObjects();
-        loginPage.loginWithValidData(Email, Password);
+        login();
         sidePanel_page.openFieldsList();
+        fields_page.clickAddBtn();
         fields_page.createParentFieldWithValidData(true, false, nameEN, nameAR, requiredSEONameEN,
                 requiredSEONameAR, requiredSEODescEN, requiredSEODescAR);
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
-        Assert.assertTrue(commonMethods_page.table().contains(nameEN));
-        Assert.assertTrue(commonMethods_page.table().contains(nameAR));
-        Assert.assertTrue(commonMethods_page.table().contains("Drafted"));
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.table().contains("Drafted"));
 
     }
 
     // Create Field Child  / Published
 
-    @Test
+    @Test(priority = 4)
     public void createPublishedChildFieldsWithValidData(Method method) throws InterruptedException, AWTException {
         defineObjects();
-        loginPage.loginWithValidData(Email, Password);
+        login();
         sidePanel_page.openFieldsList();
-        fields_page.createParentFieldWithValidData(false, true ,nameEN, nameAR, requiredSEONameEN,
+        fields_page.clickAddBtn();
+
+        fields_page.createParentFieldWithValidData(false, true, nameEN, nameAR, requiredSEONameEN,
                 requiredSEONameAR, requiredSEODescEN, requiredSEODescAR);
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
-//        Assert.assertTrue(commonMethods_page.table().contains(requiredNameEN));
-//        Assert.assertTrue(commonMethods_page.table().contains("Published"));
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+//        softAssert.assertTrue(commonMethods_page.table().contains(requiredNameEN));
+//        softAssert.assertTrue(commonMethods_page.table().contains("Published"));
 
     }
 
 
     // Create Field Child / Draft
-    @Test
+    @Test(priority = 5)
     public void createDraftChildFieldsWithValidData(Method method) throws InterruptedException, AWTException {
         defineObjects();
-        loginPage.loginWithValidData(Email, Password);
+        login();
         sidePanel_page.openFieldsList();
-        fields_page.createParentFieldWithValidData(false, false ,nameEN, nameAR, requiredSEONameEN,
+        fields_page.clickAddBtn();
+
+        fields_page.createParentFieldWithValidData(false, false, nameEN, nameAR, requiredSEONameEN,
                 requiredSEONameAR, requiredSEODescEN, requiredSEODescAR);
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
-  //      Assert.assertTrue(commonMethods_page.table().contains(requiredNameEN));
-   //     Assert.assertTrue(commonMethods_page.table().contains("Drafted"));
+    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        //      softAssert.assertTrue(commonMethods_page.table().contains(requiredNameEN));
+        //     softAssert.assertTrue(commonMethods_page.table().contains("Drafted"));
     }
 
-/*
-    @Test(priority = 2)
-    public void verifySearchByNameEN(Method method) throws InterruptedException, AWTException {
-        defineObjects();
-        createDraftParentFieldsWithValidData(method);
-        commonMethods_page.search(requiredNameEN);
-        Assert.assertTrue(commonMethods_page.table().contains(requiredNameEN));
+
+    // Search by field name
+    // Passed
+    @Test(priority = 6)
+    public void verifySearchByNameEN() throws InterruptedException, AWTException {
+        createPublishedParentFieldsWithValidData();
+        commonMethods_page.search(nameEN);
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
     }
+
+    // Edit field name and type to child |  status to drafted
+    // Passed
+    @Test(priority = 7)
+    public void editFieldNameAndStatus() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openFieldsList();
+        fields_page.clickAddBtn();
+
+        fields_page.editField(true,true,true,true
+                ,nameEN,nameEN,nameEN,nameAR,requiredSEODescEN,
+                requiredSEODescAR, EditNameEN , EditNameAR);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(EditNameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(EditNameAR));
+        softAssert.assertTrue(commonMethods_page.table().contains("Drafted"));
+
+
+    }
+
+    /*
 
     @Test(priority = 3)
     public void verifyDataOfFieldsDetails(Method method) throws InterruptedException, AWTException {
@@ -101,7 +150,7 @@ public class Fields_Test extends TestBase {
         defineObjects();
         createDraftParentFieldsWithValidData(method);
         commonMethods_page.openEditScreen();
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
 
     }
 
@@ -110,9 +159,10 @@ public class Fields_Test extends TestBase {
         defineObjects();
         createDraftParentFieldsWithValidData(method);
         commonMethods_page.delete();
-        Assert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
 
     }
 
  */
+
 }
