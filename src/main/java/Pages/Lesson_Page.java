@@ -20,6 +20,17 @@ public class Lesson_Page extends PageBase {
     By selectConsultant = By.cssSelector("#consultantSelectOptions ul li .admin");
     By sessionDuration = By.id("session_duration");
 
+    // Details
+    By titleENDetails = By.id("TitleEn");
+    By titleArDetails = By.id("TitleAr");
+    By courseEnDetails = By.id("CourseEn");
+    By courseArDetails = By.id("CourseAr");
+    By sectionEnDetails = By.id("SectionEn");
+    By sectionArDetails = By.id("SectionAr");
+    By contentTypeDetails = By.id("ContentType");
+//    By contentType = By.id("ContentType");
+//    By sessionDuration = By.id("session_duration");
+
 
     By file = By.cssSelector("[for='file']");
 
@@ -101,5 +112,29 @@ public class Lesson_Page extends PageBase {
         Thread.sleep(2000);
         uploadFile("ISTQB.png");
         Click(submitBtn);
+    }
+
+    public String getCourseNameEn()
+    {
+        return getText(titleENDetails);
+    }
+    public String getCourseNameAr()
+    {
+        return getText(titleArDetails);
+    } public String getCourseEn()
+    {
+        return getText(courseEnDetails);
+    } public String getCourseAr()
+    {
+        return getText(courseArDetails);
+    } public String getSectionNameEn()
+    {
+        return getText(sectionEnDetails);
+    } public String getSectionNameAr()
+    {
+        return getText(sectionArDetails);
+    }public String getContentType()
+    {
+        return getText(contentTypeDetails);
     }
 }

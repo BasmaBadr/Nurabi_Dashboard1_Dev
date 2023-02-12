@@ -68,7 +68,7 @@ public class Initiative_Test extends TestBase {
 
         initiativePage.addInitiative(false, nameEN, nameAR,
                 requiredShortDesEN, requiredShortDesAR, requiredLongDesEN, requiredLongDesAR, requiredSEONameEN, requiredSEONameAR, requiredSEONDescEN, requiredSEONDescAR);
-    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -101,5 +101,31 @@ public class Initiative_Test extends TestBase {
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
     }
 
+    // Check initiative details
+    // Pass
+    @Test
+    public void checkInitiativeDetails() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openInitiativeList();
+        initiativePage.clickAddBtn();
+
+        initiativePage.addInitiative(true, nameEN, nameAR,
+                requiredShortDesEN, requiredShortDesAR, requiredLongDesEN, requiredLongDesAR, requiredSEONameEN, requiredSEONameAR, requiredSEONDescEN, requiredSEONDescAR);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        commonMethods_page.openDetailsScreen();
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Name EN ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Name AR ").contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Short Description EN ").contains(requiredShortDesEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Short Description AR ").contains(requiredShortDesAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Long Description EN ").contains(requiredLongDesEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Long Description AR ").contains(requiredLongDesAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Status ").contains("Published"));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Paid ").contains("Free"));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Tracking System ").contains("Automation Tracking25123"));
+        softAssert.assertAll();
+    }
 
 }

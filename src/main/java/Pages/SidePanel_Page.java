@@ -12,112 +12,116 @@ public class SidePanel_Page extends PageBase {
 
     }
 
-    By coursesTabParent = By.xpath("(//span[contains(text() , 'Courses')])[1]");
+    By coursesTabParent = By.id("courses");
     By coursesTab = By.xpath("(//span[contains(text() , 'Courses')])[2]");
-    By coursesList = By.xpath("//a[contains(@href,'/apps/courses/list')]");
+    By coursesList = By.id("apps-courses-list");
 
-    By addCourseTabSidePanel = By.xpath("//a[contains(@href,'/apps/courses/add')]");
-
-
-    By sectionsTab = By.xpath("//span[contains(text() , 'Sections')]");
-    By sectionsList = By.xpath("//a[contains(@href,'/apps/sections/list')]");
-    By addSectionsSidePanel = By.xpath("//a[contains(@href,'/apps/sections/add')]");
-
-    By lessonTab = By.xpath("//span[contains(text() , 'Lessons')]");
-    By lessonList = By.xpath("//a[contains(@href,'/apps/lessons/list')]");
-    By addLessonSidePanel = By.xpath("//a[contains(@href,'/apps/lessons/add')]");
-
-    By quizTab = By.xpath("//span[contains(text() , 'Quiz')]");
-    By quizList = By.xpath("//a[contains(@href,'/apps/quiz/list')]");
-    By addQuizSidePanel = By.xpath("//a[contains(@href,'/apps/quiz/add')]");
+    By addCourseTabSidePanel = By.id("apps-courses-add");
 
 
-    By practicalTaskTab = By.xpath("(//span[contains(text() , 'Practical Tasks')])[1]");
-    By practicalTaskList = By.xpath("//a[contains(@href,'/apps/practicalTasks/list')]");
-    By addPracticalTaskSidePanel = By.xpath("//a[contains(@href,'/apps/practicalTasks/add')]");
+    By sectionsTab = By.id("sections");
+    By sectionsList = By.id("apps-sections-list");
+    By addSectionsSidePanel = By.id("apps-sections-add");
+
+    By lessonTab = By.id("lessons");
+    By lessonList = By.id("apps-lessons-list");
+    By addLessonSidePanel = By.id("apps-lessons-add");
+
+    By quizTab = By.id("quiz");
+    By quizList = By.id("apps-quizzes-list");
+    By addQuizSidePanel = By.id("apps-quizzes-add");
+
+
+    By practicalTaskTab = By.id("practical-tasks");
+    By practicalTaskList = By.id("apps-practical-tasks-list");
+    By addPracticalTaskSidePanel = By.id("apps-practicalTasks-add");
 
 
     By consultationTab = By.id("consultation");
-    By addConsultantTab = By.xpath("//a[contains(@href,'/apps/consultation/add')]");
+    By consultantsTab = By.id("apps-consultation-accepted-list");
 
-    By consultantsTab = By.id("consultants");
+    By addConsultantTab = By.id("apps-consultation-add");
 
 
-    By fieldsConsultationsTab = By.xpath("(//span[contains(text() , 'Fields')])[1]");
-    By fieldsConsultationsList = By.xpath("//a[contains(@href,'/apps/fields/list')]");
-    By addFieldsConsultationsSidePanel = By.xpath("//a[contains(@href,'/apps/fields/add')]");
+    By fieldsConsultationsTab = By.id("fields");
+    By fieldsConsultationsList = By.id("apps-fields-list");
+    By addFieldsConsultationsSidePanel = By.id("apps-fields-add");
 
     By specialtyTab = By.id("specialty");
-    By specialtyList = By.xpath("//a[contains(@href,'/apps/speciality/list')]");
-    By addSpecialtySidePanel = By.xpath("//a[contains(@href,'/apps/speciality/add')]");
+    By specialtyList = By.id("apps-speciality-list");
+    By addSpecialtySidePanel = By.id("apps-speciality-add");
 
 
+    By jobTitleTab = By.id("job-title");
+    By jobTitleList = By.id("apps-jobTitle-list");
+    By addJobTitleSidePanel = By.id("apps-jobTitle-add");
+
+    By categoriesTab = By.id("categories");
+    By categoriesList = By.id("apps-categories-list");
+    By addCategoriesSidePanel = By.id("apps-categories-add");
+
+    By surveyTab = By.id("survey");
+    By surveyList = By.id("apps-questionnaires-list");
+
+    By addSurveySidePanel = By.id("apps-questionnaires-add");
 
 
-    By jobTitleTab = By.xpath("//span[contains(text() ,'Job Title')]");
-    By jobTitleList = By.xpath("//a[contains(@href,'/apps/jobTitle/list')]");
-    By addJobTitleSidePanel = By.xpath("//a[contains(@href,'/apps/jobTitle/add')]");
+    By bankQuestionTab = By.id("bank-questions");
+    By adminTab = By.id("admin");
+    By adminList = By.id("apps-bank-questions-admin-list");
+    By addAdminSidePanel = By.id("apps-bank-questions-add");
 
-    By categoriesTab = By.xpath("//span[contains(text() ,'Categories')]");
-    By categoriesList = By.xpath("//a[contains(@href,'/apps/categories/list')]");
-    By addCategoriesSidePanel = By.xpath("//a[contains(@href,'/apps/categories/add')]");
+    By certificatesTab = By.id("certificates");
+    By certificatesList = By.id("apps-certificates-list");
+    By addCertificatesSidePanel = By.id("apps-certificates-add");
 
-    By surveyTab = By.xpath("//span[contains(text() ,'Survey')]");
-    By surveyList = By.xpath("//a[contains(@href,'/apps/questionnaires/list')]");
+    By currenciesTab = By.id("currencies");
+    By currenciesList = By.id("apps-currency-list");
+    By addCurrenciesSidePanel = By.id("apps-currency-add");
 
-    By addSurveySidePanel = By.xpath("//a[contains(@href,'/apps/questionnaires/add')]");
+
+    By personalityTab = By.id("personality-analysis");
+    By personalityCategoryTab = By.id("categories");
+
+    By personalityCategoryList = By.id("apps-personality-categories-list");
+    By addPersonalityCategorySidePanel = By.id("apps-personality-categories-add");
 
 
-    By bankQuestionTab = By.xpath("//span[contains(text() ,'Bank Questions')]");
-    By adminTab = By.xpath("(//span[contains(text() ,'Admin')])[2]");
-    By adminList = By.xpath("//a[contains(@href,'/baankQuestions/adminList')]");
-    By addAdminSidePanel = By.xpath("//a[contains(@href,'/apps/baankQuestions/add')]");
-
-    By certificatesTab = By.xpath("//span[contains(text() ,'Certificates')]");
-    By certificatesList = By.xpath("//a[contains(@href,'/apps/certificates/list')]");
-    By addCertificatesSidePanel = By.xpath("//a[contains(@href,'/apps/certificates/add')]");
-
-    By currenciesTab = By.xpath("//span[contains(text() ,'Currencies')]");
-    By currenciesList = By.xpath("//a[contains(@href,'/apps/currency/list')]");
-    By addCurrenciesSidePanel = By.xpath("//a[contains(@href,'/apps/currency/add')]");
-
-    By sliderTab = By.xpath("//span[contains(text() ,'Sliders')]");
-    By sliderList = By.xpath("//a[contains(@href,'/apps/sliders/list')]");
-
-    By addSliderSidePanel = By.xpath("//a[contains(@href,'/apps/sliders/add')]");
-
-    By personalityTab = By.xpath("//span[contains(text() ,'Personality Analysis')]");
-    By personalityCategoryTab = By.xpath("(//span[contains(text() ,'Categories')])[2]");
-
-    By personalityCategoryList = By.xpath("//a[contains(@href,'/personality/categories/list')]");
-
-    By addPersonalityCategorySidePanel = By.xpath("//a[contains(@href,'/apps/personality/categories/add')]");
-
-    By trackingSysParent = By.xpath("(//span[contains(text() , 'Tracking System')])[1]");
+    By trackingSysParent = By.id("tracking-system");
     By sidePanel = By.cssSelector("div.main-menu.menu-fixed.menu-accordion.menu-shadow.expanded.menu-light");
     By trackingSysTab = By.xpath("(//span[contains(text() , 'Tracking System')])[2]");
-    By listTrackingSysTab = By.xpath("//a[contains(@href,'/apps/trackingSystem/list')]");
-    By addTrackingSysSidePanel = By.xpath("//a[contains(@href,'/apps/trackingSystem/add')]");
-    By fields = By.xpath("(//span[contains(text() , 'Fields')])[2]");
-    By listFields = By.xpath("//a[contains(@href,'/apps/trackingSystem/fieldsGoals/list')]");
-    By addFieldsSidePanel = By.xpath("//a[contains(@href,'/apps/trackingSystem/fieldsGoals/add')]");
-    By activity = By.xpath("//span[contains(text() , 'Activity')]");
-    By listActivity = By.xpath("//a[contains(@href,'/apps/trackingSystem/activity/list')]");
-    By addActivitySidePanel = By.xpath("//a[contains(@href,'/apps/trackingSystem/activity/add')]");
+    By listTrackingSysTab = By.id("apps-tracking-system-list");
+    By addTrackingSysSidePanel = By.id("apps-tracking-system-add");
+    By fields = By.xpath("//*[@id='tracking-system']//*[@id='fields']");
+    By listFields = By.id("apps-tracking-system-fields-and-goals-list");
+    By addFieldsSidePanel = By.id("apps-tracking-system-fields-and-goals-add");
+    By activity = By.id("activity");
+    By listActivity = By.id("apps-tracking-system-activity-list");
+    By addActivitySidePanel = By.id("apps-tracking-system-activity-add");
 
-    By initiative = By.xpath("//span[contains(text() , 'Initiative')]");
-    By listInitiative = By.xpath("//a[contains(@href,'/apps/trackingSystem/initiative/list')]");
-    By addInitiativeSidePanel = By.xpath("//a[contains(@href,'/apps/trackingSystem/initiative/add')]");
+    By initiative = By.id("initiative");
+    By listInitiative = By.id("apps-tracking-system-initiative-list");
+    By addInitiativeSidePanel = By.id("apps-tracking-system-initiative-add");
 
     By roles = By.id("roles");
-    By rolesList = By.xpath("//a[contains(@href,'/apps/roles/list')]");
+    By rolesList = By.id("apps-roles-list");
 
-    By addRoleSidePanel = By.xpath("//a[contains(@href,'/apps/roles/add')]");
+    By addRoleSidePanel = By.id("apps-roles-add");
 
     By userModule = By.id("user");
     By adminUserList = By.id("admin-list");
     By userList = By.id("user-list");
     By add = By.id("add");
+
+    By sliderTab = By.id("sliders");
+    By sliderList = By.id("apps-sliders-list");
+    By addSliderSidePanel = By.id("apps-sliders-add");
+
+
+    // Coupons
+    By couponsTab = By.id("coupons");
+    By couponsList = By.id("apps-coupons-list");
+    By addCouponsSidePanel = By.id("apps-coupons-add");
 
 
     public void openCoursesList() {
@@ -197,6 +201,7 @@ public class SidePanel_Page extends PageBase {
         scrollToElement(fieldsConsultationsList);
         Click(fieldsConsultationsList);
     }
+
     public void openAddFieldsConsultationsSidePanel() throws InterruptedException {
         Click(consultationTab);
         Click(fieldsConsultationsTab);
@@ -209,6 +214,7 @@ public class SidePanel_Page extends PageBase {
         Click(specialtyTab);
         Click(specialtyList);
     }
+
     public void openAddSpecialitySidePanel() throws InterruptedException {
         Click(consultationTab);
         Click(specialtyTab);
@@ -290,7 +296,7 @@ public class SidePanel_Page extends PageBase {
     }
 
     public void OpenAddSlidersSidePanel() {
-      //  Click(initiative);
+        //  Click(initiative);
         waitElementToBeVisible(sliderTab);
         scrollToElement(sliderTab);
         Click(sliderTab);
@@ -327,7 +333,7 @@ public class SidePanel_Page extends PageBase {
         Click(trackingSysParent);
         scrollToElement(fields);
         Click(fields);
-        scrollToElement(listFields);
+        //  scrollToElement(listFields);
         Click(listFields);
     }
 
@@ -394,15 +400,56 @@ public class SidePanel_Page extends PageBase {
         Click(add);
     }
 
-    public void openAddConsultant()
-    {
+    public void openAddConsultant() {
         Click(consultationTab);
         Click(addConsultantTab);
     }
 
-    public void openConsultantsTab()
-    {
+    public void openConsultantsTab() {
         Click(consultationTab);
         Click(consultantsTab);
+    }
+
+    public void openCouponList() {
+        waitElementToBeVisible(sliderTab);
+        scrollToElement(sliderTab);
+        waitElementToBeVisible(couponsTab);
+        scrollToElement(couponsTab);
+        Click(couponsTab);
+        scrollToElement(couponsList);
+        Click(couponsList);
+    }
+
+    public void openAddCouponSidePanel() {
+        waitElementToBeVisible(sliderTab);
+        scrollToElement(sliderTab);
+        waitElementToBeVisible(couponsTab);
+        scrollToElement(couponsTab);
+        Click(couponsTab);
+        scrollToElement(addCouponsSidePanel);
+        Click(addCouponsSidePanel);
+    }
+
+    By tasks = By.id("tasks");
+    By tasksList = By.id("apps-task-list");
+    By myUsersList = By.id("apps-task-enrolled-users-list");
+    By addTab = By.id("apps-task-add");
+
+    public void openTasksList() {
+        Click(tasks);
+        Click(tasksList);
+
+    }
+
+    public void openMyUsersList() {
+        Click(tasks);
+        Click(myUsersList);
+
+    }
+
+    public void openAddTab() {
+        Click(tasks);
+        Click(addTab);
+
     }
 }

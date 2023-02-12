@@ -76,10 +76,10 @@ public class TrackingSystem_Page extends PageBase {
         }
         Click(introEN);
         Thread.sleep(2000);
-        uploadFile("Video.mp4");
+        uploadFile("ISTQB.png");
         Click(introAR);
         Thread.sleep(2000);
-        uploadFile("Video.mp4");
+        uploadFile("ISTQB.png");
 
         writeOnText(nameENTxt, requiredNameEN);
         writeOnText(nameARTxt, requiredNameAR);

@@ -31,9 +31,12 @@ public class Initiative_Page extends PageBase {
     By longDescriptionARTxt = By.id("long_description_ar");
 
     By trackingSystemList = By.id("tracking_id");
-    By selectTracking = By.cssSelector("#trackingSelectOptions ul li .Automation.Tracking");
+    By selectTracking = By.cssSelector("#trackingSelectOptions ul li .Automation.Tracking25123");
 
     By startDate = By.cssSelector("[for='start_date_picker']");
+    By startDate2 = By.cssSelector("[for='Edit4654-0-start-date']");
+    By selectDate = By.xpath("//span[contains(text() , '27')]");
+
     By currentActiveDate = By.cssSelector("span.btn.border-0.rounded-circle.text-nowrap.btn-light.font-weight-bold");
 
 
@@ -107,7 +110,11 @@ public class Initiative_Page extends PageBase {
 
         Click(startDate);
 
+
         Click(currentActiveDate);
+
+        Click(startDate2);
+        Click(selectDate);
         if (Published) {
             Click(status);
         }

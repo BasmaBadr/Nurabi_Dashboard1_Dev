@@ -75,4 +75,27 @@ public class Fields_Consultations_Test extends TestBase {
     }
 
 
+
+
+
+    // Check fields on consultation details
+    // Passed
+    @Test(priority = 6)
+    public void checkFieldsDetails() throws InterruptedException {
+        defineObjects();
+        login();
+        sidePanel_page.openFieldsConsultationsList();
+        fieldsConsultationsPage.clickAddBtn();
+        fieldsConsultationsPage.addConsultantField(nameEN, nameAR);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Saved Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        commonMethods_page.openDetailsScreen();
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Title EN ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Title AR ").contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Type ").contains("consultant"));
+        softAssert.assertAll();
+    }
+
 }

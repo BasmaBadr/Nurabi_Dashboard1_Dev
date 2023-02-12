@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Activity_Page extends PageBase {
     public Activity_Page(WebDriver driver) {
@@ -63,8 +64,9 @@ public class Activity_Page extends PageBase {
                                             String requiredShortDesEN, String requiredShortDesAR,
                                             String requiredLongDesEN, String requiredLongDesAR) throws InterruptedException, AWTException {
         waitElementToBeUnVisible(loader);
-        writeOnText(nameEN, requiredNameEN);
-        writeOnText(nameAR, requiredNameAR);
+        writeOnText(nameEN, requiredNameEN + new Random().nextInt(9999));
+        writeOnText(nameAR, requiredNameAR+ new Random().nextInt(9999)
+        );
         waitElementToBeUnVisible(loader);
         Click(trackingSystemList);
         waitElementToBeUnVisible(loader);

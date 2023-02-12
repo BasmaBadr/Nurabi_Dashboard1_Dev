@@ -97,4 +97,7 @@ public class JobTitle_Test extends TestBase {
         commonMethods_page.search(nameEN);
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
     }
+
+
+
 }

@@ -101,7 +101,7 @@ public class Speciality_Test extends TestBase {
 
     // Edit speciality Name and status
     // Passed
-    @Test(priority = 5)
+    @Test(priority = 6)
     public void verifyAbilityToEditSpecialityNameAndStatus() throws InterruptedException, AWTException {
         defineObjects();
         login();
@@ -117,7 +117,7 @@ public class Speciality_Test extends TestBase {
 
     // Add speciality On Consultant Side Panel
     // Passed
-    @Test(priority = 1)
+    @Test(priority = 7)
     public void verifyAbilityToAddSpecialityOnConsultantSidePanel() throws InterruptedException {
         defineObjects();
         login();
@@ -130,6 +130,26 @@ public class Speciality_Test extends TestBase {
         softAssert.assertAll();
     }
 
+    // check speciality details
+    // Passed
+    @Test(priority = 8)
+    public void checkSpecialityDetails() throws InterruptedException {
+        defineObjects();
+        login();
+        sidePanel_page.openSpecialityList();
+        specialityPage.addSpecialityBtn();
+        specialityPage.addSpeciality(nameEN,nameAR,true,false,false,false);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.table().contains("Active"));
+        commonMethods_page.openDetailsScreen();
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Title EN ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Title AR ").contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Type ").contains("consultant"));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Status ").contains("Active"));
+        softAssert.assertAll();
 
+    }
 
 }

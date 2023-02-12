@@ -166,5 +166,35 @@ public class TrackingSystem_Test extends TestBase {
         softAssert.assertFalse(commonMethods_page.table().contains(nameEN));
     }
 
+    // Check Tracking system details
+    // Passed
+
+    @Test(priority = 8)
+    public void checkTrackingSystemDetails() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openTrackingList();
+        trackingSystem_page.clickAddBtn();
+        trackingSystem_page.createTrackingSystemWithValidData(true, true, nameEN, nameAR,
+                requiredShortDesEN, requiredShortDesAR,
+                requiredLongDesEN, requiredLongDesAR,
+                requiredDuration, requiredSEONameEN, requiredSEONameAR, requiredSEONDescEN, requiredSEONDescAR);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Free"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Published"));
+        commonMethods_page.openDetailsScreen();
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Name EN ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Name AR ").contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Short Description EN ").contains(requiredShortDesEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Short Description AR ").contains(requiredShortDesAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Long Description EN ").contains(requiredLongDesEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Long Description AR ").contains(requiredLongDesAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Fields ").contains("AutomationField"));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Status ").contains("Published"));
+        softAssert.assertAll();
+    }
+
 
 }

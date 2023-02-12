@@ -17,7 +17,7 @@ public class Slider_Test extends TestBase {
         sidePanel_page.openSlidersList();
         addSliderPage.clickAddBtn();
         addSliderPage.addSlider(false, false, false, nameEN, nameAR);
-    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -33,7 +33,7 @@ public class Slider_Test extends TestBase {
         login();
         sidePanel_page.OpenAddSlidersSidePanel();
         addSliderPage.addSlider(false, false, false, nameEN, nameAR);
-    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -44,6 +44,7 @@ public class Slider_Test extends TestBase {
     // Edit slider name and status to active and to display all [Web]
     // Passed
     @Test(priority = 3)
+
     public void EditSliderNameAndStatusToInactiveAndToDisplayAll() throws InterruptedException, AWTException {
         defineObjects();
         login();
@@ -68,7 +69,7 @@ public class Slider_Test extends TestBase {
         addSliderPage.clickAddBtn();
 
         addSliderPage.addSlider(true, false, false, nameEN, nameAR);
-    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -87,7 +88,7 @@ public class Slider_Test extends TestBase {
         addSliderPage.clickAddBtn();
 
         addSliderPage.addSlider(false, true, false, nameEN, nameAR);
-    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -106,7 +107,7 @@ public class Slider_Test extends TestBase {
         addSliderPage.clickAddBtn();
 
         addSliderPage.addSlider(false, false, true, nameEN, nameAR);
-     //   softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        //   softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -136,6 +137,29 @@ public class Slider_Test extends TestBase {
         addSliderOnWeb();
         commonMethods_page.search(nameEN);
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+    }
+
+    // Check slider name english, arabic, display on, status on details
+    //Passed
+    @Test(priority = 9)
+    public void checkSliderDetailsAfterAddSlider() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openSlidersList();
+        addSliderPage.clickAddBtn();
+        addSliderPage.addSlider(false, false, false, nameEN, nameAR);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.table().contains("Active"));
+        commonMethods_page.openDetailsScreen();
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Name EN ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Name AR ").contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Display In ").contains("web"));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Status ").contains("Active"));
+        softAssert.assertAll();
+
     }
 
 }

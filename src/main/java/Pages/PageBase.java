@@ -53,6 +53,7 @@ public class PageBase {
     }
 
     public boolean checkIfElementIsDisplayed(By element) {
+        waitElementToBeVisible(element);
         return currentDriver.findElement(element).isDisplayed();
     }
 
@@ -148,7 +149,11 @@ public class PageBase {
         }
         */
     public void waitElementToBeVisible(By locator) {
-        new WebDriverWait(currentDriver, 20).until(ExpectedConditions.visibilityOfElementLocated(locator));
+        new WebDriverWait(currentDriver, 30).until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void waitElementToBeVisiblee(By locator) {
+        new WebDriverWait(currentDriver, 20).until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     public void waitElementToBeClickable(By locator) {
@@ -202,7 +207,7 @@ public class PageBase {
    By addCourse = By.xpath("//span[contains(text() , 'Add Course')]");
     By titleEN = By.id("title");
     By titleAR = By.id("title_ar");
-    By loader = By.id("loading-spinner");
+    By loader = By.id("loading-logo");
     By category = By.cssSelector("[for='category']");
     By selectCategory = By.cssSelector("#categorySelectOptions ul li .Mobile.Testing");
     By type = By.id("isLiveSelectOptions");

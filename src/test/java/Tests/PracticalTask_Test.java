@@ -94,4 +94,20 @@ public class PracticalTask_Test extends TestBase {
         commonMethods_page.search(nameEN);
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
     }
+
+    // Check details of practical task
+    // Pass // Performance issue while creating
+    @Test
+    public void checkDetailsOfPracticalTask() throws InterruptedException {
+        createPracticalTaskOnOnlineCourse();
+        commonMethods_page.openDetailsScreen();
+        Thread.sleep(4000);
+        softAssert.assertTrue(practicalTaskPage.getQuestionEN().contains(nameEN));
+        softAssert.assertTrue(practicalTaskPage.getQuestionAR().contains(nameAR));
+        softAssert.assertTrue(practicalTaskPage.getCourseEN().contains("AutoOnlineCourse"));
+        softAssert.assertTrue(practicalTaskPage.getCourseAR().contains("AutoOnlineCourse"));
+        softAssert.assertTrue(practicalTaskPage.getSectionEN().contains("SectionOnline"));
+        softAssert.assertTrue(practicalTaskPage.getSectionAR().contains("SectionOnline"));
+        softAssert.assertAll();
+    }
 }

@@ -5,8 +5,7 @@ import org.testng.annotations.Test;
 
 import java.awt.*;
 
-public class Quiz_Test extends TestBase{
-
+public class Quiz_Test extends TestBase {
 
 
     // Create quiz multi selection on online course
@@ -17,9 +16,9 @@ public class Quiz_Test extends TestBase{
         loginPage.loginWithValidData(Email, Password);
         sidePanel_page.openQuizList();
         quizPage.clickAddBtn();
-        quizPage.addNewQuiz(false , nameEN ,nameAR,seoNameEN,seoNameAR,requiredSEONDescEN,requiredSEONDescAR
-        ,nameEN,nameEN,nameEN,nameAR,nameEN,nameEN);
-     //   softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        quizPage.addNewQuiz(false, nameEN, nameAR, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR
+                , nameEN, nameEN, nameEN, nameAR, nameEN, nameEN);
+        //   softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -33,9 +32,9 @@ public class Quiz_Test extends TestBase{
         defineObjects();
         loginPage.loginWithValidData(Email, Password);
         sidePanel_page.openAddQuizSidePanel();
-        quizPage.addNewQuiz(false , nameEN ,nameAR,seoNameEN,seoNameAR,requiredSEONDescEN,requiredSEONDescAR
-                ,nameEN,nameEN,nameEN,nameAR,nameEN,nameEN);
-    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        quizPage.addNewQuiz(false, nameEN, nameAR, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR
+                , nameEN, nameEN, nameEN, nameAR, nameEN, nameEN);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -51,9 +50,9 @@ public class Quiz_Test extends TestBase{
         sidePanel_page.openQuizList();
         quizPage.clickAddBtn();
 
-        quizPage.addNewQuiz(true , nameEN ,nameAR,seoNameEN,seoNameAR,requiredSEONDescEN,requiredSEONDescAR
-                ,nameEN,nameEN,nameEN,nameAR,nameEN,nameEN);
-    //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        quizPage.addNewQuiz(true, nameEN, nameAR, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR
+                , nameEN, nameEN, nameEN, nameAR, nameEN, nameEN);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -65,12 +64,12 @@ public class Quiz_Test extends TestBase{
     @Test(priority = 4)
     public void editQuizMultiSelectionTOLiveCourse() throws InterruptedException, AWTException {
         defineObjects();
-       login();
+        login();
         sidePanel_page.openQuizList();
         quizPage.clickAddBtn();
 
-        quizPage.editNewQuiz(false , nameEN ,nameAR,seoNameEN,seoNameAR,requiredSEONDescEN,requiredSEONDescAR
-                ,nameEN,nameEN,nameEN,nameAR,nameEN,nameEN,EditNameEN,EditNameEN,true,EditNameEN,EditNameAR,EditNameEN,EditNameAR,EditNameEN,EditNameAR);
+        quizPage.editNewQuiz(false, nameEN, nameAR, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR
+                , nameEN, nameEN, nameEN, nameAR, nameEN, nameEN, EditNameEN, EditNameEN, true, EditNameEN, EditNameAR, EditNameEN, EditNameAR, EditNameEN, EditNameAR);
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
         softAssert.assertTrue(commonMethods_page.table().contains(EditNameEN));
         softAssert.assertTrue(commonMethods_page.table().contains(EditNameAR));
@@ -85,8 +84,8 @@ public class Quiz_Test extends TestBase{
         sidePanel_page.openQuizList();
         quizPage.clickAddBtn();
 
-        quizPage.editNewQuiz(true , nameEN ,nameAR,seoNameEN,seoNameAR,requiredSEONDescEN,requiredSEONDescAR
-                ,nameEN,nameEN,nameEN,nameAR,nameEN,nameEN,EditNameEN,EditNameEN,false,EditNameEN,EditNameAR,EditNameEN,EditNameAR,EditNameEN,EditNameAR);
+        quizPage.editNewQuiz(true, nameEN, nameAR, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR
+                , nameEN, nameEN, nameEN, nameAR, nameEN, nameEN, EditNameEN, EditNameEN, false, EditNameEN, EditNameAR, EditNameEN, EditNameAR, EditNameEN, EditNameAR);
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
         softAssert.assertTrue(commonMethods_page.table().contains(EditNameEN));
         softAssert.assertTrue(commonMethods_page.table().contains(EditNameAR));
@@ -120,5 +119,26 @@ public class Quiz_Test extends TestBase{
         createQuizMultiSelectionOnOnlineCourse();
         commonMethods_page.search(nameEN);
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+    }
+
+    // check quiz details
+    // Passed
+    @Test(priority = 9)
+    public void checkQuizDetails() throws InterruptedException, AWTException {
+        defineObjects();
+        loginPage.loginWithValidData(Email, Password);
+        sidePanel_page.openQuizList();
+        quizPage.clickAddBtn();
+        quizPage.addNewQuiz(false, nameEN, nameAR, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR
+                , nameEN, nameEN, nameEN, nameAR, nameEN, nameEN);
+        //   softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        commonMethods_page.openDetailsScreen();
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Title EN ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Title AR ").contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Passing Precentage ").contains("80"));
+        softAssert.assertAll();
     }
 }

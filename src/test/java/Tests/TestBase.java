@@ -5,11 +5,13 @@ import Pages.*;
 import com.github.javafaker.Faker;
 
 
+import com.github.javafaker.Number;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -71,6 +73,9 @@ public class TestBase {
     Add_Consultant_Page addConsultantPage ;
 
     Speciality_Page specialityPage ;
+    Coupons_Page couponsPage ;
+
+    Tasks_Page tasksPage;
 
     Faker fakeData = new Faker();
     String nameEN = fakeData.name().name();
@@ -79,6 +84,8 @@ public class TestBase {
 
     String seoNameEN = fakeData.name().name();
     String seoNameAR = fakeData.name().name();
+
+    Number fakeCode = fakeData.number();
 
     String fakeMail = fakeData.internet().emailAddress();
 
@@ -118,6 +125,8 @@ public class TestBase {
         driver.manage().window().maximize();
 //        driver.manage().timeouts().implicitlyWait(10 , TimeUnit.SECONDS);
         driver.navigate().to("https://devdashboard.nurabi.live/");
+//        JavascriptExecutor jse = (JavascriptExecutor)driver;
+//        jse.executeScript("document.body.style.zoom = '80%';");
     }
 
     @AfterMethod
@@ -143,7 +152,7 @@ public class TestBase {
         } else {
             logger.log(LogStatus.SKIP, " Test Skipped");
         }
-    //    logoutPage.logout();
+        logoutPage.logout();
     //    driver.close();
     }
 
@@ -178,6 +187,8 @@ public class TestBase {
         userPage = new User_Page(driver);
         addConsultantPage =new Add_Consultant_Page(driver);
         specialityPage = new Speciality_Page(driver);
+        couponsPage = new Coupons_Page(driver);
+        tasksPage = new Tasks_Page(driver);
     }
 
     @BeforeClass
@@ -205,5 +216,8 @@ public class TestBase {
         loginPage.loginWithValidData(Email, Password);
     }
 
+    public void loginWithConsultant() throws InterruptedException {
+        loginPage.loginWithValidData("Mm@mm.eee", "155355555");
+    }
 
 }

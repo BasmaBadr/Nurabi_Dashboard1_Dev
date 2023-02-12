@@ -149,4 +149,25 @@ public class Sections_Test extends TestBase {
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
         softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
     }
+
+    // Check details of sections
+    // Passed
+    @Test(priority = 11)
+    public void checkDetailsOfSections() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openSectionsList();
+        sectionsPage.clickAddBtn();
+        sectionsPage.addSection(false, true, nameEN, nameAR, seoNameEN, seoNameAR, requiredLongDesEN, requiredLongDesAR);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        commonMethods_page.openDetailsScreen();
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Title EN ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Title AR ").contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Status ").contains("Active"));
+        softAssert.assertAll();
+
+    }
 }

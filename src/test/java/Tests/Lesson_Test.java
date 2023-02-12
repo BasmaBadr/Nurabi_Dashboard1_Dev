@@ -128,4 +128,23 @@ public class Lesson_Test extends TestBase {
         commonMethods_page.search(nameEN);
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
     }
+
+    // Check lesson details
+    // Pass // Performance issue
+    @Test
+    public void checkLessonDetails() throws InterruptedException, AWTException {
+        createLessonOnOnlineCourseWithPDF();
+        commonMethods_page.openDetailsScreen();
+        Thread.sleep(4000);
+        softAssert.assertTrue(lessonPage.getCourseNameEn().contains(nameEN));
+        softAssert.assertTrue(lessonPage.getCourseNameAr().contains(nameAR));
+        softAssert.assertTrue(lessonPage.getCourseEn().contains("AutoOnlineCourse"));
+        softAssert.assertTrue(lessonPage.getCourseAr().contains("AutoOnlineCourse"));
+        softAssert.assertTrue(lessonPage.getSectionNameEn().contains("SectionOnline"));
+        softAssert.assertTrue(lessonPage.getSectionNameAr().contains("SectionOnline"));
+        softAssert.assertTrue(lessonPage.getContentType().contains("pdf"));
+        softAssert.assertAll();
+    }
+
+
 }

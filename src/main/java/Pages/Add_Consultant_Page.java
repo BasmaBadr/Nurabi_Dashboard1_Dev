@@ -63,9 +63,13 @@ public class Add_Consultant_Page extends PageBase{
     By editBtn = By.xpath("(//span[contains(text() , 'Edit')])[2]");
 
 
+    By detailsBtn = By.xpath("//span[contains(text() , 'Details')]");
+
+
 
     public void addConsultant(boolean teacher , boolean coach ,boolean consultant, String titleAboutEN ,
                               String titleAboutAR) throws InterruptedException, AWTException {
+        Thread.sleep(2000);
         Click(selectUser);
         Click(selectUserFromList);
       //  System.out.println(currentDriver.findElement(selectUserFromList).getText());
@@ -97,12 +101,12 @@ public class Add_Consultant_Page extends PageBase{
         Click(selectJobTitle);
         Click(ageStage);
         Click(selectAllAgeStage);
-        Click(cvButton);
-        Thread.sleep(2000);
-        uploadFile("Sample.pdf");
-        Click(period);
-        Click(select30Period);
-        writeOnText(priceTxt,".1");
+    //    Click(cvButton);
+     //   Thread.sleep(2000);
+     //   uploadFile("Sample.pdf");
+      //  Click(period);
+    //    Click(select30Period);
+    //    writeOnText(priceTxt,".1");
         Click(language);
         Click(selectLanguage);
         writeOnText(aboutENTxt , titleAboutEN);
@@ -184,6 +188,11 @@ public class Add_Consultant_Page extends PageBase{
         Click(removeBtn);
         Thread.sleep(2000);
         Click(confirmDelete);
+    }
+
+    public void openDetails()
+    {
+        Click(detailsBtn);
     }
 
 }

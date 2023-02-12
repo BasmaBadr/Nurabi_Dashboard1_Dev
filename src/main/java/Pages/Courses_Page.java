@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
@@ -9,6 +10,23 @@ public class Courses_Page extends PageBase {
     public Courses_Page(WebDriver driver) {
         super(driver);
     }
+
+    By courseTitleEn = By.id("CourseTitleEn");
+    By courseTitleAr = By.id("CourseTitleAr");
+    By slugDetails = By.id("Slug");
+    By catgegoryEn = By.id("catgegoryEn");
+    By catgegoryAr = By.id("catgegoryAr");
+    By levelDetails = By.id("Level");
+    By statusDetails = By.id("Status");
+    By languageDetails = By.id("Language");
+    By priceDetails = By.id("Price");
+    By surveyDetails = By.id("Survey");
+    By typeDetails = By.id("Type");
+    By descriptionEN = By.id("DescriptionEn");
+    By descriptionAR = By.id("DescriptionAr");
+
+
+
 
 
     public void clickAddBtn() {
@@ -22,7 +40,7 @@ public class Courses_Page extends PageBase {
     ) throws InterruptedException, AWTException {
 
         writeOnText(titleEN, requiredTitleEN + new Random().nextInt(9999));
-        writeOnText(titleAR, requiredTitleAR+ new Random().nextInt(9999));
+        writeOnText(titleAR, requiredTitleAR + new Random().nextInt(9999));
 
         Click(category);
         Click(selectCategory);
@@ -44,7 +62,7 @@ public class Courses_Page extends PageBase {
         Thread.sleep(2000);
         uploadFile("D:\\Photos\\Robin - 21723.mp4");
 */
-        writeOnText(slug, requiredSlug+ new Random().nextInt(9999));
+        writeOnText(slug, requiredSlug + new Random().nextInt(9999));
 
         Click(level);
         Click(selectLevel);
@@ -95,8 +113,8 @@ public class Courses_Page extends PageBase {
         Click(category);
         Click(selectCategory);
 
-        writeOnText(titleEN, editTitleEN+ new Random().nextInt(9999));
-        writeOnText(titleAR, editTitleAR+ new Random().nextInt(9999));
+        writeOnText(titleEN, editTitleEN + new Random().nextInt(9999));
+        writeOnText(titleAR, editTitleAR + new Random().nextInt(9999));
 
 //        if (Live) {
 //            Click(type);
@@ -115,7 +133,7 @@ public class Courses_Page extends PageBase {
         Thread.sleep(2000);
         uploadFile("D:\\Photos\\Robin - 21723.mp4");
 */
-        writeOnText(slug, editSlug+ new Random().nextInt(9999));
+        writeOnText(slug, editSlug + new Random().nextInt(9999));
         Click(level);
         Click(selectLevel);
         if (Drafted) {
@@ -150,6 +168,48 @@ public class Courses_Page extends PageBase {
         Thread.sleep(2000);
         uploadFile("ISTQB.png");
         Click(submitBtn);
+    }
+
+    public String getCourseTitleEN()
+    {
+        return getText(courseTitleEn);
+    }
+    public String getCourseTitleAR()
+    {
+        return getText(courseTitleAr);
+    }    public String slugDetails()
+    {
+        return getText(slugDetails);
+    }    public String getCategoryEN()
+    {
+        return getText(catgegoryEn);
+    }    public String getCategoryAR()
+    {
+        return getText(catgegoryAr);
+    }    public String getLevel()
+    {
+        return getText(levelDetails);
+    }    public String getStatusDetails()
+    {
+        return getText(statusDetails);
+    }    public String getLanguageDetails()
+    {
+        return getText(languageDetails);
+    }    public String getPrice()
+    {
+        return getText(priceDetails);
+    }    public String getSurvey()
+    {
+        return getText(surveyDetails);
+    }    public String getType()
+    {
+        return getText(typeDetails);
+    }    public String getDescriptionEN()
+    {
+        return getText(descriptionEN);
+    }    public String getDescriptionAR()
+    {
+        return getText(descriptionAR);
     }
 
 }

@@ -139,4 +139,28 @@ public class Courses_Test extends TestBase {
 
     }
 
+    // Check course details
+    // Passed
+    @Test(priority = 9)
+    public void verifyDetailsOfCourse() throws InterruptedException, AWTException {
+        createCourseOnlineFreePublished();
+        commonMethods_page.openDetailsScreen();
+        Thread.sleep(3000);
+
+        softAssert.assertTrue(coursesPage.getCourseTitleEN().contains(nameEN));
+        softAssert.assertTrue(coursesPage.getCourseTitleAR().contains(nameAR));
+        softAssert.assertTrue(coursesPage.slugDetails().contains(slugName));
+        softAssert.assertTrue(coursesPage.getCategoryEN().contains("Mobile Testing"));
+        softAssert.assertTrue(coursesPage.getCategoryAR().contains("موبايل تستنج"));
+        softAssert.assertTrue(coursesPage.getLevel().contains("All"));
+        softAssert.assertTrue(coursesPage.getStatusDetails().contains("Published"));
+        softAssert.assertTrue(coursesPage.getLanguageDetails().contains("English"));
+        softAssert.assertTrue(coursesPage.getPrice().contains("Free"));
+//      //  softAssert.assertTrue(coursesPage.getSurvey().contains("dcd"));
+        softAssert.assertTrue(coursesPage.getType().contains("Online"));
+        softAssert.assertTrue(coursesPage.getDescriptionEN().contains(requiredLongDesEN));
+        softAssert.assertTrue(coursesPage.getDescriptionAR().contains(requiredLongDesAR));
+        softAssert.assertAll();
+    }
+
 }

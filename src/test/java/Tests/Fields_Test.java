@@ -165,4 +165,26 @@ public class Fields_Test extends TestBase {
 
  */
 
+    // Check fields details
+    // Passed
+    @Test(priority = 8)
+    public void checkFieldsDetails() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openFieldsList();
+        fields_page.clickAddBtn();
+        fields_page.createParentFieldWithValidData(true, true, nameEN, nameAR, requiredSEONameEN,
+                requiredSEONameAR, requiredSEODescEN, requiredSEODescAR);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.table().contains("Published"));
+        commonMethods_page.openDetailsScreen();
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Name EN ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Name AR ").contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Status ").contains("Published"));
+        softAssert.assertAll();
+
+    }
 }

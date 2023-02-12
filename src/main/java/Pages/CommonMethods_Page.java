@@ -1,11 +1,10 @@
 package Pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +19,8 @@ public class CommonMethods_Page extends PageBase {
     By details = By.cssSelector(".b-dropdown.show ul li:nth-child(1) span");
     By edit = By.cssSelector(".b-dropdown.show ul li:nth-child(2) span");
     By delete = By.cssSelector(".b-dropdown.show ul li:nth-child(3) span");
+    By assignUser = By.cssSelector(".b-dropdown.show ul li:nth-child(4) span");
+
 
     By confirmDelete = By.cssSelector(".modal-footer .btn-primary");
     By rejectDelete = By.cssSelector(".modal-footer .btn-outline-secondary");
@@ -40,6 +41,11 @@ public class CommonMethods_Page extends PageBase {
         Click(optionList);
         waitElementToBeVisible(edit);
         Click(edit);
+    }
+    public void openAssignUser() {
+        Click(optionList);
+        waitElementToBeVisible(assignUser);
+        Click(assignUser);
     }
 
     public void delete() throws InterruptedException {
@@ -84,14 +90,38 @@ public class CommonMethods_Page extends PageBase {
         waitElementToBeVisible(optionList);
         WebElement table = currentDriver.findElement(By.cssSelector("[role = 'table']"));
         List<WebElement> rows = table.findElements(By.tagName("tr"));
-        System.out.println("size is " +rows.size());
-        int size= rows.size();
-        String  firstRow = rows.get(1).getText();
+        System.out.println("size is " + rows.size());
+        int size = rows.size();
+        String firstRow = rows.get(1).getText();
         System.out.println("first row name is " + firstRow);
 
         return firstRow;
 
     }
+
+
+    public String assertValidationText(String fullValidationMessage) throws InterruptedException {
+        Thread.sleep(4000);
+     //   waitElementToBeUnVisible(loader);
+//        WebDriverWait wait = new WebDriverWait(currentDriver, 10);
+//        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text() ,'" + fullValidationMessage + "')]/following-sibling::div")));
+        System.out.println(getText(By.xpath("//*[contains(text() ,'" + fullValidationMessage + "')]/following-sibling::div")));
+       return getText(By.xpath("//*[contains(text() ,'" + fullValidationMessage + "')]/following-sibling::div"));
+
+
+   /*         try {
+
+
+                return checkIfElementIsDisplayed(By.xpath("//*[contains(text() ,'" + fullValidationMessage + "')]/following-sibling::div"));
+                //  return checkIfElementIsDisplayed(By.xpath("//*[text()='" + fullValidationMessage + "']"));
+
+            } catch (Exception e) {
+                //     System.err.println("The error is ==>  " + e.getMessage());
+                return false;
+            }
+    }*/
+    }
 }
+
 
 

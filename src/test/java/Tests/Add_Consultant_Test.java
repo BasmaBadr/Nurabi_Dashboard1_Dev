@@ -5,20 +5,20 @@ import org.testng.annotations.Test;
 
 import java.awt.*;
 
-public class Add_Consultant_Test extends TestBase{
+public class Add_Consultant_Test extends TestBase {
 
 
     // Add consultant
     // Passed
 
-    @Test
+    @Test(priority = 1)
     public void checkAbilityToAddConsultant() throws InterruptedException, AWTException {
         defineObjects();
         login();
         sidePanel_page.openAddConsultant();
-        addConsultantPage.addConsultant(false,false,true, nameEN+"Lorem ipsum dolor sit amet, consectetuer adipiscin ",
-                nameAR+"Lorem ipsum dolor sit amet, consectetuer adipiscin");
-    //    Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        addConsultantPage.addConsultant(false, false, true, nameEN + "Lorem ipsum dolor sit amet, consectetuer adipiscin ",
+                nameAR + "Lorem ipsum dolor sit amet, consectetuer adipiscin");
+        //    Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
     }
@@ -27,14 +27,14 @@ public class Add_Consultant_Test extends TestBase{
     // Add teacher
     // Passed
 
-    @Test
+    @Test(priority = 2)
     public void checkAbilityToAddTeacher() throws InterruptedException, AWTException {
         defineObjects();
         login();
         sidePanel_page.openAddConsultant();
-        addConsultantPage.addConsultant(true,false,false, nameEN+"Lorem ipsum dolor sit amet, consectetuer adipiscin ",
-                nameAR+"Lorem ipsum dolor sit amet, consectetuer adipiscin");
-    //    Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        addConsultantPage.addConsultant(true, false, false, nameEN + "Lorem ipsum dolor sit amet, consectetuer adipiscin ",
+                nameAR + "Lorem ipsum dolor sit amet, consectetuer adipiscin");
+        //    Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
     }
@@ -42,21 +42,21 @@ public class Add_Consultant_Test extends TestBase{
     // add coach
     // Passed
 
-    @Test
+    @Test(priority = 3)
     public void checkAbilityToAddCoach() throws InterruptedException, AWTException {
         defineObjects();
         login();
         sidePanel_page.openAddConsultant();
-        addConsultantPage.addConsultant(false,true,false, nameEN+"Lorem ipsum dolor sit amet, consectetuer adipiscin ",
-                nameAR+"Lorem ipsum dolor sit amet, consectetuer adipiscin");
-    //    Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        addConsultantPage.addConsultant(false, true, false, nameEN + "Lorem ipsum dolor sit amet, consectetuer adipiscin ",
+                nameAR + "Lorem ipsum dolor sit amet, consectetuer adipiscin");
+        //    Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
     }
 
     // Search by user name
     // Passed
-    @Test
+    @Test(priority = 4)
     public void checkAbilityToSearchByUserName() throws InterruptedException, AWTException {
         defineObjects();
         login();
@@ -67,15 +67,15 @@ public class Add_Consultant_Test extends TestBase{
 
     // Delete consultants
     //
-    @Test
+    @Test(priority = 5)
     public void checkAbilityToRemoveConsultant() throws InterruptedException, AWTException {
         defineObjects();
         login();
         sidePanel_page.openAddConsultant();
-        addConsultantPage.addConsultant(false,false,true,
-                nameEN+"Lorem ipsum dolor sit amet, consectetuer adipiscin ",
-                nameAR+"Lorem ipsum dolor sit amet, consectetuer adipiscin");
-    //    Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        addConsultantPage.addConsultant(false, false, true,
+                nameEN + "Lorem ipsum dolor sit amet, consectetuer adipiscin ",
+                nameAR + "Lorem ipsum dolor sit amet, consectetuer adipiscin");
+        //    Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         addConsultantPage.removeConsultants();
@@ -83,15 +83,38 @@ public class Add_Consultant_Test extends TestBase{
     }
 
     // Edit consultant user | Type | Field | Speciality | Job title | Price |About
-    @Test
+    @Test(priority = 6)
     public void checkAbilityToEditConsultant() throws InterruptedException, AWTException {
         defineObjects();
         login();
         sidePanel_page.openAddConsultant();
-        addConsultantPage.editConsultant(false,false,true,
-                nameEN+"Lorem ipsum dolor sit amet, consectetuer adipiscin ",
-                nameAR+"Lorem ipsum dolor sit amet, consectetuer adipiscin",true,false,false,nameEN,nameAR);
+        addConsultantPage.editConsultant(false, false, true,
+                nameEN + "Lorem ipsum dolor sit amet, consectetuer adipiscin ",
+                nameAR + "Lorem ipsum dolor sit amet, consectetuer adipiscin", true, false, false, nameEN, nameAR);
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
+
+    }
+
+    // Check consultant details
+    //
+
+    @Test(priority = 7)
+    public void checkConsultantDetails() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openAddConsultant();
+        addConsultantPage.addConsultant(false, false, true, nameEN + "Lorem ipsum dolor sit amet, consectetuer adipiscin ",
+                nameAR + "Lorem ipsum dolor sit amet, consectetuer adipiscin");
+        //    Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        addConsultantPage.openDetails();
+        //  softAssert.assertTrue(commonMethods_page.assertValidationText(" Email ").contains(nameEN));
+        //  softAssert.assertTrue(commonMethods_page.assertValidationText(" Phone ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Type ").contains("Consultant"));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Languages ").contains("English"));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" About EN ").contains("Lorem ipsum dolor sit amet, consectetuer adipiscin"));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" About AR ").contains("Lorem ipsum dolor sit amet, consectetuer adipiscin"));
+        softAssert.assertAll();
 
     }
 

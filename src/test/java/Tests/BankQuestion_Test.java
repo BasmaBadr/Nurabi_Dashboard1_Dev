@@ -16,8 +16,8 @@ public class BankQuestion_Test extends TestBase {
         login();
         sidePanel_page.openAdminList();
         bankQuestionPage.clickAddBrn();
-        bankQuestionPage.addQuestionFromAdmin(nameEN, nameAR, nameEN, nameAR,true, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR);
-      //  Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        bankQuestionPage.addQuestionFromAdmin(nameEN, nameAR, nameEN, nameAR, true, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR);
+        //  Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -31,8 +31,8 @@ public class BankQuestion_Test extends TestBase {
         defineObjects();
         login();
         sidePanel_page.openAddAdminSidePanel();
-        bankQuestionPage.addQuestionFromAdmin(nameEN, nameAR, nameEN, nameAR,true, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR);
-      //  Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        bankQuestionPage.addQuestionFromAdmin(nameEN, nameAR, nameEN, nameAR, true, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR);
+        //  Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -49,8 +49,8 @@ public class BankQuestion_Test extends TestBase {
         sidePanel_page.openAdminList();
         bankQuestionPage.clickAddBrn();
 
-        bankQuestionPage.editQuestionFromAdmin(nameEN, nameAR, nameEN, nameAR,true, seoNameEN, seoNameAR,
-                requiredSEONDescEN, requiredSEONDescAR,EditNameEN,EditNameAR,EditNameEN,EditNameAR,true);
+        bankQuestionPage.editQuestionFromAdmin(nameEN, nameAR, nameEN, nameAR, true, seoNameEN, seoNameAR,
+                requiredSEONDescEN, requiredSEONDescAR, EditNameEN, EditNameAR, EditNameEN, EditNameAR, true);
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
         softAssert.assertTrue(commonMethods_page.table().contains(EditNameEN));
         softAssert.assertTrue(commonMethods_page.table().contains(EditNameAR));
@@ -64,6 +64,29 @@ public class BankQuestion_Test extends TestBase {
         commonMethods_page.search(nameEN);
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
 
+    }
+
+    // Check bank question details
+    // Passed
+    @Test(priority = 5)
+    public void checkBankQuestionDetails() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openAdminList();
+        bankQuestionPage.clickAddBrn();
+        bankQuestionPage.addQuestionFromAdmin(nameEN, nameAR, nameEN, nameAR, true, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR);
+        //  Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        commonMethods_page.openDetailsScreen();
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Question EN ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Question AR ").contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Answer EN ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Answer AR ").contains(nameAR));
+        //    softAssert.assertTrue(commonMethods_page.assertValidationText(" Title EN ").contains(nameEN));
+        //    softAssert.assertTrue(commonMethods_page.assertValidationText(" Title EN ").contains(nameEN));
+        softAssert.assertAll();
     }
 
 }

@@ -17,7 +17,7 @@ public class Categories_Test extends TestBase {
         sidePanel_page.openCategoriesList();
         categoriesPage.clickAdd();
         categoriesPage.addActiveCategory(nameEN, nameAR, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR);
-     //   softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        //   softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -33,7 +33,7 @@ public class Categories_Test extends TestBase {
         login();
         sidePanel_page.openAddCategoriesSidePanel();
         categoriesPage.addActiveCategory(nameEN, nameAR, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR);
-     //   softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        //   softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
 
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
@@ -51,7 +51,7 @@ public class Categories_Test extends TestBase {
 
         categoriesPage.editActiveCategory(nameEN, nameAR, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR, EditNameEN, EditNameAR);
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
-        
+
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
         softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
     }
@@ -64,5 +64,25 @@ public class Categories_Test extends TestBase {
         commonMethods_page.search(nameEN);
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
 
+    }
+
+    // Check categories details
+    // Passed
+    @Test(priority = 5)
+    public void checkCategoriesDetails() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openCategoriesList();
+        categoriesPage.clickAdd();
+        categoriesPage.addActiveCategory(nameEN, nameAR, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR);
+        //   softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
+        commonMethods_page.openDetailsScreen();
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Name EN ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Name AR ").contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Status ").contains("Active"));
+        softAssert.assertAll();
     }
 }
