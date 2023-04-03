@@ -3,6 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Currencies_Page extends PageBase{
@@ -31,8 +32,8 @@ public class Currencies_Page extends PageBase{
     }
     public void addCurrency(String Name ,String code , String symbol)
     {
-        writeOnText(nameENTxt , Name);
-        writeOnText(codeTXT , code);
+        writeOnText(nameENTxt , Name+new Random().nextInt(9999));
+        writeOnText(codeTXT , code+new Random().nextInt(9999));
         writeOnText(symbolTXT , symbol);
         Click(submitBtn);
     }

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.awt.*;
+import java.util.Random;
 
 public class TrackingSystem_Page extends PageBase {
     public TrackingSystem_Page(WebDriver driver) {
@@ -73,16 +74,24 @@ public class TrackingSystem_Page extends PageBase {
         //   selectByVisibleTXT(introPathParent , "Image");
         if (image) {
             Click(selectImage);
+            Thread.sleep(2000);
+            Click(introEN);
+            uploadFile("ISTQB.png");
+            Click(introAR);
+            Thread.sleep(2000);
+            uploadFile("ISTQB.png");
         }
-        Click(introEN);
-        Thread.sleep(2000);
-        uploadFile("ISTQB.png");
-        Click(introAR);
-        Thread.sleep(2000);
-        uploadFile("ISTQB.png");
+        else {
+            Click(introEN);
+            Thread.sleep(2000);
+            uploadFile("Video.mp4");
+            Click(introAR);
+            Thread.sleep(2000);
+            uploadFile("Video.mp4");
+        }
 
-        writeOnText(nameENTxt, requiredNameEN);
-        writeOnText(nameARTxt, requiredNameAR);
+        writeOnText(nameENTxt, requiredNameEN + new Random().nextInt(9999));
+        writeOnText(nameARTxt, requiredNameAR + new Random().nextInt(9999));
         Click(imageEN);
         Thread.sleep(2000);
         uploadFile("ISTQB.png");
@@ -185,3 +194,4 @@ public class TrackingSystem_Page extends PageBase {
     }
 
 }
+

@@ -31,10 +31,11 @@ public class Coupons_Page extends PageBase {
         Click(addCouponBtn);
     }
 
-    public void createCoupon(String nameEN, String descTXT,boolean active,boolean amount) {
+    public void createCoupon(String nameEN, String descTXT,boolean active,boolean amount) throws InterruptedException {
         writeOnText(nameENTxt, nameEN + new Random().nextInt(9999));
         writeOnText(descriptionENTxt, descTXT);
         if (active) {
+            Thread.sleep(3000);
             Click(status);
             Click(statusActive);
         }

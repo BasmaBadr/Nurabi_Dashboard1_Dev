@@ -155,7 +155,19 @@ public class Activity_Test extends TestBase {
     // Delete daily activity
     @Test(priority = 8)
     public void verifyDeleteDailyActivity() throws InterruptedException, AWTException {
-        createDailyActivityWithValidData();
+        defineObjects();
+        login();
+        sidePanel_page.openActivityList();
+        activity_page.clickAddBtn();
+        activity_page.createActivityWithValidData(true, false, false, false, false, nameEN, nameAR,
+                requiredShortDesEN, requiredShortDesAR,
+                requiredLongDesEN, requiredLongDesAR);
+        //   Assert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        //    Assert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        //     Assert.assertTrue(commonMethods_page.table().contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
         commonMethods_page.delete();
         //    Assert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));

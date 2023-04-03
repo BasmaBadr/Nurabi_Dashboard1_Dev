@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 public class Initiative_Page extends PageBase {
     public Initiative_Page(WebDriver driver) {
@@ -85,8 +86,8 @@ public class Initiative_Page extends PageBase {
         Thread.sleep(2000);
         uploadFile("ISTQB.png");
 
-        writeOnText(nameEN, requiredNameEN);
-        writeOnText(nameAR, requiredNameAR);
+        writeOnText(nameEN, requiredNameEN+new Random().nextInt(9999));
+        writeOnText(nameAR, requiredNameAR+new Random().nextInt(9999));
         waitElementToBeUnVisible(loader);
 
 

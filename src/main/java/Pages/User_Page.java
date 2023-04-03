@@ -3,7 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
+import java.util.Random;
 
 public class User_Page extends PageBase {
     public User_Page(WebDriver driver) {
@@ -21,11 +21,17 @@ public class User_Page extends PageBase {
     By selectAdminRole = By.cssSelector("#roleSelectOptions ul li .User_Module_Role");
     By selectUserRole = By.cssSelector("#roleSelectOptions ul li .User");
 
+    By username = By.id("username");
+    By role = By.id("role");
+    By language = By.id("language");
+    By gender = By.id("gender");
+
+
 
     public void addUser(boolean user, String nameEN, String passwordEN, String emailUser) {
         writeOnText(name, nameEN);
         writeOnText(password, passwordEN);
-        writeOnText(email, emailUser);
+        writeOnText(email, emailUser+ new Random().nextInt(9999));
         Click(birthDateIcon);
         Click(selectCurrentDate);
         Click(languageList);
@@ -44,9 +50,26 @@ public class User_Page extends PageBase {
     public void editUser(String nameENEdit) throws InterruptedException {
         openEditScreen();
         waitElementToBeUnVisible(loader);
-        Thread.sleep(2000);
+        Thread.sleep(4000);
         clear(name);
         writeOnText(name, nameENEdit);
         Click(submitBtn);
+    }
+
+    public String getUserName()
+    {
+        return getText(username);
+    }
+    public String getRole()
+    {
+        return getText(role);
+    }
+    public String getLanguage()
+    {
+        return getText(language);
+    }
+    public String getGender()
+    {
+        return getText(gender);
     }
 }

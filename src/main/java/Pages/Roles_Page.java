@@ -72,6 +72,7 @@ public class Roles_Page extends PageBase{
         Thread.sleep(2000);
         clear(nameENTxt);
         writeOnText(nameENTxt , nameENEdit+  new Random().nextInt(9999));
+        Thread.sleep(2000);
         Click(submitBtn);
     }
 

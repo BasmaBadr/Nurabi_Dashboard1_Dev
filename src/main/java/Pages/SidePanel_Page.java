@@ -452,4 +452,53 @@ public class SidePanel_Page extends PageBase {
         Click(addTab);
 
     }
+
+    By adsTab = By.id("ads");
+    By adsList = By.id("apps-ads-list");
+    By adsAdd = By.id("apps-ads-add");
+
+    public void openAdsList()
+    {
+        waitElementToBeVisible(adsTab);
+        Click(adsTab);
+        scrollToElement(adsList);
+        waitElementToBeVisible(adsList);
+        Click(adsList);
+    }
+
+    public void openAdsAdd()
+    {
+        waitElementToBeVisible(adsTab);
+        Click(adsTab);
+        scrollToElement(adsAdd);
+        waitElementToBeVisible(adsAdd);
+        Click(adsAdd);
+    }
+
+    By storiesTab = By.id("stories");
+    By adminListTab = By.id("apps-story-admin-list");
+    By usersListTab = By.id("apps-story-users-list");
+    By addStoryTab = By.id("apps-story-add");
+
+    public void openAdminListTab()
+    {
+        waitElementToBeVisible(adsTab);
+        scrollToElement(adsTab);
+        Click(storiesTab);
+        scrollToElement(adminListTab);
+        Click(adminListTab);
+    }
+
+    public void openAddStoryTab()
+    {
+        waitElementToBeVisible(adsTab);
+        scrollToElement(adsTab);
+        Click(storiesTab);
+        scrollToElement(adminListTab);
+        scrollToElement(usersListTab);
+
+        scrollToElement(addStoryTab);
+        Click(addStoryTab);
+    }
+
 }

@@ -11,6 +11,8 @@ public class Courses_Test extends TestBase {
     // Create online , free , published  course with all valid data
     // Passed
     @Test(priority = 1)
+
+
     public void createCourseOnlineFreePublished() throws InterruptedException, AWTException {
         defineObjects();
         login();

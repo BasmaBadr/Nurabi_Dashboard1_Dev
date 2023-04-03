@@ -137,6 +137,7 @@ public class Courses_Page extends PageBase {
         Click(level);
         Click(selectLevel);
         if (Drafted) {
+
             Click(status);
             Click(selectDrafted);
         }

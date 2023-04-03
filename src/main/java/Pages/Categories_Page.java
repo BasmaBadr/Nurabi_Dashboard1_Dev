@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Categories_Page extends PageBase {
     public Categories_Page(WebDriver driver) {
@@ -24,8 +25,8 @@ public class Categories_Page extends PageBase {
     }
     public void addActiveCategory(String NameEN, String NameAR, String requiredSEONameEN, String requiredSEONameAR
             , String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
-        writeOnText(nameEN, NameEN);
-        writeOnText(nameAR, NameAR);
+        writeOnText(nameEN, NameEN+new Random().nextInt(9999));
+        writeOnText(nameAR, NameAR+new Random().nextInt(9999));
 
         writeOnText(seoNameENTxt, requiredSEONameEN);
 

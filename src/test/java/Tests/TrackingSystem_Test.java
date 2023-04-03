@@ -16,7 +16,6 @@ public class TrackingSystem_Test extends TestBase {
     String requiredSEONameAR = "Tracking SEOAR Automation";
     String requiredSEONDescEN = "Tracking SEODescEN Automation";
     String requiredSEONDescAR = "Tracking SEODescAR Automation";
-    String imagePath = "D:\\Photos\\ISTQB.png";
     String videoPath = "D:\\Photos\\Robin - 21723.mp4";
     String requiredDurationEdit = "38" ;
 
@@ -131,6 +130,9 @@ public class TrackingSystem_Test extends TestBase {
         ,requiredLongDesAR,requiredDuration,nameEN,nameAR,requiredSEONDescEN,requiredSEONDescAR
         ,EditNameEN , EditNameAR , true , true ,true,requiredDurationEdit);
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
+
+
+
         softAssert.assertTrue(commonMethods_page.table().contains(EditNameEN));
         softAssert.assertTrue(commonMethods_page.table().contains(EditNameAR));
         softAssert.assertTrue(commonMethods_page.table().contains("Drafted"));
@@ -185,6 +187,7 @@ public class TrackingSystem_Test extends TestBase {
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Free"));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Published"));
         commonMethods_page.openDetailsScreen();
+        System.out.println(nameEN);
         softAssert.assertTrue(commonMethods_page.assertValidationText(" Name EN ").contains(nameEN));
         softAssert.assertTrue(commonMethods_page.assertValidationText(" Name AR ").contains(nameAR));
         softAssert.assertTrue(commonMethods_page.assertValidationText(" Short Description EN ").contains(requiredShortDesEN));

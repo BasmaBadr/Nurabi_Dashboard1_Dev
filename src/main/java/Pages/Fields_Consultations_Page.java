@@ -3,6 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Fields_Consultations_Page extends PageBase {
@@ -20,8 +21,8 @@ public class Fields_Consultations_Page extends PageBase {
     }
     public void addConsultantField(String TitleEN , String TitleAR)
     {
-        writeOnText(titleEN , TitleEN);
-        writeOnText(titleAR , TitleAR);
+        writeOnText(titleEN , TitleEN+new Random().nextInt(9999));
+        writeOnText(titleAR , TitleAR+new Random().nextInt(9999));
         Click(submitBtn);
     }
 
@@ -33,8 +34,8 @@ public class Fields_Consultations_Page extends PageBase {
         clear(titleEN);
         clear(titleAR);
 
-        writeOnText(titleEN , TitleENEdit);
-        writeOnText(titleAR , TitleAREdit);
+        writeOnText(titleEN , TitleENEdit+new Random().nextInt(9999));
+        writeOnText(titleAR , TitleAREdit+new Random().nextInt(9999));
         Click(submitBtn);
     }
 

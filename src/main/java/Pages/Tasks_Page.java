@@ -32,7 +32,7 @@ public class Tasks_Page extends PageBase {
     // By tasks = By.id("tasks");
 
     By userList = By.id("typeSelectOptions");
-    By selectUser = By.id("#typeSelectOptions ul li .Childdddd");
+    By selectUser = By.cssSelector("#typeSelectOptions ul li .Childdddd");
     By childList = By.id("childSelectOptions");
     By selectChild = By.cssSelector("#childSelectOptions ul li:nth-child(1) span");
 
@@ -74,6 +74,7 @@ public class Tasks_Page extends PageBase {
     , String taskNameAREdit) throws InterruptedException, AWTException {
         addTask(taskNameEN, taskNameAR, shoreDesEN,
                 shoreDesAR, longDesEN, longDesAR);
+        openEditScreen();
         Thread.sleep(2000);
         clear(nameEN);
         writeOnText(nameEN, taskNameENEdit + new Random().nextInt(9999));
@@ -92,14 +93,14 @@ public class Tasks_Page extends PageBase {
         Click(addAttachment);
         Thread.sleep(2000);
         Click(attachmentEN);
-        uploadFile("ISTQB.png");
+        uploadFile("Sample.pdf");
         Click(attachmentAR);
-       // uploadFile("ISTQB.png");
+        uploadFile("Sample.pdf");
         Click(submitBtn);
     }
 
-    public void assignTaskToUser()
-    {
+    public void assignTaskToUser() throws InterruptedException {
+        Thread.sleep(3000);
         Click(userList);
         Click(selectUser);
         Click(childList);

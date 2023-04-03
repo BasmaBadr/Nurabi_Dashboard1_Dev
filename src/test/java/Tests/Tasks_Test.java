@@ -9,7 +9,7 @@ public class Tasks_Test extends TestBase {
 
 
     // Create task from my tasks list with quiz | proof | attachment
-    @Test
+    @Test(priority = 1)
     public void checkAbilityToAddTask() throws InterruptedException, AWTException {
         defineObjects();
         loginWithConsultant();
@@ -23,7 +23,7 @@ public class Tasks_Test extends TestBase {
     }
 
     // Create task from add task yab with quiz | proof | attachment
-    @Test
+    @Test(priority = 2)
     public void checkAbilityToAddTaskFromAddTaskTab() throws InterruptedException, AWTException {
         defineObjects();
         loginWithConsultant();
@@ -35,7 +35,7 @@ public class Tasks_Test extends TestBase {
     }
 
     // Check ability to search task
-    @Test
+    @Test(priority = 3)
     public void checkAbilityToSearchTask() throws InterruptedException, AWTException {
         defineObjects();
         loginWithConsultant();
@@ -49,7 +49,7 @@ public class Tasks_Test extends TestBase {
     }
 
     // Check ability to delete task
-    @Test
+    @Test(priority = 4)
     public void checkAbilityToDeleteTask() throws InterruptedException, AWTException {
         defineObjects();
         loginWithConsultant();
@@ -63,7 +63,8 @@ public class Tasks_Test extends TestBase {
     }
 
     // Check tasks details
-    @Test
+    // Pass
+    @Test(priority = 5)
     public void checkTasksDetails() throws InterruptedException, AWTException {
         defineObjects();
         loginWithConsultant();
@@ -73,19 +74,20 @@ public class Tasks_Test extends TestBase {
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
         commonMethods_page.openDetailsScreen();
         softAssert.assertTrue(commonMethods_page.assertValidationText(" Name EN ").contains(nameEN));
-        softAssert.assertTrue(commonMethods_page.assertValidationText(" Name AR ").contains(nameEN));
-        softAssert.assertTrue(commonMethods_page.assertValidationText(" Duration ").contains(nameEN));
-        softAssert.assertTrue(commonMethods_page.assertValidationText(" Short Description EN ").contains(nameEN));
-        softAssert.assertTrue(commonMethods_page.assertValidationText(" Short Description AR ").contains(nameEN));
-        softAssert.assertTrue(commonMethods_page.assertValidationText(" Long Description EN ").contains(nameEN));
-        softAssert.assertTrue(commonMethods_page.assertValidationText(" Long Description AR ").contains(nameEN));
-        softAssert.assertTrue(commonMethods_page.assertValidationText(" Quiz ").contains(nameEN));
-        softAssert.assertTrue(commonMethods_page.assertValidationText(" Prof ").contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Name AR ").contains(nameAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Duration ").contains("365 Days"));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Short Description EN ").contains(requiredShortDesEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Short Description AR ").contains(requiredShortDesAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Long Description EN ").contains(requiredLongDesEN));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Long Description AR ").contains(requiredLongDesAR));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Quiz ").contains("The only way"));
+        softAssert.assertTrue(commonMethods_page.assertValidationText(" Prof ").contains("Yes"));
         softAssert.assertAll();
     }
 
     // Check ability to edit task
-    @Test
+    // Pass
+    @Test(priority = 6)
     public void checkAbilityToEditTask() throws InterruptedException, AWTException {
         defineObjects();
         loginWithConsultant();
@@ -98,7 +100,9 @@ public class Tasks_Test extends TestBase {
     }
 
     // Verify ability to assign task to user
-    @Test
+    // Pass
+
+    @Test(priority = 7)
     public void assignTaskToUser() throws InterruptedException, AWTException {
         defineObjects();
         loginWithConsultant();

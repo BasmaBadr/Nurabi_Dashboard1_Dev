@@ -66,7 +66,7 @@ public class BankQuestion_Test extends TestBase {
 
     }
 
-    // Check bank question details
+    // Check bank question detailsCheck bank question details
     // Passed
     @Test(priority = 5)
     public void checkBankQuestionDetails() throws InterruptedException, AWTException {

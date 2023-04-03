@@ -54,7 +54,7 @@ public class Add_Consultant_Test extends TestBase {
 
     }
 
-    // Search by user name
+    // Search by username
     // Passed
     @Test(priority = 4)
     public void checkAbilityToSearchByUserName() throws InterruptedException, AWTException {
@@ -83,11 +83,13 @@ public class Add_Consultant_Test extends TestBase {
     }
 
     // Edit consultant user | Type | Field | Speciality | Job title | Price |About
+    // Issue
     @Test(priority = 6)
     public void checkAbilityToEditConsultant() throws InterruptedException, AWTException {
         defineObjects();
         login();
         sidePanel_page.openAddConsultant();
+
         addConsultantPage.editConsultant(false, false, true,
                 nameEN + "Lorem ipsum dolor sit amet, consectetuer adipiscin ",
                 nameAR + "Lorem ipsum dolor sit amet, consectetuer adipiscin", true, false, false, nameEN, nameAR);

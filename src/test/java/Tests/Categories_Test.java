@@ -60,7 +60,16 @@ public class Categories_Test extends TestBase {
     // Passed
     @Test(priority = 4)
     public void verifySearchByNameEN() throws InterruptedException, AWTException {
-        createActiveCategory();
+        defineObjects();
+        login();
+        sidePanel_page.openCategoriesList();
+        categoriesPage.clickAdd();
+        categoriesPage.addActiveCategory(nameEN, nameAR, seoNameEN, seoNameAR, requiredSEONDescEN, requiredSEONDescAR);
+        //   softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
         commonMethods_page.search(nameEN);
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
 

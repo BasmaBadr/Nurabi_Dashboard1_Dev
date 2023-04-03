@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Certificate_Page extends PageBase {
     public Certificate_Page(WebDriver driver) {
@@ -25,7 +26,7 @@ public class Certificate_Page extends PageBase {
         Click(image);
         Thread.sleep(2000);
         uploadFile("ISTQB.png");
-        writeOnText(nameENTxt, NameEN);
+        writeOnText(nameENTxt, NameEN+new Random().nextInt(9999));
 
 
         writeOnText(seoNameENTxt, requiredSEONameEN);

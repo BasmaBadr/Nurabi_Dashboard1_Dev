@@ -107,7 +107,16 @@ public class Sections_Test extends TestBase {
     // Verify Ability To Delete online Section
     @Test(priority = 7)
     public void verifyAbilityToDeleteOnlineSection() throws InterruptedException, AWTException {
-        createActiveSectionsOnLiveCourseWithAllValidData();
+        defineObjects();
+        login();
+        sidePanel_page.openSectionsList();
+        sectionsPage.clickAddBtn();
+        sectionsPage.addSection(false, true, nameEN, nameAR, seoNameEN, seoNameAR, requiredLongDesEN, requiredLongDesAR);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
         commonMethods_page.delete();
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
         Thread.sleep(3000);
@@ -118,7 +127,16 @@ public class Sections_Test extends TestBase {
     // Verify Ability To Delete live Section
     @Test(priority = 8)
     public void verifyAbilityToDeleteLiveSection() throws InterruptedException, AWTException {
-        createActiveSectionsOnLiveCourseWithAllValidData();
+        defineObjects();
+        login();
+        sidePanel_page.openSectionsList();
+        sectionsPage.clickAddBtn();
+        sectionsPage.addSection(false, true, nameEN, nameAR, seoNameEN, seoNameAR, requiredLongDesEN, requiredLongDesAR);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
         commonMethods_page.delete();
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
         Thread.sleep(3000);
@@ -130,7 +148,16 @@ public class Sections_Test extends TestBase {
     // Passed
     @Test(priority = 9)
     public void verifySearchByNameEN() throws InterruptedException, AWTException {
-        createActiveSectionsOnOnlineCourseWithAllValidData();
+        defineObjects();
+        login();
+        sidePanel_page.openSectionsList();
+        sectionsPage.clickAddBtn();
+        sectionsPage.addSection(false, true, nameEN, nameAR, seoNameEN, seoNameAR, requiredLongDesEN, requiredLongDesAR);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
         commonMethods_page.search(nameEN);
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
     }

@@ -77,6 +77,9 @@ public class TestBase {
 
     Tasks_Page tasksPage;
 
+    Ads_Page adsPage;
+    Stories_Page storiesPage;
+
     Faker fakeData = new Faker();
     String nameEN = fakeData.name().name();
     String nameAR = fakeData.name().name();
@@ -153,7 +156,7 @@ public class TestBase {
             logger.log(LogStatus.SKIP, " Test Skipped");
         }
         logoutPage.logout();
-    //    driver.close();
+        driver.close();
     }
 
     //    @AfterSuite
@@ -189,6 +192,8 @@ public class TestBase {
         specialityPage = new Speciality_Page(driver);
         couponsPage = new Coupons_Page(driver);
         tasksPage = new Tasks_Page(driver);
+        adsPage = new Ads_Page(driver);
+        storiesPage =new Stories_Page(driver);
     }
 
     @BeforeClass

@@ -101,8 +101,17 @@ public class Lesson_Test extends TestBase {
     // Verify ability to delete online lesson
     @Test(priority = 6)
     public void verifyAbilityToDeleteOnlineLesson() throws InterruptedException, AWTException {
-        createLessonOnOnlineCourseWithPDF();
-        commonMethods_page.delete();
+        defineObjects();
+        loginPage.loginWithValidData(Email, Password);
+        sidePanel_page.openLessonList();
+        lessonPage.clickAddBtn();
+
+        lessonPage.addLesson(false ,nameEN,nameAR,seoNameEN,seoNameEN,requiredLongDesEN,requiredLongDesAR);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));        commonMethods_page.delete();
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
         Thread.sleep(3000);
         softAssert.assertFalse(commonMethods_page.table().contains(nameEN));
@@ -112,7 +121,17 @@ public class Lesson_Test extends TestBase {
     // Verify ability to delete live lesson
     @Test(priority = 7)
     public void verifyAbilityToDeleteLiveLesson() throws InterruptedException, AWTException {
-        createLessonOnOnLiveCourseWithPDF();
+        defineObjects();
+        loginPage.loginWithValidData(Email, Password);
+        sidePanel_page.openLessonList();
+        lessonPage.clickAddBtn();
+
+        lessonPage.addLesson(false ,nameEN,nameAR,seoNameEN,seoNameEN,requiredLongDesEN,requiredLongDesAR);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
         commonMethods_page.delete();
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
         Thread.sleep(3000);
@@ -124,16 +143,36 @@ public class Lesson_Test extends TestBase {
     // Passed
     @Test(priority = 8)
     public void verifySearchByNameEN() throws InterruptedException, AWTException {
-        createLessonOnOnlineCourseWithPDF();
+        defineObjects();
+        loginPage.loginWithValidData(Email, Password);
+        sidePanel_page.openLessonList();
+        lessonPage.clickAddBtn();
+
+        lessonPage.addLesson(false ,nameEN,nameAR,seoNameEN,seoNameEN,requiredLongDesEN,requiredLongDesAR);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
         commonMethods_page.search(nameEN);
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
     }
 
     // Check lesson details
     // Pass // Performance issue
-    @Test
+    @Test(priority = 9)
     public void checkLessonDetails() throws InterruptedException, AWTException {
-        createLessonOnOnlineCourseWithPDF();
+        defineObjects();
+        loginPage.loginWithValidData(Email, Password);
+        sidePanel_page.openLessonList();
+        lessonPage.clickAddBtn();
+
+        lessonPage.addLesson(false ,nameEN,nameAR,seoNameEN,seoNameEN,requiredLongDesEN,requiredLongDesAR);
+        //    softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Added Successfully"));
+
+        softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+        softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
         commonMethods_page.openDetailsScreen();
         Thread.sleep(4000);
         softAssert.assertTrue(lessonPage.getCourseNameEn().contains(nameEN));

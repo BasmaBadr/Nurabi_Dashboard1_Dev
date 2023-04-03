@@ -97,7 +97,7 @@ public class PracticalTask_Test extends TestBase {
 
     // Check details of practical task
     // Pass // Performance issue while creating
-    @Test
+    @Test(priority = 8)
     public void checkDetailsOfPracticalTask() throws InterruptedException {
         createPracticalTaskOnOnlineCourse();
         commonMethods_page.openDetailsScreen();

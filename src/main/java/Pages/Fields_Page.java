@@ -20,7 +20,7 @@ public class Fields_Page extends PageBase {
     By type = By.id("type");
     By selectChild = By.cssSelector("#fieldsSelectOptions ul li .Edit516");
 
-    By status = By.cssSelector("[for='status']");
+    By status = By.id("statusSelectOptions");
     By selectPublished = By.cssSelector("#statusSelectOptions ul li .Published");
     By selectDraft = By.cssSelector("#statusSelectOptions ul li .Drafted");
 
@@ -80,11 +80,11 @@ public class Fields_Page extends PageBase {
         clear(nameAR);
         writeOnText(nameAR, EditNameAR);
         waitElementToBeUnVisible(loader);
-        Click(type);
-        if (child) {
-            Click(type);
-            Click(selectChild);
-        }
+//        Click(type);
+////        if (child) {
+////            Click(type);
+////            Click(selectChild);
+////        }
         if(Drafted){
             Click(status);
             Click(selectDraft);

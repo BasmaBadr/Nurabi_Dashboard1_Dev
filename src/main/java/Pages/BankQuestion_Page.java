@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
+import java.util.Random;
 
 public class BankQuestion_Page extends PageBase {
     public BankQuestion_Page(WebDriver driver) {
@@ -29,10 +30,10 @@ public class BankQuestion_Page extends PageBase {
     public void addQuestionFromAdmin(String QNENN, String QNARR, String ANENN, String ANARR,boolean published
             , String requiredSEONameEN, String requiredSEONameAR, String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
 
-        writeOnText(QNEN, QNENN);
-        writeOnText(QNAR, QNARR);
-        writeOnText(ANEN, ANENN);
-        writeOnText(ANAR, ANARR);
+        writeOnText(QNEN, QNENN+new Random().nextInt(9999));
+        writeOnText(QNAR, QNARR+new Random().nextInt(9999));
+        writeOnText(ANEN, ANENN+new Random().nextInt(9999));
+        writeOnText(ANAR, ANARR+new Random().nextInt(9999));
         if (published){
             Click(status);
             Click(selectPublished);

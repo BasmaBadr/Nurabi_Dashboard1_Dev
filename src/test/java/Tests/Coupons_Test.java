@@ -115,7 +115,6 @@ public class Coupons_Test extends TestBase {
 
     // check coupon details
     // Passed
-
     @Test(priority = 8)
     public void checkCouponDetails() throws InterruptedException {
         defineObjects();

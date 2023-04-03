@@ -119,6 +119,7 @@ public class User_Test extends TestBase {
         userPage.editUser(EditNameEN);
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
         softAssert.assertTrue(commonMethods_page.table().contains(EditNameEN));
+        softAssert.assertAll();
     }
 
     // Delete user
@@ -139,7 +140,7 @@ public class User_Test extends TestBase {
 
     // Check user details
     //
-    @Test
+    @Test(priority = 9)
     public void checkUserDetails() throws InterruptedException, AWTException {
         defineObjects();
         login();
@@ -152,10 +153,10 @@ public class User_Test extends TestBase {
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
         commonMethods_page.openDetailsScreen();
         Thread.sleep(3000);
-        softAssert.assertTrue(commonMethods_page.assertValidationText("Username").contains(nameEN));
-        softAssert.assertTrue(commonMethods_page.assertValidationText("Role").contains("User"));
-        softAssert.assertTrue(commonMethods_page.assertValidationText("language").contains("English"));
-        softAssert.assertTrue(commonMethods_page.assertValidationText("Gender").contains("Male"));
+        softAssert.assertTrue(userPage.getUserName().contains(nameEN));
+        softAssert.assertTrue(userPage.getLanguage().contains("English"));
+        softAssert.assertTrue(userPage.getRole().contains("User"));
+        softAssert.assertTrue(userPage.getGender().contains("Male"));
         softAssert.assertAll();
     }
 }

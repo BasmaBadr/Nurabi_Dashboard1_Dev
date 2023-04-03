@@ -60,7 +60,7 @@ public class Add_Consultant_Page extends PageBase{
 
     By confirmDelete = By.cssSelector(".modal-footer .btn-primary");
 
-    By editBtn = By.xpath("(//span[contains(text() , 'Edit')])[2]");
+    By editBtn = By.xpath("//tbody/tr[1]/td[4]/a[2]/span[1]");
 
 
     By detailsBtn = By.xpath("//span[contains(text() , 'Details')]");
@@ -69,7 +69,7 @@ public class Add_Consultant_Page extends PageBase{
 
     public void addConsultant(boolean teacher , boolean coach ,boolean consultant, String titleAboutEN ,
                               String titleAboutAR) throws InterruptedException, AWTException {
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         Click(selectUser);
         Click(selectUserFromList);
       //  System.out.println(currentDriver.findElement(selectUserFromList).getText());

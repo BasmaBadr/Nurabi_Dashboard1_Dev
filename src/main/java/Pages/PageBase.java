@@ -222,7 +222,7 @@ public class PageBase {
     By level = By.cssSelector("[for='level']");
     By selectLevel = By.cssSelector("#levelSelectOptions ul li .All");
 
-    By status = By.id("[for='status']");
+    By status = By.id("statusSelectOptions");
     By selectDrafted = By.cssSelector("#statusSelectOptions ul li .Drafted");
 
     By selectUnPublished = By.cssSelector("#statusSelectOptions ul li .Unpublished");

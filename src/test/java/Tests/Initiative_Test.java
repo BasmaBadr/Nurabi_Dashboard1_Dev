@@ -86,15 +86,9 @@ public class Initiative_Test extends TestBase {
         softAssert.assertFalse(commonMethods_page.table().contains(nameEN));
     }
 
-    @Test(priority = 5)
-    public void verifyDetailsOfInitiative() throws InterruptedException, AWTException {
-        createInitiative_Image_Daily_Published();
-        commonMethods_page.openDetailsScreen();
-
-    }
 
     // Search initiative
-    @Test(priority = 6)
+    @Test(priority = 5)
     public void verifySearchByNameEN() throws InterruptedException, AWTException {
         createInitiative_Image_Daily_Published();
         commonMethods_page.search(nameEN);
@@ -103,7 +97,7 @@ public class Initiative_Test extends TestBase {
 
     // Check initiative details
     // Pass
-    @Test
+    @Test(priority = 6)
     public void checkInitiativeDetails() throws InterruptedException, AWTException {
         defineObjects();
         login();

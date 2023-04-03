@@ -113,8 +113,6 @@ public class Slider_Test extends TestBase {
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
         softAssert.assertTrue(commonMethods_page.table().contains(nameAR));
         softAssert.assertTrue(commonMethods_page.table().contains("Inactive"));
-
-
     }
 
     // Delete slider on web
