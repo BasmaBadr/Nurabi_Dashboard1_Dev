@@ -141,4 +141,24 @@ public class Quiz_Test extends TestBase {
         softAssert.assertTrue(commonMethods_page.assertValidationText(" Passing Precentage ").contains("80"));
         softAssert.assertAll();
     }
+
+    // Check validation messages on all fields
+    // Passed except select
+    @Test(priority = 9)
+    public void checkQuizValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openQuizList();
+        quizPage.clickAddBtn();
+        quizPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationText("title").contains("The title field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("title_ar").contains("The title AR field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("passing_precentage").contains("The Passing Persentage field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("item-name").contains("The Question 1 EN field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("item-name-ar").contains("The Question 1 AR field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("answer00").contains("The Answer 1 EN field is require"));
+      //  Assert.assertTrue(commonMethods_page.getValidationText("answer00 AR").contains("The Answer 1 AR field is required"));
+
+        softAssert.assertAll();
+    }
 }

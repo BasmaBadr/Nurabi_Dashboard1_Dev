@@ -306,6 +306,32 @@ public class PageBase {
         Click(edit);
     }
 
+    // Validations
+
+    By validationNameEN = By.cssSelector("#name + small");
+    By validationNameAR = By.cssSelector("#name_ar+ small");
+
+    By validationShortDesEN = By.cssSelector("#short_description+ small");
+    By validationShortDesAR = By.cssSelector("#short_description_ar+ small");
+    By validationLongDesEN = By.cssSelector("#long_description+ small");
+    By validationLongDesAR = By.cssSelector("#long_description_ar+ small");
+    By validationDuration = By.cssSelector("#duration+ small");
+    By validationIntroEN = By.cssSelector("[id^='introEn'] + small");
+    By validationIntroAR = By.cssSelector("[id^='introAr'] + small");
+    By validationImageEN = By.cssSelector("[id^='imageEn'] + small");
+    By validationImageAR = By.cssSelector("[id^='imageAr'] + small");
+
+    By validationThumbnail= By.cssSelector("[id^='thumbnail'] + small");
+    By validationFile= By.cssSelector("[id^='file'] + small");
+
+    By validationImageENN = By.cssSelector("[id^='image'] + small");
+    By validationImageARR = By.cssSelector("[id^='image_ar'] + small");
+
+    By validationQuestionEN = By.cssSelector("[id^='question'] + small");
+    By validationQuestionAR = By.cssSelector("[id^='question_ar'] + small");
+
+    By validationAnswerEN = By.cssSelector("[id^='answer'] + small");
+    By validationAnswerAR = By.cssSelector("[id^='answer_ar'] + small");
 
 
 }

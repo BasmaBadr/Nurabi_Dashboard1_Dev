@@ -22,6 +22,12 @@ public class Ads_Page extends PageBase{
         waitElementToBeVisible(addAdsBtn);
         Click(addAdsBtn);
     }
+    public void clickSubmit()
+    {
+        waitElementToBeVisible(submitBtn);
+        Click(submitBtn);
+    }
+
 
     public void addAds(String nameEN, String nameAR) throws InterruptedException, AWTException {
         waitElementToBeVisible(nameENTxt);

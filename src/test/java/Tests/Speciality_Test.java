@@ -1,5 +1,6 @@
 package Tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
@@ -150,6 +151,20 @@ public class Speciality_Test extends TestBase {
         softAssert.assertTrue(commonMethods_page.assertValidationText(" Status ").contains("Active"));
         softAssert.assertAll();
 
+    }
+    // Check validation messages on all fields
+    // Passed except select
+    @Test(priority = 9)
+    public void checkSpecialityValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openSpecialityList();
+        specialityPage.addSpecialityBtn();
+        specialityPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationText("title_en").contains("The title EN field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("title_ar").contains("The title AR field is required"));
+
+        softAssert.assertAll();
     }
 
 }

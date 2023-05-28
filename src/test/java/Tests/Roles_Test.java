@@ -73,4 +73,17 @@ public class Roles_Test extends TestBase{
         softAssert.assertTrue(commonMethods_page.table().contains(EditNameEN));
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Updated Successfully"));
     }
+    // Check validation messages on all fields
+    // Passed except select
+    @Test(priority = 6)
+    public void checkRolesValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openRolesList();
+        rolesPage.clickAddButton();
+        rolesPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationNameEN().contains("The name field is required"));
+
+        softAssert.assertAll();
+    }
 }

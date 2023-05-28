@@ -39,6 +39,11 @@ public class Lesson_Page extends PageBase {
         Click(addLessonBTN);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void addLesson(boolean live, String requiredTitleEN, String requiredTitleAR, String requiredSEONameEN, String requiredSEONameAR
             , String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
         writeOnText(titleEN, requiredTitleEN);

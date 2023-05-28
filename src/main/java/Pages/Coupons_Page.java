@@ -30,6 +30,9 @@ public class Coupons_Page extends PageBase {
     public void clickAddCoupon() {
         Click(addCouponBtn);
     }
+    public void clickSubmit() {
+        Click(submitBtn);
+    }
 
     public void createCoupon(String nameEN, String descTXT,boolean active,boolean amount) throws InterruptedException {
         writeOnText(nameENTxt, nameEN + new Random().nextInt(9999));

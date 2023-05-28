@@ -81,4 +81,19 @@ public class Currencies_Test extends TestBase{
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
 
     }
+
+    // Check validation messages on all fields
+    // Passed
+    @Test(priority = 6)
+    public void checkCurrenciesValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openCurrenciesList();
+        currenciesPage.clickAddBtn();
+        currenciesPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationText("name").contains("The Name field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("code").contains("The Code field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("symbol").contains("The Symbol field is required"));
+        softAssert.assertAll();
+    }
 }

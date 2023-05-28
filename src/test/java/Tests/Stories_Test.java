@@ -1,5 +1,6 @@
 package Tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
@@ -9,10 +10,10 @@ public class Stories_Test extends TestBase{
 
 
 
-    // Verify ability to add story from admin list
+    // Verify ability to add story from admin list type text
     // Passed
     @Test
-    public void checkAbilityToAddStoryFromAdminList() throws InterruptedException {
+    public void checkAbilityToAddStoryFromAdminListTypeText() throws InterruptedException, AWTException {
         defineObjects();
         login();
         sidePanel_page.openAdminListTab();
@@ -25,7 +26,7 @@ public class Stories_Test extends TestBase{
     // Verify ability to add story from add tab
     // Passed
     @Test
-    public void checkAbilityToAddStoryFromAddTab() throws InterruptedException {
+    public void checkAbilityToAddStoryFromAddTab() throws InterruptedException, AWTException {
         defineObjects();
         login();
         sidePanel_page.openAddStoryTab();
@@ -71,4 +72,43 @@ public class Stories_Test extends TestBase{
         softAssert.assertTrue(commonMethods_page.assertValidationMessage("Deleted Successfully"));
         softAssert.assertAll();
     }
+
+    // Verify ability to add story from admin list type image
+    // Passed
+    @Test(priority = 5)
+    public void checkAbilityToAddStoryFromAdminListTypeImage() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openAdminListTab();
+        storiesPage.clickAddButton();
+        storiesPage.addStory(false,true,nameEN);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Saved Successfully"));
+        softAssert.assertAll();
+    }
+    // Verify ability to add story from admin list type video
+    // Performance issue
+    @Test(priority = 6)
+    public void checkAbilityToAddStoryFromAdminListTypeVideo() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openAdminListTab();
+        storiesPage.clickAddButton();
+        storiesPage.addStory(false,false,nameEN);
+        softAssert.assertTrue(commonMethods_page.assertValidationMessage("Saved Successfully"));
+        softAssert.assertAll();
+    }
+    // Check validation messages on all fields
+    // Passed except select
+    @Test(priority = 7)
+    public void checkStoriesValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openAdminListTab();
+        storiesPage.clickAddButton();
+        storiesPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationText("content").contains("The Content field is required"));
+
+        softAssert.assertAll();
+    }
 }
+

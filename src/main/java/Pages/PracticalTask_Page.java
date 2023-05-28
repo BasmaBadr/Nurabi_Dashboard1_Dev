@@ -22,6 +22,11 @@ public class PracticalTask_Page extends PageBase {
 
     }
 
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void addPracticalTask(boolean live, String QuestEN, String QuestAR) {
         writeOnText(questionEN, QuestEN);
         writeOnText(questionAR, QuestAR);

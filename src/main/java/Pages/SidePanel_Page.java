@@ -174,6 +174,7 @@ public class SidePanel_Page extends PageBase {
         Click(quizList);
     }
 
+
     public void openAddQuizSidePanel() {
         Click(coursesTabParent);
         Click(quizTab);
@@ -499,6 +500,11 @@ public class SidePanel_Page extends PageBase {
 
         scrollToElement(addStoryTab);
         Click(addStoryTab);
+    }
+
+    public void clickSubmit()
+    {
+        Click(submitBtn);
     }
 
 }

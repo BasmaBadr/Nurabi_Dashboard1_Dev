@@ -42,6 +42,11 @@ public class Roles_Page extends PageBase{
         Click(addRoleBtn);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void addRole(String nameEN)
     {
         writeOnText(nameENTxt , nameEN +  new Random().nextInt(9999));

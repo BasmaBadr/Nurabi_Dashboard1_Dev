@@ -39,6 +39,10 @@ public class Fields_Page extends PageBase {
         Click(addFieldBtn);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+    }
     public void createParentFieldWithValidData(boolean parent,boolean Published , String requiredNameEN, String requiredNameAR, String requiredSEONameEN,
                                                String requiredSEONameAR, String requiredSEODesEN, String requiredSEODesAR) throws AWTException, InterruptedException {
         waitElementToBeUnVisible(loader);

@@ -165,4 +165,23 @@ public class Courses_Test extends TestBase {
         softAssert.assertAll();
     }
 
+    // Check validation messages on all fields
+    // Passed except select
+    @Test(priority = 10)
+    public void checkCoursesValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openCoursesList();
+        coursesPage.clickAddBtn();
+        coursesPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationText("title").contains("The title field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("title_ar").contains("The title_ar field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationImageENN().contains("The Image field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("slug").contains("The slug field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationThumbnail().contains("The Thumbnail field is required"));
+     //   Assert.assertTrue(commonMethods_page.getValidationText("title").contains("The title field is required"));
+
+
+        softAssert.assertAll();
+    }
 }

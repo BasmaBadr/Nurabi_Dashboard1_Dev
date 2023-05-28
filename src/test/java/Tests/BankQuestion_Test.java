@@ -88,5 +88,19 @@ public class BankQuestion_Test extends TestBase {
         //    softAssert.assertTrue(commonMethods_page.assertValidationText(" Title EN ").contains(nameEN));
         softAssert.assertAll();
     }
-
+    // Check validation messages on all fields
+    // Passed
+    @Test(priority = 6)
+    public void checkBankQuestionValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openAdminList();
+        bankQuestionPage.clickAddBrn();
+        bankQuestionPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationQuestionEN().contains("The question EN field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationQuestionAR().contains("The question AR field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationAnswerEN().contains("The answer EN field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationAnswerAR().contains("The answer AR field is required"));
+        softAssert.assertAll();
+    }
 }

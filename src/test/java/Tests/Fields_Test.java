@@ -187,4 +187,19 @@ public class Fields_Test extends TestBase {
         softAssert.assertAll();
 
     }
+    // Check fields validations
+    // Passed
+    @Test(priority = 9)
+    public void checkFieldsValidations() throws InterruptedException {
+        defineObjects();
+        login();
+        sidePanel_page.openFieldsList();
+        fields_page.clickAddBtn();
+        fields_page.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationNameEN().contains("The name EN field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationNameAR().contains("The name AR field is required"));
+        softAssert.assertAll();
+
+    }
+
 }

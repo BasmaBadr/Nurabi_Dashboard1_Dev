@@ -34,6 +34,11 @@ public class Quiz_Page extends PageBase {
         Click(addQuizBTN);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void addNewQuiz(boolean live, String requiredTitleEN, String requiredTitleAR, String requiredSEONameEN
             , String requiredSEONameAR, String requiredSEONDescEN, String requiredSEONDescAR
             , String Q1EN, String Q1AR, String Answer1EN, String Answer1AR, String Answer2EN, String Answer2AR) throws InterruptedException, AWTException {

@@ -98,4 +98,18 @@ public class Fields_Consultations_Test extends TestBase {
         softAssert.assertAll();
     }
 
+    // Check validation messages on all fields
+    // Passed
+    @Test(priority = 7)
+    public void checkConsultationFieldsValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openFieldsConsultationsList();
+        fieldsConsultationsPage.clickAddBtn();
+        fieldsConsultationsPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationText("title").contains("The title EN field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("title_ar").contains("The title AR field is required"));
+        softAssert.assertAll();
+    }
+
 }

@@ -99,5 +99,17 @@ public class JobTitle_Test extends TestBase {
     }
 
 
-
+    // Check validation messages on all fields
+    // Passed
+    @Test(priority = 6)
+    public void checkJobsValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openJobTaskList();
+        jobTitlePage.clickAddBtn();
+        jobTitlePage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationText("title_en").contains("The title EN field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("title_ar").contains("The title AR field is required"));
+        softAssert.assertAll();
+    }
 }

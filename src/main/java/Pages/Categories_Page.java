@@ -23,6 +23,11 @@ public class Categories_Page extends PageBase {
         Click(addCategoryBTN);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void addActiveCategory(String NameEN, String NameAR, String requiredSEONameEN, String requiredSEONameAR
             , String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
         writeOnText(nameEN, NameEN+new Random().nextInt(9999));

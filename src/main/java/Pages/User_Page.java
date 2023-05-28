@@ -55,6 +55,11 @@ public class User_Page extends PageBase {
         writeOnText(name, nameENEdit);
         Click(submitBtn);
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
 
     public String getUserName()
     {

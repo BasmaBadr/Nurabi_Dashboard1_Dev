@@ -159,4 +159,22 @@ public class User_Test extends TestBase {
         softAssert.assertTrue(userPage.getGender().contains("Male"));
         softAssert.assertAll();
     }
+
+    // Check validation messages on all fields
+    // Passed except select
+    @Test(priority = 10)
+    public void checkUserValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openAddUser();
+        userPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationText("username").contains("The username field is required"));
+    //    Assert.assertTrue(commonMethods_page.getValidationText("login-password").contains("The Password field is required"));
+        Assert.assertTrue(commonMethods_page.assertValidationMessage("The Password field is required"));
+
+        Assert.assertTrue(commonMethods_page.getValidationText("email").contains("The Email field is required"));
+        Assert.assertTrue(commonMethods_page.assertValidationMessage("The date field is required"));
+
+        softAssert.assertAll();
+    }
 }

@@ -197,4 +197,19 @@ public class Sections_Test extends TestBase {
         softAssert.assertAll();
 
     }
+
+    // Check validation messages on all fields
+    // Passed except select
+    @Test(priority = 12)
+    public void checkSectionValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openSectionsList();
+        sectionsPage.clickAddBtn();
+        sectionsPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationText("title").contains("The title field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("title_ar").contains("The title_ar field is required"));
+
+        softAssert.assertAll();
+    }
 }

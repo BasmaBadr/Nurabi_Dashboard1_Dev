@@ -59,6 +59,11 @@ public class Activity_Page extends PageBase {
         Click(addActivityBtn);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void createActivityWithValidData(boolean Daily ,boolean Weekly ,boolean Monthly ,
                                             boolean OneTime,boolean Custom ,String requiredNameEN, String requiredNameAR,
                                             String requiredShortDesEN, String requiredShortDesAR,

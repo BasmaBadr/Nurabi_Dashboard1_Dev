@@ -33,6 +33,10 @@ public class Courses_Page extends PageBase {
         Click(addCourse);
 
     }
+    public void clickSubmit() {
+        Click(submitBtn);
+
+    }
 
     public void createCourse(boolean Live, boolean Published, boolean Free, String requiredTitleEN, String requiredTitleAR, String requiredSlug, String requiredPrice,
                              String requiredDesEN, String requiredDesAR, String requiredSEONameEN, String requiredSEONameAR,

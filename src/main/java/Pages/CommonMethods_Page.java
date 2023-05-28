@@ -42,6 +42,7 @@ public class CommonMethods_Page extends PageBase {
         waitElementToBeVisible(edit);
         Click(edit);
     }
+
     public void openAssignUser() {
         Click(optionList);
         waitElementToBeVisible(assignUser);
@@ -65,6 +66,22 @@ public class CommonMethods_Page extends PageBase {
             System.err.println("The error is ==>  " + e.getMessage());
             return false;
         }
+    }
+
+    public String getValidationText(String fullValidationMessage) {
+
+
+            waitElementToBeVisible(By.cssSelector("#"+fullValidationMessage+" + small"));
+            return getText(By.cssSelector("#"+fullValidationMessage+" + small"));
+
+    }
+
+    public String getValidationSelect(String fullValidationMessage) {
+
+
+        waitElementToBeVisible(By.cssSelector("#"+fullValidationMessage+" .v-select + small"));
+        return getText(By.cssSelector("#"+fullValidationMessage+" .v-select + small"));
+
     }
 
     public void search(String requiredValue) throws AWTException, InterruptedException {
@@ -102,11 +119,11 @@ public class CommonMethods_Page extends PageBase {
 
     public String assertValidationText(String fullValidationMessage) throws InterruptedException {
         Thread.sleep(4000);
-     //   waitElementToBeUnVisible(loader);
+        //   waitElementToBeUnVisible(loader);
 //        WebDriverWait wait = new WebDriverWait(currentDriver, 10);
 //        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text() ,'" + fullValidationMessage + "')]/following-sibling::div")));
         System.out.println(getText(By.xpath("//*[contains(text() ,'" + fullValidationMessage + "')]/following-sibling::div")));
-       return getText(By.xpath("//*[contains(text() ,'" + fullValidationMessage + "')]/following-sibling::div"));
+        return getText(By.xpath("//*[contains(text() ,'" + fullValidationMessage + "')]/following-sibling::div"));
 
 
    /*         try {
@@ -120,6 +137,115 @@ public class CommonMethods_Page extends PageBase {
                 return false;
             }
     }*/
+    }
+
+    public String getValidationNameEN() {
+        System.out.println(getText(validationNameEN));
+        return getText(validationNameEN);
+    }
+
+    public String getValidationNameAR() {
+        System.out.println(getText(validationNameAR));
+        return getText(validationNameAR);
+
+    }
+
+    public String getValidationShortDesEN() {
+        System.out.println(getText(validationShortDesEN));
+        return getText(validationShortDesEN);
+    }
+
+    public String getValidationShortDesAR() {
+        System.out.println(getText(validationShortDesAR));
+        return getText(validationShortDesAR);
+    }
+
+    public String getValidationLongDesEN() {
+        System.out.println(getText(validationLongDesEN));
+        return getText(validationLongDesEN);
+
+    }
+
+    public String getValidationLongDesAR() {
+        System.out.println(getText(validationLongDesAR));
+        return getText(validationLongDesAR);
+
+    }
+
+    public String getValidationDuration() {
+        System.out.println(getText(validationDuration));
+        return getText(validationDuration);
+
+    }
+
+    public String getValidationIntroEN() {
+        System.out.println(getText(validationIntroEN));
+        return getText(validationIntroEN);
+
+    }
+
+    public String getValidationIntroAR() {
+        System.out.println(getText(validationIntroAR));
+        return getText(validationIntroAR);
+
+    }
+
+    public String getValidationImageEN() {
+        System.out.println(getText(validationImageEN));
+        return getText(validationImageEN);
+
+    }
+
+    public String getValidationImageAR() {
+        System.out.println(getText(validationImageAR));
+        return getText(validationImageAR);
+
+    }
+
+    public String getValidationImageENN() {
+        System.out.println(getText(validationImageENN));
+        return getText(validationImageENN);
+
+    }
+
+    public String getValidationImageARR() {
+        System.out.println(getText(validationImageARR));
+        return getText(validationImageARR);
+
+    }
+
+    public String getValidationQuestionEN() {
+        System.out.println(getText(validationQuestionEN));
+        return getText(validationQuestionEN);
+
+    }
+
+    public String getValidationQuestionAR() {
+        System.out.println(getText(validationQuestionAR));
+        return getText(validationQuestionAR);
+
+    }
+    public String getValidationAnswerEN() {
+        System.out.println(getText(validationAnswerEN));
+        return getText(validationAnswerEN);
+
+    }
+
+    public String getValidationAnswerAR() {
+        System.out.println(getText(validationAnswerAR));
+        return getText(validationAnswerAR);
+
+    }
+
+    public String getValidationThumbnail() {
+        System.out.println(getText(validationThumbnail));
+        return getText(validationThumbnail);
+
+    }
+    public String getValidationFile() {
+        System.out.println(getText(validationFile));
+        return getText(validationFile);
+
     }
 }
 

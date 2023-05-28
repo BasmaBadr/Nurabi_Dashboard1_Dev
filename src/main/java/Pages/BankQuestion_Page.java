@@ -26,6 +26,11 @@ public class BankQuestion_Page extends PageBase {
         Click(addQuestionBTN);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
 
     public void addQuestionFromAdmin(String QNENN, String QNARR, String ANENN, String ANARR,boolean published
             , String requiredSEONameEN, String requiredSEONameAR, String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {

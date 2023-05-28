@@ -61,6 +61,21 @@ public class Certificate_Test extends TestBase{
         addCertificate();
         commonMethods_page.search(nameEN);
         softAssert.assertTrue(commonMethods_page.table().contains(nameEN));
+    }
 
+    // Check validation messages on all fields
+    // Passed
+    @Test(priority = 9)
+    public void checkCertificateValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openCertificatesList();
+        certificatePage.clickAddBtn();
+        certificatePage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationNameEN().contains("The name field is required"));
+
+        Assert.assertTrue(commonMethods_page.getValidationImageENN().contains("The Image field is required"));
+
+        softAssert.assertAll();
     }
 }

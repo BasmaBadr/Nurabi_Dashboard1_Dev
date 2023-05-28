@@ -30,6 +30,11 @@ public class Currencies_Page extends PageBase{
         Click(addCurrencyBTN);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void addCurrency(String Name ,String code , String symbol)
     {
         writeOnText(nameENTxt , Name+new Random().nextInt(9999));

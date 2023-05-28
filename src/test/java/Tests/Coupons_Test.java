@@ -132,5 +132,18 @@ public class Coupons_Test extends TestBase {
         softAssert.assertAll();
     }
 
+    // Check validation messages on all fields
+    // Fail
+    @Test(priority = 9)
+    public void checkCouponValidationMessaged() throws InterruptedException {
+        defineObjects();
+        login();
+        sidePanel_page.openCouponList();
+        couponsPage.clickAddCoupon();
+        couponsPage.clickSubmit();
+        softAssert.assertTrue(commonMethods_page.getValidationText("name").contains("The name field is required"));
+        softAssert.assertAll();
+    }
+
 
 }

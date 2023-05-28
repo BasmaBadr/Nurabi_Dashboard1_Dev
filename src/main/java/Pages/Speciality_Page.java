@@ -34,6 +34,11 @@ public class Speciality_Page extends PageBase{
         Click(addSpeciality);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void addSpeciality(String titleENN, String titleARR ,boolean consultant, boolean teacher ,boolean coach, boolean inactive)
     {
         writeOnText(titleEN , titleENN + new Random().nextInt(9999));

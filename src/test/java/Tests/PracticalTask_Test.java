@@ -110,4 +110,18 @@ public class PracticalTask_Test extends TestBase {
         softAssert.assertTrue(practicalTaskPage.getSectionAR().contains("SectionOnline"));
         softAssert.assertAll();
     }
+
+    // Check validation messages on all fields
+    // Passed except select
+    @Test(priority = 9)
+    public void checkPracticalTasksValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openPracticalTaskList();
+        practicalTaskPage.clickAddBtn();
+        practicalTaskPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationText("question_en").contains("The question en field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("question_ar").contains("The question ar field is required"));
+        softAssert.assertAll();
+    }
 }

@@ -25,6 +25,11 @@ public class Sections_Page extends PageBase {
         Click(addSectionBTN);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void addSection(boolean live,boolean active , String requiredTitleEN, String requiredTitleAR, String requiredSEONameEN, String requiredSEONameAR
             , String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
         waitElementToBeUnVisible(loader);

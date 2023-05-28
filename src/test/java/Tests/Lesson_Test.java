@@ -184,6 +184,20 @@ public class Lesson_Test extends TestBase {
         softAssert.assertTrue(lessonPage.getContentType().contains("pdf"));
         softAssert.assertAll();
     }
+    // Check validation messages on all fields
+    // Passed except select
+    @Test(priority = 10)
+    public void checkLessonValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openLessonList();
+        lessonPage.clickAddBtn();
+        lessonPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationText("title").contains("The title en field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("title_ar").contains("The title ar field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationFile().contains("The File field is required"));
+        softAssert.assertAll();
+    }
 
 
 }

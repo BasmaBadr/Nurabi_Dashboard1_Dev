@@ -94,4 +94,18 @@ public class Categories_Test extends TestBase {
         softAssert.assertTrue(commonMethods_page.assertValidationText(" Status ").contains("Active"));
         softAssert.assertAll();
     }
+
+    // Check validation messages on all fields
+    // Passed
+    @Test(priority = 6)
+    public void checkCategoriesValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openCategoriesList();
+        categoriesPage.clickAdd();
+        categoriesPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationNameEN().contains("The name en field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationNameAR().contains("The name ar field is required"));
+        softAssert.assertAll();
+    }
 }

@@ -21,6 +21,11 @@ public class Certificate_Page extends PageBase {
         Click(addCertificateBTN);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void addCertificate(String NameEN, String requiredSEONameEN, String requiredSEONameAR
             , String requiredSEONDescEN, String requiredSEONDescAR) throws InterruptedException, AWTException {
         Click(image);

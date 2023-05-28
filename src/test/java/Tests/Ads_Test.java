@@ -1,5 +1,6 @@
 package Tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
@@ -102,6 +103,22 @@ public class Ads_Test extends TestBase {
         softAssert.assertTrue(commonMethods_page.assertValidationText(" Name EN ").contains(nameEN));
         softAssert.assertTrue(commonMethods_page.assertValidationText(" Name AR ").contains(nameAR));
         softAssert.assertTrue(commonMethods_page.assertValidationText(" Status ").contains("Active"));
+        softAssert.assertAll();
+    }
+
+    // Check validation messages on all fields
+    // Passed except selects
+    @Test(priority = 7)
+    public void checkAdsValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openAdsList();
+        adsPage.clickAddButton();
+        adsPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationNameEN().contains("The name en field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationNameAR().contains("The name ar field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationImageENN().contains("The image en field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationImageARR().contains("The image ar field is required"));
         softAssert.assertAll();
     }
 }

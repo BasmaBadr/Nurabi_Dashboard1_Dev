@@ -199,5 +199,29 @@ public class TrackingSystem_Test extends TestBase {
         softAssert.assertAll();
     }
 
+    // Check validation messages on all fields
+    // Passed except fields
+    @Test(priority = 9)
+    public void checkTrackingSystemValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openTrackingList();
+        trackingSystem_page.clickAddBtn();
+        trackingSystem_page.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationNameEN().contains("The name field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationNameAR().contains("The name_ar field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationShortDesEN().contains("The short description EN field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationShortDesAR().contains("The short description AR field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationLongDesEN().contains("The long description EN field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationLongDesAR().contains("The long description AR field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationDuration().contains("The duration field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationIntroEN().contains("The intro en field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationIntroAR().contains("The intro ar field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationImageEN().contains("The Image en field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationImageAR().contains("The Image ar field is required"));
+
+        softAssert.assertAll();
+    }
+
 
 }

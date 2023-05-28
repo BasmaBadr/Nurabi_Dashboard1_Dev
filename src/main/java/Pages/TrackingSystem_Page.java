@@ -193,5 +193,10 @@ public class TrackingSystem_Page extends PageBase {
 
     }
 
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+    }
+
 }
 

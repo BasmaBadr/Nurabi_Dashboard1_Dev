@@ -82,4 +82,20 @@ public class Survey_Test extends TestBase {
         softAssert.assertTrue(commonMethods_page.assertValidationText(" Title Ar ").contains(nameAR));
    //     softAssert.assertAll();
     }
+
+    // Check validation messages on all fields
+    // Passed
+    @Test(priority = 6)
+    public void checkSurveyValidationMessages() throws InterruptedException, AWTException {
+        defineObjects();
+        login();
+        sidePanel_page.openSAddSurveySidePanel();
+        surveyPage.clickSubmit();
+        Assert.assertTrue(commonMethods_page.getValidationText("title_en").contains("The title EN field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("title_ar").contains("The Title AR field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("question-1-en").contains("The Question 1 EN field is required"));
+        Assert.assertTrue(commonMethods_page.getValidationText("question-1-ar").contains("The Question 1 AR field is required"));
+
+        softAssert.assertAll();
+    }
 }

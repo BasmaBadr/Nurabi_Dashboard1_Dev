@@ -19,6 +19,11 @@ public class Fields_Consultations_Page extends PageBase {
         Click(addFiledBTN);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void addConsultantField(String TitleEN , String TitleAR)
     {
         writeOnText(titleEN , TitleEN+new Random().nextInt(9999));

@@ -24,6 +24,11 @@ public class JobTitle_Page extends PageBase{
         Click(addJobBTN);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
 
     public void addActiveJob( String TitleEN ,String TitleAR )
     {

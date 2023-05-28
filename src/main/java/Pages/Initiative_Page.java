@@ -69,6 +69,12 @@ public class Initiative_Page extends PageBase {
         Click(addInitiativeBtn);
 
     }
+
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void addInitiative(boolean Published ,String requiredNameEN, String requiredNameAR,
                               String requiredShortDesEN, String requiredShortDesAR,
                               String requiredLongDesEN, String requiredLongDesAR,

@@ -29,6 +29,11 @@ public class Survey_Page extends PageBase {
         Click(addSurveyBTN);
 
     }
+    public void clickSubmit()
+    {
+        Click(submitBtn);
+
+    }
     public void addSurvey(String NameEN, String NameAR, String requiredSEONameEN, String requiredSEONameAR
             , String requiredSEONDescEN, String requiredSEONDescAR, String QNEN1, String QNAR1,
     String QENN2 , String QEARR2) throws InterruptedException, AWTException {
