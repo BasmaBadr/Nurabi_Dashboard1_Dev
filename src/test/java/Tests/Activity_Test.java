@@ -305,6 +305,15 @@ public class Activity_Test extends TestBase {
         softAssert.assertAll();
     }
 
+    @Test(invocationCount = 2)
+    public void CheckLink() throws InterruptedException, AWTException {
+        defineObjects();
+        driver.navigate().to("https://app.dyte.io/meeting/stage/zprmlg-wmoakq?theme=preset&authToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjMwODU3LTI2MWYtNGRkNS04MjlhLWMzYzBjODUzNjU5MCIsImxvZ2dlZEluIjp0cnVlLCJpYXQiOjE2ODYyNTY0MTQsImV4cCI6MTY5NDg5NjQxNH0.HyWxzqxpAzwmfEa8SHlN_pY1zPe8_ddOrh82l_KSdyzRPvAzy4oSeqkL7BIJkIefXuqK9yVKGZzP4vLXIXvLnuQY1NnZ9M8fXy8TrKVAfisXJ_73VI6mW7a94plXCGEg3H957N63CMc42uvk45VClxwxbkg7MFJZtPoR6KTbes3KtvF5MYG-2tKu6bu0A6S_VWXM3xPIid1_RUWnDYCTIa3Oqfey-DBSuomSDgEUwSxHfq7g31dInWh8QmBGTMm8xXf_76XjE0BrxButuPSw-tti0L30JMBzC8sKs7X-v-D3pwYnX2lFNRFY6b7Jr1ToaoD7Lv-fP6AKAA1D1-__ZA");
+
+        //   login();
+
+    }
+
       /*
 
     @Test(priority = 3)

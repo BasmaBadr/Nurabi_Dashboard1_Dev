@@ -16,6 +16,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
@@ -123,13 +124,21 @@ public class TestBase {
     @BeforeMethod
     public void startDriver(Method method) {
         logger = extent.startTest(method.getName());
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+       // WebDriverManager.chromedriver().setup();
+
+        System.setProperty("webdriver.chrome.driver", "D:\\Nurabi\\Nurabi_Dashboard1\\Driver\\chromedriver.exe");
+        /*ChromeOptions options = new ChromeOptions();
+        options.addArguments("use-fake-device-for-media-stream");
+        options.addArguments("use-fake-ui-for-media-stream");*/
+         driver = new ChromeDriver();
         driver.manage().window().maximize();
 //        driver.manage().timeouts().implicitlyWait(10 , TimeUnit.SECONDS);
         driver.navigate().to("https://devdashboard.nurabi.live/");
 //        JavascriptExecutor jse = (JavascriptExecutor)driver;
 //        jse.executeScript("document.body.style.zoom = '80%';");
+
+
+     //   driver = new ChromeDriver(options);
     }
 
     @AfterMethod
@@ -155,8 +164,8 @@ public class TestBase {
         } else {
             logger.log(LogStatus.SKIP, " Test Skipped");
         }
-        logoutPage.logout();
-        driver.close();
+    //    logoutPage.logout();
+     //   driver.close();
     }
 
     //    @AfterSuite
