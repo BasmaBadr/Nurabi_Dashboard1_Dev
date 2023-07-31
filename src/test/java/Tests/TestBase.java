@@ -130,7 +130,7 @@ public class TestBase {
         /*ChromeOptions options = new ChromeOptions();
         options.addArguments("use-fake-device-for-media-stream");
         options.addArguments("use-fake-ui-for-media-stream");*/
-         driver = new ChromeDriver();
+         driver = new ChromeDriver() --whitelisted-ips="";
         driver.manage().window().maximize();
 //        driver.manage().timeouts().implicitlyWait(10 , TimeUnit.SECONDS);
         driver.navigate().to("https://devdashboard.nurabi.live/");
