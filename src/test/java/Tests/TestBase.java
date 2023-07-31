@@ -130,14 +130,16 @@ public class TestBase {
         /*ChromeOptions options = new ChromeOptions();
         options.addArguments("use-fake-device-for-media-stream");
         options.addArguments("use-fake-ui-for-media-stream");*/
+
+        System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver" );
         System.setProperty("webdriver.chrome.whitelistedIps", "");
-        /*ChromeOptions options = new ChromeOptions();
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--disable-setuid-sandbox");*/
+        /*options.addArguments("--disable-setuid-sandbox");*/
         /*options.addArguments("--headless");*/
         
-         driver = new ChromeDriver();
+         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
 //        driver.manage().timeouts().implicitlyWait(10 , TimeUnit.SECONDS);
         driver.navigate().to("https://devdashboard.nurabi.live/");
