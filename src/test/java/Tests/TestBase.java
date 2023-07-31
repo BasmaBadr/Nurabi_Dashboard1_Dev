@@ -130,8 +130,7 @@ public class TestBase {
         /*ChromeOptions options = new ChromeOptions();
         options.addArguments("use-fake-device-for-media-stream");
         options.addArguments("use-fake-ui-for-media-stream");*/
-        System.setProperty("webdriver.chrome.whitelistedIps", "");
-        options.addArguments("--no-sandbox");
+        /*System.setProperty("webdriver.chrome.whitelistedIps", "");*/
          driver = new ChromeDriver();
         driver.manage().window().maximize();
 //        driver.manage().timeouts().implicitlyWait(10 , TimeUnit.SECONDS);
