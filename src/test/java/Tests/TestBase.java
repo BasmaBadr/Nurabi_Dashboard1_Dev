@@ -131,7 +131,7 @@ public class TestBase {
         options.addArguments("use-fake-device-for-media-stream");
         options.addArguments("use-fake-ui-for-media-stream");*/
 
-        System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver" );
+        /*System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver" );*/
         System.setProperty("webdriver.chrome.whitelistedIps", "");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
