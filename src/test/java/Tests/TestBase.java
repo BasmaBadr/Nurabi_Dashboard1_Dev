@@ -137,7 +137,7 @@ public class TestBase {
         options.addArguments("--disable-setuid-sandbox");*/
         /*options.addArguments("--headless");*/
         
-         driver = new ChromeDriver(options);
+         driver = new ChromeDriver();
         driver.manage().window().maximize();
 //        driver.manage().timeouts().implicitlyWait(10 , TimeUnit.SECONDS);
         driver.navigate().to("https://devdashboard.nurabi.live/");
