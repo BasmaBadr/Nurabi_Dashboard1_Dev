@@ -134,7 +134,7 @@ public class TestBase {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-        options.add_argument("--headless");
+        options.add_argument("--disable-setuid-sandbox");
         
          driver = new ChromeDriver(options);
         driver.manage().window().maximize();
