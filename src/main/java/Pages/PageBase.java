@@ -149,7 +149,7 @@ public class PageBase {
         }
         */
     public void waitElementToBeVisible(By locator) {
-        new WebDriverWait(currentDriver, 30).until(ExpectedConditions.visibilityOfElementLocated(locator));
+        new WebDriverWait(currentDriver, 60).until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void waitElementToBeVisiblee(By locator) {
