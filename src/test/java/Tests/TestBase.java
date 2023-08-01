@@ -126,8 +126,8 @@ public class TestBase {
         logger = extent.startTest(method.getName());
        // WebDriverManager.chromedriver().setup();
 
-
-        System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "//Driver//chromedriver" );
+//System.getProperty("user.dir") + "//Driver//chromedriver"
+        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver" );
 
         /*ChromeOptions options = new ChromeOptions();
         options.addArguments("use-fake-device-for-media-stream");
