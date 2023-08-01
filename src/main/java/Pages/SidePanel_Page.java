@@ -75,7 +75,7 @@ public class SidePanel_Page extends PageBase {
     By certificatesList = By.id("apps-certificates-list");
     By addCertificatesSidePanel = By.id("apps-certificates-add");
 
-    By currenciesTab = By.id("currencies");
+    By currenciesTab = By.xpath("//span[contains(text() , 'Currencies')]");
     By currenciesList = By.id("apps-currency-list");
     By addCurrenciesSidePanel = By.id("apps-currency-add");
 
