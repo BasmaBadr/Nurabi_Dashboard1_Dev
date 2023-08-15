@@ -121,7 +121,7 @@ public class TestBase {
     String price = "requiredPrice";
 
 
-    @BeforeMethod
+    @BeforeClass
     public void startDriver(Method method) {
         logger = extent.startTest(method.getName());
        // WebDriverManager.chromedriver().setup();
@@ -134,6 +134,9 @@ public class TestBase {
         driver.manage().window().maximize();
 //        driver.manage().timeouts().implicitlyWait(10 , TimeUnit.SECONDS);
         driver.navigate().to("https://devdashboard.nurabi.live/");
+        extent = new ExtentReports("D:\\Nurabi\\Nurabi_Dashboard1\\TestReport\\index.html", true);
+        extent.addSystemInfo("OS", "Windows");
+        extent.addSystemInfo("Owner", "Basma");
 //        JavascriptExecutor jse = (JavascriptExecutor)driver;
 //        jse.executeScript("document.body.style.zoom = '80%';");
 
@@ -164,7 +167,7 @@ public class TestBase {
         } else {
             logger.log(LogStatus.SKIP, " Test Skipped");
         }
-    //    logoutPage.logout();
+        logoutPage.logout();
      //   driver.close();
     }
 
@@ -210,6 +213,7 @@ public class TestBase {
         extent = new ExtentReports("D:\\Nurabi\\Nurabi_Dashboard1\\TestReport\\index.html", true);
         extent.addSystemInfo("OS", "Windows");
         extent.addSystemInfo("Owner", "Basma");
+
     }
 
     @AfterClass
